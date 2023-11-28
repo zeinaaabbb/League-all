@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema[7.1].define(version: 2023_11_28_121831) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -89,6 +91,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_121831) do
     t.index ["user_id"], name: "index_players_on_user_id"
   end
 
+
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -120,4 +123,5 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_121831) do
   add_foreign_key "messages", "users"
   add_foreign_key "players", "teams"
   add_foreign_key "players", "users"
+
 end
