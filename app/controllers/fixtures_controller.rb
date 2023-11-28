@@ -30,6 +30,7 @@ class FixturesController < ApplicationController
   def update
     @fixture = Fixture.find(params[:id])
     @fixture.update(params[:fixture])
+    redirect_to fixtures_path(params[:league_id]), notice: 'Fixture successfully updated.'
   end
 
   def destroy
