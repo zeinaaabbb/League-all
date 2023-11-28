@@ -14,11 +14,24 @@ require 'pry'
 require 'faker'
 require 'date'
 
-User.destroy_all
-puts "Destroy all users"
+# DESTROY FIXTURE
+puts "destroying fixtures"
+Fixture.destroy_all
+puts "fixtures destroyed"
+
+# DESTROY ALL
+puts "destroying teams"
+Team.destroy_all
+puts "teams destroyed"
+
+# END
 
 League.destroy_all
 puts "Destroy all leagues"
+
+User.destroy_all
+puts "Destroy all users"
+
 
 5.times do |i|
   user = User.new
@@ -78,12 +91,7 @@ description = [
   puts "#{league.name} created!"
 end
 
-# DESTROY ALL
-puts "destroying teams"
-Team.destroy_all
-puts "teams destroyed"
 
-# END
 
 # SEEDING TEAMS
 10.times do
@@ -93,10 +101,7 @@ puts "teams destroyed"
   puts "#{team.name} created!"
 end
 
-# DESTROY FIXTURE
-puts "destroying fixtures"
-Fixture.destroy_all
-puts "fixtures destroyed"
+
 
 puts 'running seed'
 
