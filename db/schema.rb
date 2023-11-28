@@ -57,6 +57,19 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_121831) do
     t.index ["home_team_id_id"], name: "index_fixtures_on_home_team_id_id"
   end
 
+  create_table "leagues", force: :cascade do |t|
+    t.string "name"
+    t.string "format"
+    t.date "start_date"
+    t.string "level"
+    t.string "league_type"
+    t.integer "number_of_teams"
+    t.integer "days_per_week"
+    t.text "description"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_leagues_on_user_id"
 
   create_table "messages", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -105,7 +118,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_121831) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "fixtures", "teams", column: "away_team_id_id"
   add_foreign_key "fixtures", "teams", column: "home_team_id_id"
-
+  add_foreign_key "leagues", "users"
   add_foreign_key "messages", "teams"
   add_foreign_key "messages", "users"
   add_foreign_key "players", "teams"
