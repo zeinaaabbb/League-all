@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2023_11_28_135157) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,10 +50,20 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_135157) do
     t.datetime "time"
     t.integer "home_goals"
     t.integer "away_goals"
-    t.bigint "home_team_id_id"
-    t.bigint "away_team_id_id"
-    t.index ["away_team_id_id"], name: "index_fixtures_on_away_team_id_id"
-    t.index ["home_team_id_id"], name: "index_fixtures_on_home_team_id_id"
+    t.bigint "home_team_id"
+    t.bigint "away_team_id"
+    t.index ["away_team_id"], name: "index_fixtures_on_away_team_id"
+    t.index ["home_team_id"], name: "index_fixtures_on_home_team_id"
+  end
+
+  create_table "league_teams_joins", force: :cascade do |t|
+    t.boolean "accepted"
+    t.bigint "league_id", null: false
+    t.bigint "team_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["league_id"], name: "index_league_teams_joins_on_league_id"
+    t.index ["team_id"], name: "index_league_teams_joins_on_team_id"
   end
 
   create_table "league_notifications", force: :cascade do |t|
@@ -134,10 +145,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_135157) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "fixtures", "teams", column: "away_team_id_id"
-  add_foreign_key "fixtures", "teams", column: "home_team_id_id"
+
+  add_foreign_key "fixtures", "teams", column: "away_team_id"
+  add_foreign_key "fixtures", "teams", column: "home_team_id"
+
   add_foreign_key "league_notifications", "leagues"
   add_foreign_key "league_notifications", "users"
+
   add_foreign_key "league_teams_joins", "leagues"
   add_foreign_key "league_teams_joins", "teams"
   add_foreign_key "leagues", "users"
