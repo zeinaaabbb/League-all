@@ -9,4 +9,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  get "dashboard", to: "pages#dashboard"
+  resources :leagues do
+    resources :fixtures
+    resources :league_teams, only: [:create]
+  end
+  resources :teams do
+    resources :players, only: [:create, :destroy]
+  end
+  resources :league_teams, only: [:update, :destroy]
 end
