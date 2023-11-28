@@ -68,6 +68,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_135157) do
     t.index ["user_id"], name: "index_league_notifications_on_user_id"
   end
 
+
   create_table "league_teams_joins", force: :cascade do |t|
     t.boolean "accepted"
     t.bigint "league_id", null: false
