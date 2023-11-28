@@ -109,6 +109,7 @@ puts 'running seed'
 
 home_team = Team.all.select { |team| team.id.even? }
 away_team = Team.all.select { |team| team.id.odd? }
+fixture_league = League.all.sample
 
 
 5.times do
@@ -119,6 +120,7 @@ away_team = Team.all.select { |team| team.id.odd? }
   fixture.away_goals = rand(1..5)
   fixture.home_team = home_team.shift
   fixture.away_team = away_team.shift
+  fixture.league = League.last
   fixture.save!
 end
 
