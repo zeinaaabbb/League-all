@@ -1,0 +1,8 @@
+<% gameweeks.each do |gameweek| %>
+  <h3>Gameweek <%= gameweek %></h3>
+  <ul>
+  <% fixtures.each do |fixture| %>
+    <li><%= fixture.home_team.name %> vs <%= fixture.away_team.name %></li>
+  <% end %>
+  </ul>
+<% end %>

@@ -3,7 +3,7 @@ class League < ApplicationRecord
   validates :start_date, presence: true
   validates :number_of_teams, presence: true
   validates :days_per_week, presence: true
-  validates :descriptions, length: { minimum: 10 }, presence: true
+  validates :description, length: { minimum: 10 }, presence: true
 
   has_many :teams, through: :leagues_team_join
   has_many :fixtures
