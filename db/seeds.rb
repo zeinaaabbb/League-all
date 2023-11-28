@@ -7,3 +7,22 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+require 'faker'
+
+puts 'running seed'
+
+home_team = Team.map { |team| team.find(:id).even? }
+away_team = Team.map { |team| team.find(:id).odd? }
+
+5.times do
+  fixture = Fixture.new
+  fixture.gameweek = rand(1..10)
+  fixture.time = Faker::Time.between_dates(from: Date.today - 1, to: Date.today + 7, period: :all)
+  fixture.home_goals = rand(1..5)
+  fixture.away_goals = rand(1..5)
+  fixture.home_team_id_id = home_team.pop
+  fixture.away_team_id_id = away_team.pop
+end
+
+puts 'finished seed'
