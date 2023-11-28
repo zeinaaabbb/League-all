@@ -8,6 +8,7 @@ class LeaguesController < ApplicationController
   end
 
   def new
+    @user = current_user
     @league = League.new
   end
 
