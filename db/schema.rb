@@ -49,10 +49,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_135157) do
     t.datetime "time"
     t.integer "home_goals"
     t.integer "away_goals"
-    t.bigint "home_team_id_id"
-    t.bigint "away_team_id_id"
-    t.index ["away_team_id_id"], name: "index_fixtures_on_away_team_id_id"
-    t.index ["home_team_id_id"], name: "index_fixtures_on_home_team_id_id"
+    t.bigint "home_team_id"
+    t.bigint "away_team_id"
+    t.index ["away_team_id"], name: "index_fixtures_on_away_team_id"
+    t.index ["home_team_id"], name: "index_fixtures_on_home_team_id"
   end
 
   create_table "league_notifications", force: :cascade do |t|
@@ -134,8 +134,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_135157) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "fixtures", "teams", column: "away_team_id_id"
-  add_foreign_key "fixtures", "teams", column: "home_team_id_id"
+  add_foreign_key "fixtures", "teams", column: "away_team_id"
+  add_foreign_key "fixtures", "teams", column: "home_team_id"
   add_foreign_key "league_notifications", "leagues"
   add_foreign_key "league_notifications", "users"
   add_foreign_key "league_teams_joins", "leagues"
