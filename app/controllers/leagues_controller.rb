@@ -4,7 +4,7 @@ class LeaguesController < ApplicationController
   end
 
   def show
-    @league = Leagues.find(params[:id])
+    @league = League.find(params[:id])
   end
 
   def new

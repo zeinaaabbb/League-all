@@ -7,6 +7,7 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+<<<<<<< HEAD
 
 require 'faker'
 require 'pry'
@@ -29,3 +30,21 @@ binding.pry
 end
 
 puts 'finished seed'
+=======
+require 'faker'
+
+# DESTROY ALL
+puts "destroying teams"
+Team.destroy_all
+puts "teams destroyed"
+
+# END
+
+# SEEDING TEAMS
+10.times do
+  team = Team.new
+  team.name = "#{Faker::Travel::TrainStation.name(region: 'united_kingdom', type: 'metro')} #{Faker::Team.creature}"
+  team.save!
+  puts "#{team.name} created!"
+end
+>>>>>>> master
