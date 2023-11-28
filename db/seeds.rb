@@ -8,12 +8,26 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-require 'open-url'
+# require 'open-url'
 require 'faker'
 require 'date'
 
-league.destroy_all
+User.destroy_all
+puts "Destroy all users"
+
+League.destroy_all
 puts "Destroy all leagues"
+
+5.times do |i|
+  user = User.new
+  user.first_name = Faker::Name.first_name
+  user.last_name = Faker::Name.last_name
+  user.email = Faker::Internet.email
+  user.password = 123456
+  user.save!
+  puts "#{user.email} created!"
+end
+
 
 format = [
   "round-robin",
@@ -41,13 +55,15 @@ name = [
   "Blossom Ballers Backyard League"
 ]
 
-description [
+description = [
   "Founded in 2008, KickHer London is a grassroots women's football collective that has been breaking barriers and promoting inclusivity, creating a welcoming space for women of all skill levels to enjoy the beautiful game in the heart of the city",
   "The Hackney Women's Football Club, established in 2013, epitomizes grassroots football in London, fostering a sense of community and passion for the sport among local women through friendly matches, training sessions, and a commitment to development.",
   "With a mission to make football accessible to all women, the Camden Women's Football Club, formed in 2012, stands as a grassroots beacon in North London, offering a supportive environment for players to grow and enjoy the game."
 ]
 
 (0...3).each do |i|
+  league = League.new
+  league.user = User.all.sample
   league.name = name[i]
   league.format = format.sample
   league.start_date = Date.today
