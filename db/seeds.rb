@@ -74,6 +74,7 @@ description = [
   league.description = description[i]
   league.save!
   puts "#{league.name} created!"
+end
 
 # DESTROY ALL
 puts "destroying teams"
