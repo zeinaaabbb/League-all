@@ -8,6 +8,8 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+require 'pry'
+
 # require 'open-url'
 require 'faker'
 require 'date'
@@ -90,3 +92,29 @@ puts "teams destroyed"
   team.save!
   puts "#{team.name} created!"
 end
+
+# DESTROY FIXTURE
+puts "destroying fixtures"
+Fixture.destroy_all
+puts "fixtures destroyed"
+
+puts 'running seed'
+
+# SEEDING FIXTURES
+
+home_team = Team.all.select { |team| team.id.even? }
+away_team = Team.all.select { |team| team.id.odd? }
+
+
+5.times do
+  fixture = Fixture.new
+  fixture.gameweek = rand(1..10)
+  fixture.time = Faker::Time.between_dates(from: Date.today - 1, to: Date.today + 7, period: :all)
+  fixture.home_goals = rand(1..5)
+  fixture.away_goals = rand(1..5)
+  fixture.home_team = home_team.shift
+  fixture.away_team = away_team.shift
+  fixture.save!
+end
+
+puts 'finished seed'
