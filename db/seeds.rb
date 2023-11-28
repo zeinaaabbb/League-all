@@ -74,4 +74,18 @@ description = [
   league.description = description[i]
   league.save!
   puts "#{league.name} created!"
+
+# DESTROY ALL
+puts "destroying teams"
+Team.destroy_all
+puts "teams destroyed"
+
+# END
+
+# SEEDING TEAMS
+10.times do
+  team = Team.new
+  team.name = "#{Faker::Travel::TrainStation.name(region: 'united_kingdom', type: 'metro')} #{Faker::Team.creature}"
+  team.save!
+  puts "#{team.name} created!"
 end
