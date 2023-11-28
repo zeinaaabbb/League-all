@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema[7.1].define(version: 2023_11_28_135157) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,6 +56,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_135157) do
     t.index ["away_team_id_id"], name: "index_fixtures_on_away_team_id_id"
     t.index ["home_team_id_id"], name: "index_fixtures_on_home_team_id_id"
   end
+
 
   create_table "league_notifications", force: :cascade do |t|
     t.bigint "league_id", null: false
@@ -136,8 +139,11 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_135157) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "fixtures", "teams", column: "away_team_id_id"
   add_foreign_key "fixtures", "teams", column: "home_team_id_id"
+
+
   add_foreign_key "league_notifications", "leagues"
   add_foreign_key "league_notifications", "users"
+
   add_foreign_key "league_teams_joins", "leagues"
   add_foreign_key "league_teams_joins", "teams"
   add_foreign_key "leagues", "users"

@@ -8,7 +8,7 @@ class League < ApplicationRecord
   has_many :teams, through: :leagues_team_join
   has_many :fixtures
   has_many :league_notifications
-  belongs_to :users
+  belongs_to :user
 
   has_one_attached :photo
 end
