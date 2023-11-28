@@ -7,31 +7,9 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-<<<<<<< HEAD
 
 require 'faker'
 require 'pry'
-
-puts 'running seed'
-
-home_team = Team.map { |team| team.find(:id).even? }
-away_team = Team.map { |team| team.find(:id).odd? }
-
-binding.pry
-
-5.times do
-  fixture = Fixture.new
-  fixture.gameweek = rand(1..10)
-  fixture.time = Faker::Time.between_dates(from: Date.today - 1, to: Date.today + 7, period: :all)
-  fixture.home_goals = rand(1..5)
-  fixture.away_goals = rand(1..5)
-  fixture.home_team_id_id = home_team.shift
-  fixture.away_team_id_id = away_team.shift
-end
-
-puts 'finished seed'
-=======
-require 'faker'
 
 # DESTROY ALL
 puts "destroying teams"
@@ -47,4 +25,29 @@ puts "teams destroyed"
   team.save!
   puts "#{team.name} created!"
 end
->>>>>>> master
+
+# DESTROY FIXTURE
+puts "destroying fixtures"
+Fixture.destroy_all
+puts "fixtures destroyed"
+
+puts 'running seed'
+
+# SEEDING FIXTURES
+
+home_team = Team.all.select { |team| team.id.even? }
+away_team = Team.all.select { |team| team.id.odd? }
+
+
+5.times do
+  fixture = Fixture.new
+  fixture.gameweek = rand(1..10)
+  fixture.time = Faker::Time.between_dates(from: Date.today - 1, to: Date.today + 7, period: :all)
+  fixture.home_goals = rand(1..5)
+  fixture.away_goals = rand(1..5)
+  fixture.home_team = home_team.shift
+  fixture.away_team = away_team.shift
+  fixture.save!
+end
+
+puts 'finished seed'
