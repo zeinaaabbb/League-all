@@ -31,6 +31,7 @@
             <%=  f.input :role, :collection => ["Organiser"], :as => :radio_buttons %>
             <%=  f.input :role, :collection => ["Team Coach"], :as => :radio_buttons %>
             <%=  f.input :role, :collection => ["Player"], :as => :radio_buttons %>
+            <%=  f.input :photo, as: :file, input_html: { class: "form-control bg-white mb-3" } %>
             <%= f.input :password,
                         required: true,
                         hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
