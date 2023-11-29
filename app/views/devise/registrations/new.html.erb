@@ -1,25 +1,57 @@
-<h2>Sign up</h2>
+<div class="container mt-5">
+<div class="row d-flex justify-content-center">
+  <div class="card text-bg-success mb-3 p-3 " class="custom-card" style="width: 40rem;">
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+    <div class="row d-flex justify-content-center">
+      <div class="col-8">
+
+        <h2>Sign up</h2>
+
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
+
+          <div class="form-inputs ">
+
+            <%= f.input :first_name,
+                          required: true,
+                          autofocus: true,
+                          input_html: { autocomplete: "first-name", class: "form-control bg-white mb-3" } %>
+            <%= f.input :last_name,
+                          required: true,
+                          autofocus: true,
+                          input_html: { autocomplete: "last-name", class: "form-control bg-white mb-3" } %>
+            <%= f.input :date_of_birth, required: true, as: :string,
+            input_html: { data: { controller: "datepicker" } }
+            %>
+            <%= f.input :email,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "email", class: "form-control bg-white mb-3" }%>
+            <%=  f.input :role, :collection => ["Organiser"], :as => :radio_buttons %>
+            <%=  f.input :role, :collection => ["Team Coach"], :as => :radio_buttons %>
+            <%=  f.input :role, :collection => ["Player"], :as => :radio_buttons %>
+            <%= f.input :password,
+                        required: true,
+                        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                        input_html: { autocomplete: "new-password", class: "form-control bg-white mb-3" } %>
+            <%= f.input :password_confirmation,
+                        required: true,
+                        input_html: { autocomplete: "new-password", class: "form-control bg-white mb-3" } %>
+          </div>
+
+        <div class="form-group mt-4 text-center d-flex justify-space-between">
+
+          <div class="form-actions">
+            <%= f.button :submit, "Sign up", class:"btn btn-primary" %>
+          </div>
+            <% end %>
+              <br>
+          <%= render "devise/shared/links" %>
+
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
+</div>
