@@ -1,0 +1,23 @@
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  pointer-events: none;
+  transition: all 0.4s;
+}
+
+.card {
+  pointer-events: auto;
+  transform: scale(1);
+  transition: all 0.4s;
+}
+
+.card:hover {
+  opacity: 1;
+  transform: scale(1.07);
+}
+
+.content:hover .card:not(:hover) {
+  opacity: 0.5;
+  transform: scale(0.9);
+}
