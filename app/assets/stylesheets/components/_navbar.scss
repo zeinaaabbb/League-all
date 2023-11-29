@@ -1,7 +1,8 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
-  left: 215px;
+  top: 0;
+  width: 600px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -13,11 +14,16 @@
 }
 
 .nav-side {
+  grid-template-columns: 1fr;
   width: 215px;
   height: 100vh;
-  position: sticky;
   top: 0;
   left: 0;
   flex-shrink: 0;
   background-color: #D8D1F24D;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background-color: aqua;
 }

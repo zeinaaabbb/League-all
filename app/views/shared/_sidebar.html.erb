@@ -1,0 +1,17 @@
+<div class="nav-side">
+  <%# LOGO GOES HERE %>
+  <img src="https://statsbomb.com/wp-content/uploads/2022/11/2JK76GB-min.png" style="width: 100px" alt="">
+  <%# LIST OPTIONS START HERE %>
+  <div class="d-flex align-items-start justify-content-center">
+    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    <%# RENDERS LEAGUE/ORGANISER VIEW %>
+      <%= render "shared/sidebar_options/user_league" %>
+    <%# THE BELOW COULD BE USED TO DETERMINE THE USER %>
+      <%# <% if league.user == current_user %>
+        <%#<%= render "shared/sidebar_options/organiser_league" %>
+      <%#<% else %>
+        <%#<%= render "shared/sidebar_options/organiser_league" %>
+      <%#<% end %>
+    </div>
+  </div>
+</div>
