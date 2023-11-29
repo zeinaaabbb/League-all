@@ -1,6 +1,11 @@
 .banner-content{
-  height: 800px
+  height: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
 }
+
 
 .banner h1 {
   color: white;
