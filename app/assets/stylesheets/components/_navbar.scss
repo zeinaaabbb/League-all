@@ -1,8 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
-  top: 0;
-  width: 600px;
+  background: none;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -48,4 +46,9 @@
 #league-name {
   background-color: $light-green;
   color: black
+}
+
+.form-inline {
+  display: block;
+  margin: 0 auto;
 }

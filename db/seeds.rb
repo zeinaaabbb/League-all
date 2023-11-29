@@ -14,11 +14,24 @@ require 'pry'
 require 'faker'
 require 'date'
 
-User.destroy_all
-puts "Destroy all users"
+# DESTROY FIXTURE
+puts "destroying fixtures"
+Fixture.destroy_all
+puts "fixtures destroyed"
+
+# DESTROY ALL
+puts "destroying teams"
+Team.destroy_all
+puts "teams destroyed"
+
+# END
 
 League.destroy_all
 puts "Destroy all leagues"
+
+User.destroy_all
+puts "Destroy all users"
+
 
 5.times do |i|
   user = User.new
@@ -78,12 +91,7 @@ description = [
   puts "#{league.name} created!"
 end
 
-# DESTROY ALL
-puts "destroying teams"
-Team.destroy_all
-puts "teams destroyed"
 
-# END
 
 # SEEDING TEAMS
 10.times do
@@ -93,10 +101,7 @@ puts "teams destroyed"
   puts "#{team.name} created!"
 end
 
-# DESTROY FIXTURE
-puts "destroying fixtures"
-Fixture.destroy_all
-puts "fixtures destroyed"
+
 
 puts 'running seed'
 
@@ -104,6 +109,7 @@ puts 'running seed'
 
 home_team = Team.all.select { |team| team.id.even? }
 away_team = Team.all.select { |team| team.id.odd? }
+fixture_league = League.all.sample
 
 
 5.times do
@@ -114,6 +120,7 @@ away_team = Team.all.select { |team| team.id.odd? }
   fixture.away_goals = rand(1..5)
   fixture.home_team = home_team.shift
   fixture.away_team = away_team.shift
+  fixture.league = League.last
   fixture.save!
 end
 
