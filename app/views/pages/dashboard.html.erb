@@ -1,1 +1,21 @@
-<h1>Dashboard</h1>
+<div class="row" id="dashboard">
+  <div>
+    <%= render "shared/sidebar" %>
+  </div>
+  <div class="column" style="padding: 0px; grid-template-columns: 5fr;">
+    <div>
+      <%= render "shared/navbar" %>
+    </div>
+    <div id="dashboard-content" style="padding:20px">
+      <h1>Dashboard</h1>
+      <div class="tab-content" id="v-pills-tabContent">
+      <div class="tab-pane fade" id="v-pills-registrations" role="tabpanel" aria-labelledby="v-pills-registrations-tab">Registrations go here</div>
+      <div class="tab-pane fade" id="v-pills-payments" role="tabpanel" aria-labelledby="v-pills-payments-tab">Payments go here</div>
+      <div class="tab-pane fade" id="v-pills-fixtures" role="tabpanel" aria-labelledby="v-pills-fixtures-tab">Fixtures go here</div>
+      <div class="tab-pane fade show active" id="v-pills-table" role="tabpanel" aria-labelledby="v-pills-table-tab">Table goes here</div>
+      <div class="tab-pane fade" id="v-pills-statistics" role="tabpanel" aria-labelledby="v-pills-statistics-tab">Statistics go here</div>
+      <div class="tab-pane fade" id="v-pills-notices" role="tabpanel" aria-labelledby="v-pills-notices-tab">Notices go here</div>
+    </div>
+    </div>
+  </div>
+</div>
