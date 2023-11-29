@@ -1,79 +1,132 @@
-<div>
+
   <! -- hero section -->
   <div class = "banner" >
-    <div class = " container banner-content text-center">
+    <div class = "banner-content text-center mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.thefa.com/-/media/thefacom-new/images/st-georges-park/2023-24/performance/pitches/pitches-800.ashx?as=0&dmc=0&thn=0);" >
       <h1> Shaping The Future of Womens's And Non-Binary Football League Management</h1>
       <h3> Creating unforgettable football league experience for all </h3>
-      <%= link_to "create your league", new_user_session_path, class: "btn btn-flat btn-primary" %>
+      <%= link_to "create your league", new_user_session_path, class: "btn btn-flat btn-primary mb-5" %>
     </div>
   </div>
+  <div class = "container">
   <! -- highlights/key metic  -->
-  <div>
-    <h5> 75,00+ leagues organisers </h5>
-    <h5> 150,00+ registered players </h5>
-    <h5> 450,00+ games organised </h5>
+  <div class = "container text-center mt-5 mb-5">
+    <div class = "d-inline-flex mx-4"><h5> 75,00+ leagues organisers </h5></div>
+    <div class = "d-inline-flex mx-4"><h5> 150,00+ registered players </h5></div>
+    <div class = "d-inline-flex mx-4"><h5> 450,00+ games organised </h5></div>
+
   </div>
   <! -- Second highlights with league logos -->
-  <div>
-    <h4>Trusted by </h4>
+  <div class = "container">
+    <h4 class="mx-4">Trusted by </h4>
     <img>
     <img>
-    <img>
-  </div>
-  <! -- How it works -->
-  <div>
-    <h4> How it works </h4>
-    <div>
-      <p> Sign up & set up league</p>
-    </div>
-    <div>
-      <p> Build your leagues and team</p>
-    </div>
-    <div>
-      <p> Streamline meatches and engage fans</p>
-    </div>
-  </div>
-  <! -- Mid sections -->
-  <div>
-    <div>
-      <h4>This is a heading</h4>
-      <p>lorem ipsum lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum</p>
-      <%= link_to "create your league", new_user_session_path, class: "btn btn-flat btn-primary" %>
-    </div>
-    <img>
-  </div>
-  <div>
-      <h4>This is a heading</h4>
-      <p>lorem ipsum lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum</p>
-      <%= link_to "create your league", new_user_session_path, class: "btn btn-flat btn-primary" %>
-    </div>
-    <img>
-  </div>
-  <div>
-      <h4>This is a heading</h4>
-      <p>lorem ipsum lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum</p>
-      <%= link_to "create your league", new_user_session_path, class: "btn btn-flat btn-primary" %>
-    </div>
     <img>
   </div>
 
+  <! -- How it works -->
+
+<div class = "container text-center">
+  <h2> How it works </h2>
+    <div class="card text-bg-primary mb-3  d-inline-flex" class="custom-card" style="width: 18rem; height: 12rem;">
+      <div class="card-body" >
+        <h5 class="card-title">Sign up & set up league</h5>
+        <p class="card-text">With our user-friendly sign-up platform setting up your league is a breeze—define your format, rules, and schedule effortlessly.</p>
+        <a href="#" class="stretched-link"></a>
+      </div>
+    </div>
+
+    <div class="card text-bg-primary mb-3  d-inline-flex" class="custom-card" style="width: 18rem; height: 12rem;">
+      <div class="card-body" >
+        <h5 class="card-title">Build your leagues & team</h5>
+        <p class="card-text">Register teams with ease, manage rosters effortlessly, and elevate your league with a personalized touch.</p>
+        <a href="#" class="stretched-link"></a>
+      </div>
+    </div>
+
+    <div class="card text-bg-primary mb-3  d-inline-flex" class="custom-card" style="width: 18rem; height: 12rem;">
+      <div class="card-body" >
+        <h5 class="card-title">Streamline meatches & engage fans</h5>
+        <p class="card-text">Schedule, track results, and update standings in real-time. </p>
+        <a href="#" class="stretched-link"></a>
+      </div>
+    </div>
+</div>
+
   <! -- Mid sections -->
   <div>
-    <div>
-      <p>Testimonials</p>
-      <h4> Read what others have to say </h4>
+    <div >
+      <h4>This is a heading</h4>
+      <p>lorem ipsum lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum</p>
+      <%= link_to "create your league", new_user_session_path, class: "btn btn-flat btn-primary" %>
     </div>
-    <div>
-      <p> Sarina Wiegman </p>
-      <p> lorem ipsum lorem ipsumlorem ipsumlorem ipsumlorem </p>
-    </div>
-    <div>
-      <p> Lucy Bronze </p>
-      <p> lorem ipsum lorem ipsumlorem ipsumlorem ipsumlorem </p>
-    </div>
-    <div>
-      <p> Mary Earps </p>
-      <p> lorem ipsum lorem ipsumlorem ipsumlorem ipsumlorem </p>
-    </div>
+    <img>
   </div>
+  <div>
+      <h4>This is a heading</h4>
+      <p>lorem ipsum lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum</p>
+      <%= link_to "create your league", new_user_session_path, class: "btn btn-flat btn-primary" %>
+  </div>
+
+    <div>
+        <h4>This is a heading</h4>
+        <p>lorem ipsum lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum</p>
+        <%= link_to "create your league", new_user_session_path, class: "btn btn-flat btn-primary" %>
+    </div>
+    </div>
+
+
+  <! -- Testimonials section -->
+    <div class = "container text-center">
+      <p>Testimonials</p>
+      <h3>Read what others have to say</h3>
+      <div class = "container mt-4">
+        <div class="card text-bg-danger mb-3 d-inline-flex" class="custom-card" style="width: 18rem; height: 12rem;">
+          <div class="card-body" >
+              <h5 class="card-title">Sarina Wiegman </h5>
+              <p class="card-text">lorem ipsum lorem ipsumlorem ipsumlorem ipsumlorem</p>
+              <a href="#" class="stretched-link"></a>
+          </div>
+        </div>
+
+          <div class="card text-bg-danger mb-3 d-inline-flex" class="custom-card" style="width: 18rem; height: 12rem;">
+            <div class="card-body" >
+                <h5 class="card-title"> Lucy Bronze </h5>
+                <p class="card-text">lorem ipsum lorem ipsumlorem ipsumlorem ipsumlorem</p>
+                <a href="#" class="stretched-link"></a>
+            </div>
+          </div>
+
+          <div class="card text-bg-danger mb-3 d-inline-flex" class="custom-card" style="width: 18rem; height: 12rem;">
+            <div class="card-body" >
+                <h5 class="card-title">Mary Earps </h5>
+                <p class="card-text">lorem ipsum lorem ipsumlorem ipsumlorem ipsumlorem</p>
+                <a href="#" class="stretched-link"></a>
+            </div>
+          </div>
+      </div>
+    </div>
+
+  <! -- footer sections -->
+  <div>
+    <h6 class="mb-6 text-sm text-primary">League-all</h2>
+    <ul class="mb-6 text-sm text-primary">
+      <li>home</li>
+      <li>about us</li>
+      <li>for teams</li>
+      <li>for organisers</li>
+    </ul>
+  </div>
+
+  <! -- footer section -->
+  <div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+  </div>
+  <div class="footer-copyright">
+    This footer is made with <i class="fas fa-heart"></i> at Le Wagon
+  </div>
+</div>
+</div>
 </div>
