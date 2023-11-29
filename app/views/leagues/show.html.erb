@@ -6,7 +6,7 @@
     <h1> League - show page[:id]
     <div id="dashboard-content" style="padding:20px">
       <div class="tab-content" id="v-pills-tabContent">
-      <div class="tab-pane fade" id="v-pills-registrations" role="tabpanel" aria-labelledby="v-pills-registrations-tab"><%= render "registrations", joins: @league.league_teams_join %></div>
+      <div class="tab-pane fade" id="v-pills-registrations" role="tabpanel" aria-labelledby="v-pills-registrations-tab"><%= render "registrations", joins: @league.league_teams_join, league: @league %></div>
       <div class="tab-pane fade" id="v-pills-payments" role="tabpanel" aria-labelledby="v-pills-payments-tab">Payments go here</div>
       <div class="tab-pane fade" id="v-pills-fixtures" role="tabpanel" aria-labelledby="v-pills-fixtures-tab">Fixtures go here</div>
       <div class="tab-pane fade show active" id="v-pills-table" role="tabpanel" aria-labelledby="v-pills-table-tab">Table goes here</div>
