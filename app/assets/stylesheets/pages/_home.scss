@@ -51,12 +51,21 @@ word-wrap: break-word
 }
 
 .icon {
-  width: 7rem; /* Adjust the size of the icons */
-  margin: 3rem; /* Adjust the spacing between icons */
+  width: 4rem; /* Adjust the size of the icons */
+  margin-bottom: 2rem; /* Adjust the spacing between icons */
 }
 
 .content{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.container-trusted {
+  margin: 4rem
+
+}
+
+.mid{
+word-wrap: break-word
 }
