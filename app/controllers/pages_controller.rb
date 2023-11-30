@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    @team = Team.new
     @user = current_user
   end
 end
