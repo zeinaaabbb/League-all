@@ -14,12 +14,13 @@
 .nav-side {
   grid-template-columns: 1fr;
   width: 215px;
-  height: 550px;
+  height: 100vh;
   top: 0;
   left: 0;
   flex-shrink: 0;
   background-color: #D8D1F24D;
   font-family: Outfit;
+  position: sticky;
 }
 
 .nav-pills .nav-link.active,
