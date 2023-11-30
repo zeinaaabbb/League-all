@@ -129,19 +129,22 @@
 
   <! -- footer section -->
 
-<div id="footer">
-  <div class="footer-column d-inline-flex">
-    <ul>
-      <li>League-all</li>
-      <li><%= link_to "Home" %></li>
-      <li><%= link_to "About"%></li>
-      <li><%= link_to "For Organisers" %></li>
-      <li><%= link_to "For Teams" %></li>
-      <li><%= link_to "Browse Leagues"%></li>
-    </ul>
+<div id="footer" class="d-flex justify-content-between border-top border-primary mt-3" >
+  <div class="footer-column d-inline-flex mt-3">
+    <div class="links col-4 ">
+      <ul >
+        <li>League-all</li>
+        <li><%= link_to "Home"%></li>
+        <li><%= link_to "About"%></li>
+        <li><%= link_to "Organisers" %></li>
+        <li><%= link_to "Teams" %></li>
+        <li><%= link_to "Leagues"%></li>
+      </ul>
+    </div>
   </div>
 
-  <div class="footer-column d-inline-flex">
+  <div class="footer-column d-inline-flex mt-3">
+  <div class="links col-4 ">
     <ul>
       <li>Contact</li>
       <li><%= link_to "Email", "https://www.linkedin.com/" %></li>
@@ -149,8 +152,8 @@
       <li><%= link_to "Twitter", "https://twitter.com/" %></li>
     </ul>
   </div>
-
-  <div class="footer-column d-inline-flex">
+</div>
+  <div class="footer-column d-inline-flex mt-3">
   <p>Join Our Newsletter</p>
   </div>
 
