@@ -1,0 +1,20 @@
+<div class="team-registration m-2">
+  <div class="col-2">
+  <% if team.photo.attached? %>
+    <img src=<%= cl_image_path team.photo.key, class: "avatar", alt: "dropdown menu" %>>
+  <% else %>
+    <img src="https://static.vecteezy.com/system/resources/previews/021/629/700/original/soccer-ball-football-cartoon-icon-illustration-sports-icon-concept-illustration-suitable-for-icon-logo-sticker-clipart-free-vector.jpg", class="avatar">
+  <% end %>
+  </div>
+  <div class="team-registration-infos col-9">
+    <%= link_to team.name, team_path(team), style:"color: #738ce7" %>
+  </div>
+  <% if join.accepted == nil %>
+    <div class="column reg-buttons">
+      <%= link_to "<i class='fa-solid fa-check m-1' style='color:green'></i>".html_safe,
+      approve_path(join), data: {turbo_method: :patch, turbo_confirm: "Add #{team.name} to #{join.league.name}?"} %>
+      <%= link_to "<i class='fa-solid fa-xmark m-1' style='color:red'></i>".html_safe,
+      reject_path(join), data: {turbo_method: :patch, turbo_confirm: "Reject #{team.name}'s request?"} %>
+    </div>
+  <% end %>
+</div>

@@ -97,6 +97,7 @@ end
 10.times do
   team = Team.new
   team.name = "#{Faker::Travel::TrainStation.name(region: 'united_kingdom', type: 'metro')} #{Faker::Team.creature}"
+  team.user = User.all.sample
   team.save!
   puts "#{team.name} created!"
 end

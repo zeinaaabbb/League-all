@@ -13,10 +13,12 @@ Rails.application.routes.draw do
   get "dashboard", to: "pages#dashboard"
   resources :leagues do
     resources :fixtures
-    resources :league_teams, only: [:create]
+    resources :league_teams_join, only: [:create]
   end
   resources :teams do
     resources :players, only: [:create, :destroy]
   end
-  resources :league_teams, only: [:update, :destroy]
+  resources :league_teams_join, only: [:destroy]
+  patch "/league_teams_join/:id/approve", to: "league_teams_join#approve", as: :approve
+  patch "/league_teams_join/:id/reject", to: "league_teams_join#reject", as: :reject
 end

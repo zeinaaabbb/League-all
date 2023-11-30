@@ -16,6 +16,8 @@ class User < ApplicationRecord
 
   has_many :teams, through: :players
 
+  has_many :teams, dependent: :destroy
+
   has_many :messages
 
 end
