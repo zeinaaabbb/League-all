@@ -1,0 +1,17 @@
+<h3>Pending registrations:</h3>
+  <ul>
+  <% joins.each do |join| %>
+    <% if join.accepted != true %>
+      <li><h5><%= join.team.name %></h5></li>
+    <% end %>
+  <% end %>
+</ul>
+
+<h3>Approved teams:</h3>
+ <ul>
+  <% joins.each do |join| %>
+    <% if join.accepted == true %>
+      <li><h5><%= join.team.name %></h5></li>
+    <% end %>
+  <% end %>
+</ul>

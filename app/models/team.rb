@@ -5,6 +5,6 @@ class Team < ApplicationRecord
   has_many :users, through: :players
   has_many :fixtures
   has_many :messages
-  has_many :leagues_teams_join
-  has_many :leagues, through: :leagues_teams_join
+  has_many :league_teams_join
+  has_many :leagues, through: :league_teams_join
 end
