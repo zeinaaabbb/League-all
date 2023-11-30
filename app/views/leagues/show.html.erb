@@ -1,3 +1,321 @@
+
+
+
+<h1> League - show page[:id] </h1>
+
+<p>Total Fixtures: <%= @league.fixtures.count %></p>
+
+<%# FIXTURES/RESULTS BY WEEK %>
+<div style="text-align: center;">
+  <div style="width: 60%; margin: 0 auto;">
+    <h2>Week 1 Fixtures</h2>
+    <table style="border-collapse: collapse; width: 100%; margin-top: 20px; margin-bottom: 20px; border-bottom: 1px solid #dddddd;">
+      <thead>
+        <tr>
+          <th style="border: 1px solid #dddddd; background-color: #f2f2f2; text-align: left; padding: 8px; border-left: 1px solid #dddddd;">Game Week</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Home Team</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Score</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; border-right: 1px solid #dddddd;">Away Team</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @league.fixtures.each do |fixture| %>
+          <% if fixture.gameweek == 1 %>
+            <tr>
+              <td style="border-right: 1px solid #dddddd; border-left: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.gameweek %></td>
+              <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.home_team.name %></td>
+              <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;">
+                <%= fixture.home_goals %> - <%= fixture.away_goals %>
+              </td>
+              <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.away_team.name %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div style="text-align: center;">
+  <div style="width: 60%; margin: 0 auto;">
+    <h2>Week 2 Fixtures</h2>
+    <table style="border-collapse: collapse; width: 100%; margin-top: 20px; margin-bottom: 20px; border-bottom: 1px solid #dddddd;">
+      <thead>
+        <tr>
+          <th style="border: 1px solid #dddddd; background-color: #f2f2f2; text-align: left; padding: 8px; border-left: 1px solid #dddddd;">Game Week</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Home Team</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Score</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; border-right: 1px solid #dddddd;">Away Team</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @league.fixtures.each do |fixture| %>
+          <% if fixture.gameweek == 2 %>
+            <tr>
+              <td style="border-right: 1px solid #dddddd; border-left: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.gameweek %></td>
+              <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.home_team.name %></td>
+              <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;">
+                <%= fixture.home_goals %> - <%= fixture.away_goals %>
+              </td>
+              <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.away_team.name %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div style="text-align: center;">
+  <div style="width: 60%; margin: 0 auto;">
+    <h2>Week 3 Fixtures</h2>
+    <table style="border-collapse: collapse; width: 100%; margin-top: 20px; margin-bottom: 20px; border-bottom: 1px solid #dddddd;">
+      <thead>
+        <tr>
+          <th style="border: 1px solid #dddddd; background-color: #f2f2f2; text-align: left; padding: 8px; border-left: 1px solid #dddddd;">Game Week</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Home Team</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Score</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; border-right: 1px solid #dddddd;">Away Team</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @league.fixtures.each do |fixture| %>
+          <% if fixture.gameweek == 3 %>
+            <tr>
+              <td style="border-right: 1px solid #dddddd; border-left: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.gameweek %></td>
+              <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.home_team.name %></td>
+              <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;">
+                <%= fixture.home_goals %> - <%= fixture.away_goals %>
+              </td>
+              <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.away_team.name %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div style="text-align: center;">
+  <div style="width: 60%; margin: 0 auto;">
+    <h2>Week 4 Fixtures</h2>
+    <table style="border-collapse: collapse; width: 100%; margin-top: 20px; margin-bottom: 20px; border-bottom: 1px solid #dddddd;">
+      <thead>
+        <tr>
+          <th style="border: 1px solid #dddddd; background-color: #f2f2f2; text-align: left; padding: 8px; border-left: 1px solid #dddddd;">Game Week</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Home Team</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Score</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; border-right: 1px solid #dddddd;">Away Team</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @league.fixtures.each do |fixture| %>
+          <% if fixture.gameweek == 4 %>
+            <tr>
+              <td style="border-right: 1px solid #dddddd; border-left: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.gameweek %></td>
+              <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.home_team.name %></td>
+              <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;">
+                <%= fixture.home_goals %> - <%= fixture.away_goals %>
+              </td>
+              <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.away_team.name %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div style="text-align: center;">
+  <div style="width: 60%; margin: 0 auto;">
+    <h2>Week 5 Fixtures</h2>
+    <table style="border-collapse: collapse; width: 100%; margin-top: 20px; margin-bottom: 20px; border-bottom: 1px solid #dddddd;">
+      <thead>
+        <tr>
+          <th style="border: 1px solid #dddddd; background-color: #f2f2f2; text-align: left; padding: 8px; border-left: 1px solid #dddddd;">Game Week</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Home Team</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Score</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; border-right: 1px solid #dddddd;">Away Team</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @league.fixtures.each do |fixture| %>
+          <% if fixture.gameweek == 5 %>
+            <tr>
+              <td style="border-right: 1px solid #dddddd; border-left: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.gameweek %></td>
+              <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.home_team.name %></td>
+              <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;">
+                <%= fixture.home_goals %> - <%= fixture.away_goals %>
+              </td>
+              <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.away_team.name %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div style="text-align: center;">
+  <div style="width: 60%; margin: 0 auto;">
+    <h2>Week 6 Fixtures</h2>
+    <table style="border-collapse: collapse; width: 100%; margin-top: 20px; margin-bottom: 20px; border-bottom: 1px solid #dddddd;">
+      <thead>
+        <tr>
+          <th style="border: 1px solid #dddddd; background-color: #f2f2f2; text-align: left; padding: 8px; border-left: 1px solid #dddddd;">Game Week</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Home Team</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Score</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; border-right: 1px solid #dddddd;">Away Team</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @league.fixtures.each do |fixture| %>
+          <% if fixture.gameweek == 6 %>
+            <tr>
+              <td style="border-right: 1px solid #dddddd; border-left: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.gameweek %></td>
+              <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.home_team.name %></td>
+              <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;">
+                <%= fixture.home_goals %> - <%= fixture.away_goals %>
+              </td>
+              <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.away_team.name %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div style="text-align: center;">
+  <div style="width: 60%; margin: 0 auto;">
+    <h2>Week 7 Fixtures</h2>
+    <table style="border-collapse: collapse; width: 100%; margin-top: 20px; margin-bottom: 20px; border-bottom: 1px solid #dddddd;">
+      <thead>
+        <tr>
+          <th style="border: 1px solid #dddddd; background-color: #f2f2f2; text-align: left; padding: 8px; border-left: 1px solid #dddddd;">Game Week</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Home Team</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Score</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; border-right: 1px solid #dddddd;">Away Team</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @league.fixtures.each do |fixture| %>
+          <% if fixture.gameweek == 7 %>
+            <tr>
+              <td style="border-right: 1px solid #dddddd; border-left: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.gameweek %></td>
+              <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.home_team.name %></td>
+              <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;">
+                <%= fixture.home_goals %> - <%= fixture.away_goals %>
+              </td>
+              <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.away_team.name %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div style="text-align: center;">
+  <div style="width: 60%; margin: 0 auto;">
+    <h2>Week 8 Fixtures</h2>
+    <table style="border-collapse: collapse; width: 100%; margin-top: 20px; margin-bottom: 20px; border-bottom: 1px solid #dddddd;">
+      <thead>
+        <tr>
+          <th style="border: 1px solid #dddddd; background-color: #f2f2f2; text-align: left; padding: 8px; border-left: 1px solid #dddddd;">Game Week</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Home Team</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Score</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; border-right: 1px solid #dddddd;">Away Team</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @league.fixtures.each do |fixture| %>
+          <% if fixture.gameweek == 8 %>
+            <tr>
+              <td style="border-right: 1px solid #dddddd; border-left: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.gameweek %></td>
+              <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.home_team.name %></td>
+              <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;">
+                <%= fixture.home_goals %> - <%= fixture.away_goals %>
+              </td>
+              <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.away_team.name %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div style="text-align: center;">
+  <div style="width: 60%; margin: 0 auto;">
+    <h2>Week 9 Fixtures</h2>
+    <table style="border-collapse: collapse; width: 100%; margin-top: 20px; margin-bottom: 20px; border-bottom: 1px solid #dddddd;">
+      <thead>
+        <tr>
+          <th style="border: 1px solid #dddddd; background-color: #f2f2f2; text-align: left; padding: 8px; border-left: 1px solid #dddddd;">Game Week</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Home Team</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Score</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; border-right: 1px solid #dddddd;">Away Team</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @league.fixtures.each do |fixture| %>
+          <% if fixture.gameweek == 9 %>
+            <tr>
+              <td style="border-right: 1px solid #dddddd; border-left: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.gameweek %></td>
+              <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.home_team.name %></td>
+              <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;">
+                <%= fixture.home_goals %> - <%= fixture.away_goals %>
+              </td>
+              <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.away_team.name %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<%# END FIXTURES/RESULTS %>
+
+
+<%# LEAGUE TABLE %>
+<div style="text-align: center;">
+  <div style="width: 60%; margin: 0 auto;">
+    <h2>League Table</h2>
+    <table style="border-collapse: collapse; width: 100%; margin-top: 20px; margin-bottom: 20px; border-bottom: 1px solid #dddddd;">
+      <thead>
+        <tr>
+          <th style="border: 1px solid #dddddd; background-color: #f2f2f2; text-align: left; padding: 8px; border-left: 1px solid #dddddd;">Team</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Pld</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">W</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">D</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">L</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">GF</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">GA</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">GD</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Pts</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @results.each do |team_data| %>
+          <tr>
+            <td style="border-right: 1px solid #dddddd; border-left: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:name] %></td>
+            <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:games_played] %></td>
+            <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:wins] %></td>
+            <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:draws] %></td>
+            <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:losses] %></td>
+            <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:goals_for] %></td>
+            <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:goals_against] %></td>
+            <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:goal_dif] %></td>
+            <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:points] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<%# LEAGUE TABLE END %>
+
 <div class="row" id="show-page">
   <div>
     <%= render "shared/sidebar", league: @league %>
@@ -17,3 +335,4 @@
     </div>
   </div>
 </div>
+

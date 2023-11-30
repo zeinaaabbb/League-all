@@ -17,7 +17,8 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
     @team.user = current_user
     if @team.save
-      redirect_to team_path(@team)
+      redirect_to dashboard_path(@team)
+      flash[:message] = 'Your Team was Created Successfully!'
     else
       render :new, status: :unprocessible_entity
     end
