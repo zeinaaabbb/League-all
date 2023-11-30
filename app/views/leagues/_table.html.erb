@@ -1,19 +1,19 @@
-<div>
+<div data-controller="toggle">
   <%# Table body goes here %>
   <h1>Table goes here</h1>
 
   <%# Button to register for league %>
   <% if user_signed_in? %>
     <% if !user.teams.empty? && current_user != league.user %>
-      <div style="text-align: center">
-        <%# Link to modal which select which team to register %>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      <div style="text-align: center col-5">
+        <%# Link to form which selects which team to register %>
+        <button type="button" class="btn btn-primary" data-action="click->toggle#fire" data-toggle-target="toggleButton">
           Register for this league
         </button>
       </div>
     <% end %>
   <% end %>
-  <div class="team-register-form col-4">
+  <div class="team-register-form col-5 d-none" data-toggle-target="togglableElement">
     <h4>Which team would you like to register for <%= league.name %>?</h4>
     <p>Your request will be sent to the league organiser to approve</p>
     <%= simple_form_for [league, league_teams_join], url: league_league_teams_join_index_path(league) do |f|%>
