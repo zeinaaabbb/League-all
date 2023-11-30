@@ -5,9 +5,12 @@ class League < ApplicationRecord
   validates :days_per_week, presence: true
   validates :description, length: { minimum: 10 }, presence: true
 
-  has_many :teams, through: :leagues_team_join
+  has_many :league_teams_joins
+  has_many :teams, through: :league_teams_joins
   has_many :fixtures
   has_many :league_notifications
+
+  has_many :points
   belongs_to :user
 
   has_one_attached :photo
