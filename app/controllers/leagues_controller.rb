@@ -5,6 +5,7 @@ class LeaguesController < ApplicationController
 
   def show
     @league = League.find(params[:id])
+    @league_teams_join = LeagueTeamsJoin.new
   end
 
   def new

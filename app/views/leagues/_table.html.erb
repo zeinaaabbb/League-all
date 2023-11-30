@@ -1,42 +1,29 @@
-<%# Table body goes here %>
-<h1>Table goes here</h1>
+<div>
+  <%# Table body goes here %>
+  <h1>Table goes here</h1>
 
-<%# Button to register for league %>
-<% if user_signed_in? %>
-  <% if !user.teams.empty? && current_user != league.user %>
-    <div style="text-align: center">
-      <%# Link to modal which select which team to register %>
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        Register for this league
-      </button>
-    </div>
-  <% end %>
-<% end %>
-
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Register for <%= league.name %></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <h3>Which team would you like to register?</h3>
-        <p>A request will be sent to the League owner</p>
-        <div class="btn-group">
-        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Select a team
+  <%# Button to register for league %>
+  <% if user_signed_in? %>
+    <% if !user.teams.empty? && current_user != league.user %>
+      <div style="text-align: center">
+        <%# Link to modal which select which team to register %>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          Register for this league
         </button>
-        <ul class="dropdown-menu">
-          <% user.teams.each do |team| %>
-            <li><a class="dropdown-item" href="#"><%= team.name %></a></li>
-          <% end %>
-        </ul>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Register</button>
+    <% end %>
+  <% end %>
+  <div class="team-register-form col-4">
+    <h4>Which team would you like to register for <%= league.name %>?</h4>
+    <p>Your request will be sent to the league organiser to approve</p>
+    <%= simple_form_for [league, league_teams_join], url: league_league_teams_join_index_path(league) do |f|%>
+      <div class="mb-3 form-control">
+        <%= f.association :team, collection: user.teams %>
       </div>
-    </div>
+      <div class="mb-3 btn-primary text-center">
+      <%= f.submit 'Submit registration request', class: "btn btn-default btn-primary"%>
+      </div>
+    <% end %>
   </div>
+
 </div>

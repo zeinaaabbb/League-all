@@ -7,7 +7,7 @@
     <%# <h1> League - show page[:id] %>
     <div id="dashboard-content" style="padding:20px">
       <div class="tab-content" id="v-pills-tabContent">
-      <div class="tab-pane fade show active" id="v-pills-table" role="tabpanel" aria-labelledby="v-pills-table-tab"><%= render "table", user: current_user, league: @league %></div>
+      <div class="tab-pane fade show active" id="v-pills-table" role="tabpanel" aria-labelledby="v-pills-table-tab"><%= render "table", user: current_user, league: @league, league_teams_join: @league_teams_join %></div>
       <div class="tab-pane fade" id="v-pills-statistics" role="tabpanel" aria-labelledby="v-pills-statistics-tab">Statistics go here</div>
       <div class="tab-pane fade" id="v-pills-payments" role="tabpanel" aria-labelledby="v-pills-payments-tab">Payments go here</div>
       <div class="tab-pane fade" id="v-pills-notices" role="tabpanel" aria-labelledby="v-pills-notices-tab">Notices go here</div>
