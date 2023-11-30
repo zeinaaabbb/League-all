@@ -1,3 +1,4 @@
+
 class Team < ApplicationRecord
   validates :name, length: { minimum: 4 }, presence: true
   has_one_attached :photo
