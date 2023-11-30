@@ -27,7 +27,7 @@ body {
 
 .hero-title{
 color: black;
-font-size: 48px;
+font-size: 60px;
 font-family: Outfit;
 font-weight: 800;
 text-transform: capitalize;
@@ -68,4 +68,8 @@ word-wrap: break-word
 
 .mid{
 word-wrap: break-word
+}
+
+ul {
+  list-style-type: none;
 }
