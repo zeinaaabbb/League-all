@@ -25,17 +25,3 @@
     </div>
   </div>
 </div>
-
-
-<h3>Create your league<h3>
-<%= simple_form_for(@league) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :format %>
-  <%= f.input :start_dates%>
-  <%= f.input :level %>
-  <%= f.input :league_type %>
-  <%= f.input :number_of_teams %>
-  <%= f.input :days_per_week %>
-  <%= f.submit %>
-<% end %>
