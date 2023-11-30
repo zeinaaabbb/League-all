@@ -16,7 +16,7 @@ class LeaguesController < ApplicationController
     @league = League.new(league_params)
     @league.user = current_user
     if @league.save
-      redirect_to  dashboard_path(@league)
+      redirect_to dashboard_path(@league)
       flash[:message] = 'Your League was Created Successfully!'
     else
       render :new, status: :unprocessable_entity
