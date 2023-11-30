@@ -1,26 +1,35 @@
-
-
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-  Launch demo modal
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Create your league
 </button>
 
-<!-- Vertically centered Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+        <div class="container mt-5">
+  <div class="row d-flex justify-content-center">
+    <div class="card text-bg-success mb-3 p-3 " class="custom-card" style="width: 40rem;">
+      <div class="row d-flex justify-content-center">
+        <div class="col-10">
+          <div>
+            <h3>Create your league</h3>
+          </div>
+            <%= simple_form_for(league) do |f| %>
+              <%= f.input :name %>
+              <%= f.input :description %>
+              <%= f.input :format, :collection => (%w[ round-robin double-round])%>
+              <%= f.input :start_date%>
+              <%= f.input :level, :collection => (%w[ beginner intermediate advanced]) %>
+              <%= f.input :league_type,:collection => (%w[ 5-aside 6-aside 7-aside])%>
+              <%= f.input :number_of_teams %>
+              <%= f.input :days_per_week %>
+              <%= f.button :submit, "Create your league", class:"btn btn-primary" %>
+              <%= f.button :submit, "close", class:"btn btn-secondary" %>
+            <% end %>
+        </div>
+  </div>
+</div>
+
       </div>
     </div>
   </div>
