@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema[7.1].define(version: 2023_11_30_150414) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,13 +51,14 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_30_150414) do
     t.datetime "time"
     t.integer "home_goals"
     t.integer "away_goals"
-    t.bigint "home_team_id"
-    t.bigint "away_team_id"
+    t.bigint "home_team_id_id"
+    t.bigint "away_team_id_id"
     t.bigint "league_id"
+
     t.integer "winning_team"
     t.boolean "draw"
     t.index ["away_team_id"], name: "index_fixtures_on_away_team_id"
-    t.index ["home_team_id"], name: "index_fixtures_on_home_team_id"
+
     t.index ["league_id"], name: "index_fixtures_on_league_id"
   end
 
@@ -128,6 +131,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_30_150414) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_teams_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -149,8 +154,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_30_150414) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "fixtures", "leagues"
-  add_foreign_key "fixtures", "teams", column: "away_team_id"
-  add_foreign_key "fixtures", "teams", column: "home_team_id"
+  add_foreign_key "fixtures", "teams", column: "away_team_id_id"
+  add_foreign_key "fixtures", "teams", column: "home_team_id_id"
   add_foreign_key "league_notifications", "leagues"
   add_foreign_key "league_notifications", "users"
   add_foreign_key "league_teams_joins", "leagues"
@@ -160,6 +165,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_30_150414) do
   add_foreign_key "messages", "users"
   add_foreign_key "players", "teams"
   add_foreign_key "players", "users"
+
   add_foreign_key "points", "leagues"
   add_foreign_key "points", "teams"
+
+  add_foreign_key "teams", "users"
+
 end

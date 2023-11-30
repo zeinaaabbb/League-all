@@ -1,1 +1,75 @@
 // Specific CSS for your home-page
+.league-logos {
+  width: 80%;
+  margin: 20px auto;
+}
+
+.home-card img {
+  width: 90%;
+  object-fit: cover;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.btn {
+  border-radius: 20px;
+}
+
+h1, h2, h3, h4 , h5 , h5, p {
+  font-family: outfit
+}
+
+body {
+  background-color: #E9E7E8;
+}
+
+.hero-title{
+color: black;
+font-size: 60px;
+font-family: Outfit;
+font-weight: 800;
+text-transform: capitalize;
+word-wrap: break-word
+}
+
+.hero-subtitle{
+color: black;
+font-size: 24px;
+font-family: Outfit;
+font-weight: 600;
+text-transform: capitalize;
+word-wrap: break-word
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30vh; /* Adjust as needed to center vertically */
+}
+
+.icon {
+  width: 4rem; /* Adjust the size of the icons */
+  margin-bottom: 2rem; /* Adjust the spacing between icons */
+}
+
+.content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-trusted {
+  margin: 4rem
+
+}
+
+.mid{
+word-wrap: break-word
+}
+
+ul {
+  list-style-type: none;
+}

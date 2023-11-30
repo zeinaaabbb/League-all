@@ -20,7 +20,7 @@ class LeaguesController < ApplicationController
     @league = League.new(league_params)
     @league.user = current_user
     if @league.save
-      redirect_to league_path(@league)
+      redirect_to dashboard_path(@league)
       flash[:message] = 'Your League was Created Successfully!'
     else
       render :new, status: :unprocessable_entity
@@ -31,7 +31,7 @@ class LeaguesController < ApplicationController
   private
 
   def league_params
-    params.require(:league).permit(:name, :format, :start_dates, :level, :league_type, :number_of_teams, :days_per_week,:description, :photos)
+    params.require(:league).permit(:name, :format, :start_date, :level, :league_type, :number_of_teams, :days_per_week,:description, :photos)
   end
 
   def tally(teams)

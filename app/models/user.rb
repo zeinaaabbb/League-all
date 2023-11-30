@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one_attached :photo
+
   has_many :leagues, dependent: :destroy
 
   has_many :league_notifications
@@ -13,6 +15,8 @@ class User < ApplicationRecord
   has_many :players
 
   has_many :teams, through: :players
+
+  has_many :teams, dependent: :destroy
 
   has_many :messages
 

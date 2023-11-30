@@ -1,2 +1,162 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<%=  render "shared/navbar" %>
+  <! -- hero section -->
+<div class="container" style="width: 1500px;">
+
+  <div class="flex-column align-items-center mb-5">
+    <div class=" mx-4 mt-5 d-flex align-items-center mb-5">
+      <div>
+        <h5 class="hero-title"><strong>Shaping the future of women’s and non-binary football league management</strong></h5>
+        <p class="hero-subtitle">Creating an unforgettable football league experience for all</p>
+        <%= link_to "Create Your League", new_user_session_path, class: "btn btn-main btn-primary" %>
+      </div>
+      <%= image_tag("boots.jpg", alt: "Your Image", class: "ml-4 rounded", style: "max-width: 400px; height: auto;") %>
+    </div>
+  </div>
+  <div class="container d-flex align-items-center justify-content-center">
+   <%= image_tag('arrow.png', class: 'd-inline-flex align-items-center') %>
+  </div>
+
+  <! -- Second highlights with league logos -->
+  <div class="container-trusted mt-5">
+  <h4 class="mx-5"><strong>Trusted by</strong></h4>
+  <%# <div class= " container d-flex justify-content-between align-items-center">
+    <p class= "d-inline-flex">10,000+ league organisers<p>
+    <p class= "d-inline-flex">80,000+ players<p>
+    <p class= "d-inline-flex">100,000+ games played<p>
+  </div>
+  </div> %>
+
+<div class="d-flex justify-content-center align-items-between mx-5">
+  <%= image_tag('super.jpg', class: 'd-inline-flex icon mx-2') %>
+  <%= image_tag('images.png', class: 'd-inline-flex icon mx-2') %>
+  <%= image_tag('leon.png', class: 'd-inline-flex icon mx-2') %>
+  <%= image_tag('hanover.png', class: 'd-inline-flex icon mx-2') %>
+  <%= image_tag('ELL.jpeg', class: 'd-inline-flex icon mx-2') %>
+</div>
+</div>
+
+
+  <! -- How it works -->
+
+<div class = "container text-center">
+  <h4 class="mb-3 mt-4"><strong> How it works </strong></h4>
+
+  <div class="card text-bg-primary mb-3 mt-4 mx-3 border-0 d-inline-flex" class="custom-card" style="width: 10rem; height: 8rem;">
+    <div class="card-body">
+      <p class="card-title text-center">Sign up & set up your league</p>
+    </div>
+  </div>
+
+  <div class="card text-bg-primary mb-3 mx-3 border-0 d-inline-flex" class="custom-card" style="width: 10rem; height: 8rem;">
+    <div class="card-body" >
+      <p class="card-title text-center">Build your leagues & teams</p>
+    </div>
+  </div>
+
+  <div class="card text-bg-primary mb-3 mx-3 border-0 d-inline-flex" class="custom-card" style="width: 10rem; height: 8rem;">
+    <div class="card-body" >
+      <p class="card-title text-center">Streamline meatches & engage fans</p>
+    </div>
+  </div>
+</div>
+
+  <! -- Mid sections -->
+
+  <div class="row justify-content-center mt-5">
+      <div class="mid col-12 col-lg-7">
+          <h3><strong>Sign up & set up league</strong></h3>
+          <p>With our user-friendly sign-up platform setting up your league is a breeze—define your format, rules, and schedule effortlessly.</p>
+          <%= link_to "Create Your League", new_user_session_path, class: "btn btn-main btn-primary" %>
+      </div>
+      <div class="col-12 col-lg-3 home-card">
+        <%= image_tag('players.jpg', class: "rounded") %>
+      </div>
+  </div>
+
+    <div class="row justify-content-center mt-5">
+      <div class="mid col-12 col-lg-3 home-card">
+        <%= image_tag('players.jpg', class: "rounded") %>
+      </div>
+      <div class="col-12 col-lg-7">
+          <h3><strong>Build your leagues & team</strong></h3>
+          <p>Register teams with ease, manage rosters effortlessly, and elevate your league with a personalized touch.</p>
+          <%= link_to "Create Your League", new_user_session_path, class: "btn btn-main btn-primary" %>
+      </div>
+    </div>
+
+    <div class="row justify-content-center mt-5">
+      <div class="mid col-12 col-lg-7">
+        <h3><strong>Streamline meatches & engage fans</strong></h3>
+        <p>Schedule, track results, and update standings in real-time.</p>
+        <%= link_to "Create Your League", new_user_session_path, class: "btn btn-main btn-primary" %>
+      </div>
+      <div class="col-12 col-lg-3 home-card">
+        <%= image_tag('players.jpg', class: "rounded") %>
+      </div>
+    </div>
+
+
+  <! -- Testimonials section -->
+    <div class = "container text-center">
+      <p>Testimonials</p>
+      <h1><strong>Read what others have to say</strong></h1>
+      <div class = "container mt-4">
+        <div class="card text-bg-success mb-3 mx-3 d-inline-flex text-black  border-0" class="custom-card" style="width: 18rem; height: 16rem;">
+          <div class="card-body" >
+              <h5 class="card-title">Sarina Wiegman </h5>
+              <p>⭐⭐⭐⭐⭐</p>
+              <p class="card-text">Its features are intuitive, offering a seamless experience for players - keeping us connected and informed.</p>
+          </div>
+        </div>
+
+          <div class="card text-bg-success mb-3 mx-3 d-inline-flex text-black  border-0" class="custom-card" style="width: 18rem; height: 16rem;">
+            <div class="card-body" >
+                <h5 class="card-title"> Lucy Bronze </h5>
+                <p>⭐⭐⭐⭐⭐</p>
+                <p class="card-text"> I can't get enough of this league simplifying platform! The strategic insights and real-time updates have elevated our gameplay. </p>
+            </div>
+          </div>
+
+          <div class="card text-bg-success mb-3 mx-3 d-inline-flex text-black border-0" class="custom-card" style="width: 18rem; height: 16rem;">
+            <div class="card-body" >
+                <h5 class="card-title">Mary Earps </h5>
+                <p>⭐⭐⭐⭐⭐</p>
+                <p class="card-text">Using this league platform has been a joy! Its simplicity and clear interface make tracking the game's progress a breeze - very user-friendly design</p>
+            </div>
+          </div>
+      </div>
+    </div>
+
+  <! -- footer section -->
+
+<div id="footer" class="d-flex justify-content-between border-top border-primary mt-3" >
+  <div class="footer-column d-inline-flex mt-3">
+    <div class="links col-4 ">
+      <ul >
+        <li>League-all</li>
+        <li><%= link_to "Home"%></li>
+        <li><%= link_to "About"%></li>
+        <li><%= link_to "Organisers" %></li>
+        <li><%= link_to "Teams" %></li>
+        <li><%= link_to "Leagues"%></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-column d-inline-flex mt-3">
+  <div class="links col-4 ">
+    <ul>
+      <li>Contact</li>
+      <li><%= link_to "Email", "https://www.linkedin.com/" %></li>
+      <li><%= link_to "Instagram", "https://www.instagram.com/" %></li>
+      <li><%= link_to "Twitter", "https://twitter.com/" %></li>
+    </ul>
+  </div>
+</div>
+  <div class="footer-column d-inline-flex mt-3">
+  <p>Join Our Newsletter</p>
+  </div>
+
+</div>
+
+</div>

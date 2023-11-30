@@ -107,6 +107,7 @@ end
 # SEEDING LEAGUES END
 
 # SEEDING TEAMS
+
 suffixes = ['United', 'Rovers', 'Albion', 'City', 'Town', 'FC', 'Athletic', 'Wanderers', 'Olympic', 'Orient', '']
 teams = []
 League.all.each do |league|
@@ -122,6 +123,7 @@ League.all.each do |league|
     puts "#{team.name} joined #{league.name}!"
   end
   teams << teams_array
+
 end
 
 puts "TEAMS CREATED"

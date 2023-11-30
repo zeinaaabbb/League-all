@@ -1,0 +1,27 @@
+<div class="nav-side">
+  <%# LOGO GOES HERE %>
+  <div style="height:100px" id="sidebar-logo">
+    <img src="https://statsbomb.com/wp-content/uploads/2022/11/2JK76GB-min.png" style="width: 100px; border-radius: 10px; margin-left: 55px; margin-top: 20px" alt="">
+  </div>
+  <%# LIST OPTIONS START HERE %>
+  <% if league != nil %>
+    <div class="nav-link" id="league-name" style= "text-align: center; margin: 10px; padding: 10px; border-radius: 5px"><h5 style="margin: 0"><strong><%= league.name %></strong></h5></div>
+  <% end %>
+  <div class="d-flex align-items-start justify-content-center">
+    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <%# IF NOT ON LEAGUE DASHBOARD IT WILL SKIP THIS %>
+      <% if league != nil %>
+        <%# THE BELOW DETERMINES IF THE CURRENT USER IS LEAGUE OWNER %>
+        <% if league.user == current_user %>
+          <%# RENDERS LEAGUE/ORGANISER VIEW %>
+          <%= render "shared/sidebar_options/organiser_league" %>
+        <% else %>
+          <%# RENDERS LEAGUE/USER VIEW %>
+          <%= render "shared/sidebar_options/user_league" %>
+        <% end %>
+        <div style="border-top: 1px solid rgba(0, 0, 0, 0.1);"></div>
+      <% end %>
+      <%= render "shared/sidebar_options/all_user_options" %>
+    </div>
+  </div>
+</div>
