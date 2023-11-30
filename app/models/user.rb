@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   has_many :league_notifications
 
-  has_many :leagues, through: :league_notifications
+  has_many :joined_leagues, through: :league_notifications, :source => 'league'
 
   has_many :players
 

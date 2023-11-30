@@ -6,6 +6,7 @@ class PagesController < ApplicationController
 
   def dashboard
     @team = Team.new
+    @league = League.new
     @user = current_user
   end
 end
