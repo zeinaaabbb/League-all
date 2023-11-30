@@ -27,6 +27,6 @@ class LeaguesController < ApplicationController
   private
 
   def league_params
-    params.require(:league).permit(:name, :format, :start_dates, :level, :league_type, :number_of_teams, :days_per_week,:description, :photos)
+    params.require(:league).permit(:name, :format, :start_date, :level, :league_type, :number_of_teams, :days_per_week,:description, :photos)
   end
 end
