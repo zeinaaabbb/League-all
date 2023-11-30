@@ -19,7 +19,7 @@ class LeaguesController < ApplicationController
   def create
     @league = League.new(league_params)
     @league.user = current_user
-    if @league.save
+    if @league.save!
       redirect_to dashboard_path(@league)
       flash[:message] = 'Your League was Created Successfully!'
     else
