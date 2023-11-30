@@ -1,8 +1,10 @@
-<% gameweeks.each do |gameweek| %>
-  <h3>Gameweek <%= gameweek %></h3>
-  <ul>
-  <% fixtures.each do |fixture| %>
-    <li><%= fixture.home_team.name %> vs <%= fixture.away_team.name %></li>
-  <% end %>
-  </ul>
+<% (1..10).each do |i| %>
+  <h3>Gameweek <%= i %></h3>
+    <ul>
+    <% fixtures.each do |fixture| %>
+      <% if fixture.gameweek == i %>
+        <li><%= fixture.home_team.name %> vs <%= fixture.away_team.name %></li>
+      <% end %>
+    <% end %>
+    </ul>
 <% end %>
