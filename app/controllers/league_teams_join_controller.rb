@@ -1,5 +1,15 @@
 class LeagueTeamsJoinController < ApplicationController
   def create
+    @league_team = LeagueTeamsJoin.new(league_teams_join_params)
+    @league = League.find(params[:league_id])
+    @team = Team.find(params[:league_teams_join][:team_id])
+    @league_team.team = @team
+    @league_team.league = @league
+    if @league_team.save!
+      redirect_to league_path(@league), notice: "Your request has been submitted. The owner of #{@league.name} will respond soon."
+    else
+      render :new, status: :unprocessable_entity
+    end
 
   end
 
@@ -25,5 +35,11 @@ class LeagueTeamsJoinController < ApplicationController
     @join.save
     @league = @join.league
     redirect_to league_path(@league), notice: "#{@join.team.name}'s request was rejected. They have not been added to your league."
+  end
+
+  private
+
+  def league_teams_join_params
+    params.require(:league_teams_join).permit(:team_id)
   end
 end
