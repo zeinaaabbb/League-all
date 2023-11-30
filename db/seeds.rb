@@ -13,26 +13,39 @@ require 'pry'
 # require 'open-url'
 require 'faker'
 require 'date'
+require "round_robin_tournament"
 
 # DESTROY FIXTURE
 puts "destroying fixtures"
 Fixture.destroy_all
 puts "fixtures destroyed"
+# END
 
-# DESTROY ALL
+# DESTROY LEAGUE TEAMS JOIN
+puts "Destroying LeagueTeamsJoin"
+LeagueTeamsJoin.destroy_all
+puts "LeagueTeamsJoin destroyed"
+# END
+
+# DESTROY ALL TEAMS
 puts "destroying teams"
 Team.destroy_all
 puts "teams destroyed"
-
 # END
 
+# DESTROY ALL LEAGUES
+puts "Destrying all leagues"
 League.destroy_all
-puts "Destroy all leagues"
+puts "leagues destroyed"
+# END
 
+# DESTROY ALL USERS
+puts "Destroying all users"
 User.destroy_all
-puts "Destroy all users"
+puts "Users destroyed"
+# END
 
-
+# SEEDING USERS
 5.times do |i|
   user = User.new
   user.first_name = Faker::Name.first_name
@@ -42,8 +55,9 @@ puts "Destroy all users"
   user.save!
   puts "#{user.email} created!"
 end
+# SEEDING USERS END
 
-
+# SEEDING LEAGUES
 format = [
   "round-robin",
   "double-round"
@@ -90,39 +104,64 @@ description = [
   league.save!
   puts "#{league.name} created!"
 end
-
-
+# SEEDING LEAGUES END
 
 # SEEDING TEAMS
-10.times do
-  team = Team.new
-  team.name = "#{Faker::Travel::TrainStation.name(region: 'united_kingdom', type: 'metro')} #{Faker::Team.creature}"
-  team.user = User.all.sample
-  team.save!
-  puts "#{team.name} created!"
+
+suffixes = ['United', 'Rovers', 'Albion', 'City', 'Town', 'FC', 'Athletic', 'Wanderers', 'Olympic', 'Orient', '']
+teams = []
+League.all.each do |league|
+  teams_array = []
+  10.times do
+    team = Team.new
+    team.name = "#{Faker::Travel::TrainStation.name(region: 'united_kingdom', type: 'metro')} #{suffixes.sample}"
+    team.save!
+    teams_array << team
+    puts "#{team.name} created!"
+
+    LeagueTeamsJoin.create!(team: team, league: league)
+    puts "#{team.name} joined #{league.name}!"
+  end
+  teams << teams_array
+
 end
 
+puts "TEAMS CREATED"
+puts "_____________"
+# SEEDING TEAMS END
 
+# FIXTURES SECTION
+puts "SEEDING FIXTURES"
+puts "_____________"
 
-puts 'running seed'
+League.all.each do |league|
+  teams = RoundRobinTournament.schedule(league.teams.select { |t| true })
 
-# SEEDING FIXTURES
+  teams.each_with_index do |day, index|
+    puts "Gameweek #{index + 1}"
+    day_teams = day.shuffle.map do |team|
+      puts "#{team.first.name}, #{team.last.name}"
+      fixture = Fixture.new(
+        gameweek: index + 1,
+        home_team: team.first,
+        away_team: team.last,
+        league: league,
 
-home_team = Team.all.select { |team| team.id.even? }
-away_team = Team.all.select { |team| team.id.odd? }
-fixture_league = League.all.sample
+        # Simulating the score
+        home_goals: [1, 2, 3, 4, 5].sample,
+        away_goals: [1, 2, 3, 4, 5].sample,
+        time: Faker::Time.between_dates(from: Date.today - 1, to: Date.today + 7, period: :all)
+      )
 
+      fixture.draw = true if fixture.home_goals == fixture.away_goals
 
-5.times do
-  fixture = Fixture.new
-  fixture.gameweek = rand(1..10)
-  fixture.time = Faker::Time.between_dates(from: Date.today - 1, to: Date.today + 7, period: :all)
-  fixture.home_goals = rand(1..5)
-  fixture.away_goals = rand(1..5)
-  fixture.home_team = home_team.shift
-  fixture.away_team = away_team.shift
-  fixture.league = League.last
-  fixture.save!
+      fixture.winning_team = fixture.home_team.id if fixture.home_goals > fixture.away_goals
+
+      fixture.winning_team = fixture.away_team.id if fixture.home_goals < fixture.away_goals
+
+      fixture.save
+    end
+    puts "-------------------------------"
+  end
 end
-
-puts 'finished seed'
+# FIXTURES END
