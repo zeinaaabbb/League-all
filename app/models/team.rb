@@ -7,4 +7,5 @@ class Team < ApplicationRecord
   has_many :messages
   has_many :league_teams_join
   has_many :leagues, through: :league_teams_join
+  belongs_to :user
 end
