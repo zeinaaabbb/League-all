@@ -19,11 +19,14 @@
                     <p><%= league.level%></p>
                     <p><%= league.league_type%></p>
                     <a href="#" class="stretched-link"></a>
+                    <%= link_to '', league_path(league), class:'stretched-link' %>
                   </div>
                 </div>
               <% end  %>
               <%= render "leagues/create_league_modal", league: new_league_path %>
     </div>
+
+
 
 
       <h1>Your Teams</h1>
