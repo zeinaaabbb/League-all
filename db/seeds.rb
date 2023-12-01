@@ -9,6 +9,7 @@
 #   end
 
 require 'pry'
+require "open-uri"
 
 # require 'open-url'
 require 'faker'
@@ -61,6 +62,9 @@ user.first_name = "Leo"
 user.last_name = "Messi"
 user.email = "messi@test.com"
 user.password = 123456
+user.role = "Coach"
+file = URI.open("https://www.partyrama.co.uk/wp-content/uploads/2018/04/pep-guardiola-manchester-city-manager-face-mask-product-image.jpg")
+user.photo.attach(io: file, filename: "bar.png", content_type: "image/png")
 user.save!
 puts "#{user.email} TEST USER created!"
 
@@ -69,6 +73,9 @@ user.first_name = "Pep"
 user.last_name = "Guardiola"
 user.email = "pep@test.com"
 user.password = 123456
+user.role = "Organiser"
+file = URI.open("https://www.partyrama.co.uk/wp-content/uploads/2018/04/pep-guardiola-manchester-city-manager-face-mask-product-image.jpg")
+user.photo.attach(io: file, filename: "bar.png", content_type: "image/png")
 user.save!
 puts "#{user.email} TEST USER created!"
 # SEEDING USERS END
