@@ -1,7 +1,13 @@
 <% if @selected_tab == "teams" %>
-  <button class="nav-link" id="v-pills-leagues-tab" data-bs-toggle="pill" data-bs-target="#v-pills-leagues" type="button" role="tab" aria-controls="v-pills-leagues" aria-selected="true">Leagues</button>
-  <button class="nav-link active" id="v-pills-teams-tab" data-bs-toggle="pill" data-bs-target="#v-pills-teams" type="button" role="tab" aria-controls="v-pills-teams" aria-selected="false">Teams</button>
+  <button class="nav-link" id="v-pills-leagues-tab" data-bs-toggle="pill" data-bs-target="#v-pills-leagues" type="button" role="tab" aria-controls="v-pills-leagues" aria-selected="false">Leagues</button>
+  <button class="nav-link active" id="v-pills-teams-tab" data-bs-toggle="pill" data-bs-target="#v-pills-teams" type="button" role="tab" aria-controls="v-pills-teams" aria-selected="true">Teams</button>
+  <button class="nav-link" id="v-pills-following-tab" data-bs-toggle="pill" data-bs-target="#v-pills-following" type="button" role="tab" aria-controls="v-pills-following" aria-selected="false">Following</button>
+<% elsif @selected_tab == "leagues" %>
+  <button class="nav-link" id="v-pills-leagues-tab" data-bs-toggle="pill" data-bs-target="#v-pills-leagues" type="button" role="tab" aria-controls="v-pills-leagues" aria-selected="false">Leagues</button>
+  <button class="nav-link" id="v-pills-teams-tab" data-bs-toggle="pill" data-bs-target="#v-pills-teams" type="button" role="tab" aria-controls="v-pills-teams" aria-selected="false">Teams</button>
+  <button class="nav-link active" id="v-pills-following-tab" data-bs-toggle="pill" data-bs-target="#v-pills-following" type="button" role="tab" aria-controls="v-pills-following" aria-selected="true">Following</button>
 <% else %>
   <button class="nav-link active" id="v-pills-leagues-tab" data-bs-toggle="pill" data-bs-target="#v-pills-leagues" type="button" role="tab" aria-controls="v-pills-leagues" aria-selected="true">Leagues</button>
   <button class="nav-link" id="v-pills-teams-tab" data-bs-toggle="pill" data-bs-target="#v-pills-teams" type="button" role="tab" aria-controls="v-pills-teams" aria-selected="false">Teams</button>
+  <button class="nav-link" id="v-pills-following-tab" data-bs-toggle="pill" data-bs-target="#v-pills-following" type="button" role="tab" aria-controls="v-pills-following" aria-selected="false">Following</button>
 <% end %>
