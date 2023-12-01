@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   get "dashboard", to: "pages#dashboard"
+
   resources :leagues do
     resources :fixtures
     resources :league_teams_join, only: [:create]
