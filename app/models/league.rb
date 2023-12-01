@@ -1,3 +1,4 @@
+require "round_robin_tournament"
 class League < ApplicationRecord
   validates :name, :format, :level, :league_type, presence: true
   validates :start_date, presence: true
@@ -16,4 +17,23 @@ class League < ApplicationRecord
   belongs_to :user
 
   has_one_attached :photo
-end
+
+  def create_fixtures
+
+      teams = RoundRobinTournament.schedule(self.teams.select { |t| true })
+
+      teams.each_with_index do |day, index|
+        day_teams = day.shuffle.map do |team|
+
+          fixture = Fixture.new(
+            gameweek: index + 1,
+            home_team: team.first,
+            away_team: team.last,
+            league: self,
+          )
+          fixture.save
+        end
+
+      end
+    end
+  end

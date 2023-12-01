@@ -49,28 +49,30 @@ class LeaguesController < ApplicationController
         games_played: 0
       }
 
-      team_data[:name] = team.name
-      fixtures = Fixture.select { |f| (f.league == @league) && (f.home_team.id == team.id || f.away_team.id == team.id ) }
-      fixtures.each do |f|
-        f.home_team.id == team.id ? team_data[:goals_for] += f.home_goals : team_data[:goals_for] += f.away_goals
-        f.home_team.id == team.id ? team_data[:goals_against] += f.away_goals : team_data[:goals_against] += f.home_goals
-        if f.draw
-          team_data[:draws] += 1
-          team_data[:points] += 1
+        team_data[:name] = team.name
+        fixtures = Fixture.select { |f| (f.league == @league) && (f.home_team.id == team.id || f.away_team.id == team.id ) }
+        fixtures.each do |f|
+          if f.home_goals && f.away_goals
+            team_data[:games_played] += 1
+            f.home_team.id == team.id ? team_data[:goals_for] += f.home_goals : team_data[:goals_for] += f.away_goals
+            f.home_team.id == team.id ? team_data[:goals_against] += f.away_goals : team_data[:goals_against] += f.home_goals
+            if f.draw
+              team_data[:draws] += 1
+              team_data[:points] += 1
+            end
+            if f.home_team.id == team.id
+              team_data[:wins] += 1 if f.home_goals > f.away_goals
+              team_data[:losses] += 1 if f.away_goals > f.home_goals
+              team_data[:points] += 3 if f.home_goals > f.away_goals
+            end
+            unless f.home_team.id == team.id
+              team_data[:wins] += 1 if f.away_goals > f.home_goals
+              team_data[:losses] += 1 if f.home_goals > f.away_goals
+              team_data[:points] += 3 if f.away_goals > f.home_goals
+            end
+          end
         end
-        if f.home_team.id == team.id
-          team_data[:wins] += 1 if f.home_goals > f.away_goals
-          team_data[:losses] += 1 if f.away_goals > f.home_goals
-          team_data[:points] += 3 if f.home_goals > f.away_goals
-        end
-        unless f.home_team.id == team.id
-          team_data[:wins] += 1 if f.away_goals > f.home_goals
-          team_data[:losses] += 1 if f.home_goals > f.away_goals
-          team_data[:points] += 3 if f.away_goals > f.home_goals
-        end
-      end
-      team_data[:goal_dif] = team_data[:goals_for] - team_data[:goals_against]
-      team_data[:games_played] = fixtures.count
+        team_data[:goal_dif] = team_data[:goals_for] - team_data[:goals_against]
 
       @results << team_data
     end
