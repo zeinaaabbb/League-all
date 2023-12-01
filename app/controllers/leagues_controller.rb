@@ -6,8 +6,10 @@ class LeaguesController < ApplicationController
   def show
     @league = League.find(params[:id])
     @league_teams_join = LeagueTeamsJoin.new
-    @teams = @league.teams
-    tally(@teams)
+    @accepted_joins = @league.league_teams_joins.select { |join| join.accepted == true}
+    @accepted_teams = @accepted_joins.map { |join| join.team}
+    # raise
+    tally(@accepted_teams)
     @results.sort_by! { |team_data| [team_data[:points], team_data[:goal_dif], team_data[:goals_for]] }.reverse!
   end
 
@@ -30,7 +32,9 @@ class LeaguesController < ApplicationController
 
   def generate_fixtures
     @league = League.find(params[:league_id])
-    if @league.teams.count != 10
+    @accepted_joins = @league.league_teams_joins.select { |join| join.accepted == true}
+    @accepted_teams = @accepted_joins.map { |join| join.team}
+    if @accepted_teams.count != 10
       redirect_to league_path(@league), notice: "Your league does not have enough teams to generate fixtures yet."
     else
       @league.create_fixtures

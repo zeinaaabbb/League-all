@@ -8,9 +8,29 @@
     </div>
     <div id="dashboard-content" style="padding:20px">
         <div class="tab-content" id="v-pills-tabContent">
-          <div class="tab-pane fade show active" id="v-pills-leagues" role="tabpanel" aria-labelledby="v-pills-leagues-tab"><%= render "leagues"%></div>
-          <div class="tab-pane fade" id="v-pills-teams" role="tabpanel" aria-labelledby="v-pills-teams-tab"><%= render "teams" %></div>
-          <div class="tab-pane fade" id="v-pills-following" role="tabpanel" aria-labelledby="v-pills-following-tab"><%= render "following", league: @following_league %></div>
+          <% if @selected_tab == "leagues" %>
+            <div class="tab-pane fade show active" id="v-pills-leagues" role="tabpanel" aria-labelledby="v-pills-leagues-tab">
+          <% else %>
+            <div class="tab-pane fade" id="v-pills-leagues" role="tabpanel" aria-labelledby="v-pills-leagues-tab">
+          <% end %>
+              <%= render "leagues"%>
+            </div>
+
+          <% if @selected_tab == "teams" %>
+            <div class="tab-pane fade show active" id="v-pills-teams" role="tabpanel" aria-labelledby="v-pills-teams-tab">
+          <% else %>
+            <div class="tab-pane fade" id="v-pills-teams" role="tabpanel" aria-labelledby="v-pills-teams-tab">
+          <% end %>
+              <%= render "teams" %>
+            </div>
+
+          <% if @selected_tab == "following" %>
+            <div class="tab-pane fade show active" id="v-pills-following" role="tabpanel" aria-labelledby="v-pills-following-tab">
+          <% else %>
+            <div class="tab-pane fade" id="v-pills-following" role="tabpanel" aria-labelledby="v-pills-following-tab">
+          <% end %>
+              <%= render "following", league: @following_league %>
+            </div>
         </div>
     </div>
   </div>

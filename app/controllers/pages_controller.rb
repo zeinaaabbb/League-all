@@ -7,7 +7,11 @@ class PagesController < ApplicationController
   def dashboard
     @team = Team.new
     @league = League.new
-    @following_league = League.find_by(name: "The Le Wagon League")
+    @following_league = League.find_by(name: "The GoalPost league")
     @user = current_user
+
+    @selected_tab = params[:tab] unless params.nil?
+
+    # raise
   end
 end
