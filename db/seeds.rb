@@ -104,6 +104,18 @@ description = [
   league.save!
   puts "#{league.name} created!"
 end
+
+league = League.new
+league.user = User.last
+league.name = name[0]
+league.format = format.sample
+league.start_date = Date.today
+league.level = level.sample
+league.league_type = league_type.sample
+league.number_of_teams = rand(0..10)
+league.days_per_week = rand(0..5)
+league.description = description[0]
+league.save!
 # SEEDING LEAGUES END
 
 # SEEDING TEAMS
@@ -115,6 +127,7 @@ League.all.each do |league|
   10.times do
     team = Team.new
     team.name = "#{Faker::Travel::TrainStation.name(region: 'united_kingdom', type: 'metro')} #{suffixes.sample}"
+    team.user = User.all.sample
     team.save!
     teams_array << team
     puts "#{team.name} created!"
@@ -134,7 +147,7 @@ puts "_____________"
 puts "SEEDING FIXTURES"
 puts "_____________"
 
-League.all.each do |league|
+League.first(3).each do |league|
   teams = RoundRobinTournament.schedule(league.teams.select { |t| true })
 
   teams.each_with_index do |day, index|
@@ -150,6 +163,7 @@ League.all.each do |league|
         # Simulating the score
         home_goals: [1, 2, 3, 4, 5].sample,
         away_goals: [1, 2, 3, 4, 5].sample,
+
         time: Faker::Time.between_dates(from: Date.today - 1, to: Date.today + 7, period: :all)
       )
 
