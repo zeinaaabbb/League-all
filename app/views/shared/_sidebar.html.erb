@@ -6,10 +6,10 @@
   </div>
   <%# LIST OPTIONS START HERE %>
   <% if league != nil %>
-    <div class="nav-link" id="league-name" style= "text-align: center; margin: 10px; padding: 10px; border-radius: 5px"><h5 style="margin: 0"><strong><%= league.name %></strong></h5></div>
+    <div class="nav-link" id="league-name" style= "text-align: center; margin: 10px; padding: 10px; border-radius: 40px"><h5 style="margin: 0"><strong><%= league.name %></strong></h5></div>
   <% end %>
   <div class="d-flex align-items-start justify-content-center">
-    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    <div class="nav flex-column nav-pills me-3" style ="border-radius: 40px" id="v-pills-tab" role="tablist" aria-orientation="vertical">
       <%# IF NOT ON LEAGUE DASHBOARD IT WILL SKIP THIS %>
       <% if league != nil %>
         <%# THE BELOW DETERMINES IF THE CURRENT USER IS LEAGUE OWNER %>
@@ -24,7 +24,7 @@
         <%# RENDERS LEAGUE/DASHBOARD VIEW %>
         <%= render "shared/sidebar_options/tabulate_dashboard" %>
       <% end %>
-      <div style="border-top: 1px solid rgba(0, 0, 0, 0.1);"></div>
+      <div style="border-top: 1px solid rgba(0, 0, 0, 0.1); "></div>
       <%= render "shared/sidebar_options/all_user_options" %>
     </div>
   </div>
