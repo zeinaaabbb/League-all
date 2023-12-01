@@ -7,6 +7,7 @@ class PagesController < ApplicationController
   def dashboard
     @team = Team.new
     @league = League.new
+    @following_league = League.find_by(name: "The Le Wagon League")
     @user = current_user
   end
 end
