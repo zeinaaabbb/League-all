@@ -7,7 +7,7 @@
                     <p><%= league.format%></p>
                     <p><%= league.level%></p>
                     <p><%= league.league_type%></p>
-                    <a href="#" class="stretched-link"></a>
+                    <%= link_to "", league_path(league), class:"stretched-link" %>
                   </div>
                 </div>
               <% end  %>
