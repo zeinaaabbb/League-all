@@ -1,11 +1,45 @@
 <div data-controller="toggle">
   <%# Table body goes here %>
-  <div class="table">
-    <h1>Table goes here</h1>
+  <%# LEAGUE TABLE %>
+<div style="text-align: center;">
+  <div style="width: 60%; margin: 0 auto;">
+    <h2>League Table</h2>
+    <table style="border-collapse: collapse; width: 100%; margin-top: 20px; margin-bottom: 20px; border-bottom: 1px solid #dddddd;">
+      <thead>
+        <tr>
+          <th style="border: 1px solid #dddddd; background-color: #f2f2f2; text-align: left; padding: 8px; border-left: 1px solid #dddddd;">Team</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Pld</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">W</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">D</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">L</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">GF</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">GA</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">GD</th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Pts</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @results.each do |team_data| %>
+          <tr>
+            <td style="border-right: 1px solid #dddddd; border-left: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:name] %></td>
+            <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:games_played] %></td>
+            <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:wins] %></td>
+            <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:draws] %></td>
+            <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:losses] %></td>
+            <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:goals_for] %></td>
+            <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:goals_against] %></td>
+            <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:goal_dif] %></td>
+            <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:points] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
+</div>
+<%# LEAGUE TABLE END %>
 
   <%# Button to register for league %>
-  <div>
+  <div style="text-align: center;">
     <% if user_signed_in? %>
       <% if !user.teams.empty? && current_user != league.user %>
         <div style="text-align: center col-5">
