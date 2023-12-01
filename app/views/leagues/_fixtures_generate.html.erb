@@ -2,6 +2,7 @@
   <div class="card-body row text-center h-100" >
     <h5 class="card-title align-items-center d-flex justify-content-center">Generate Fixtures</h5>
     <p class="card-text align-items-center d-flex justify-content-center"><i class="fa-solid fa-plus fa-2xl" style="color: #000000;"></i></p>
-    <a href="#" class="stretched-link"></a>
+    <%# <a href="#" class="stretched-link"></a> %>
+    <%= link_to "", generate_fixtures_path(league), data: {turbo_method: :post, turbo_confirm: "Are you sure you're ready to generate fixtures for this league?"} %>
   </div>
 </div>

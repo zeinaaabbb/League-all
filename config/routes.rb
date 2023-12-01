@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   resources :league_teams_join, only: [:destroy]
   patch "/league_teams_join/:id/approve", to: "league_teams_join#approve", as: :approve
   patch "/league_teams_join/:id/reject", to: "league_teams_join#reject", as: :reject
+  post "/leagues/:league_id/fixtures/generate", to: "leagues#generate_fixtures", as: :generate_fixtures
 end

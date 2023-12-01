@@ -28,6 +28,16 @@ class LeaguesController < ApplicationController
     end
   end
 
+  def generate_fixtures
+    @league = League.find(params[:league_id])
+    if @league.teams.count != 10
+      redirect_to league_path(@league), notice: "Your league does not have enough teams to generate fixtures yet."
+    else
+      @league.create_fixtures
+      redirect_to league_path(@league), notice: "Your fixtures have been generated."
+    end
+  end
+
   private
 
   def league_params
