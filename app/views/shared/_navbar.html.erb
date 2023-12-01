@@ -1,16 +1,17 @@
 
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <% if user_signed_in? %>
-      <div>
-        <h1>Hello, <%= current_user.first_name %>! 👋</h1>
-        <p><%= current_user.role %></p>
-      </div>
-    <% else %>
+      <% if params[:action] == "home" %>
       <div>
         <h1>League-All</h1>
       </div>
-    <% end %>
+      <% elsif user_signed_in? %>
+      <div>
+        <h3>Hello, <%= current_user.first_name %>! 👋</h3>
+        <p><%= current_user.role %></p>
+      </div>
+      <% end %>
+
     <div>
       <form class="form-inline d-flex justify-content-center">
         <input class="form-control mr-sm-2" type="search" placeholder="Find by league,team,location" aria-label="Search">
