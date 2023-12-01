@@ -7,7 +7,7 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-require "open-uri"
+
 require 'pry'
 
 # require 'open-url'
@@ -56,27 +56,6 @@ puts "Users destroyed"
   puts "#{user.email} created!"
 end
 
-user = User.new
-user.first_name = "Leo"
-user.last_name = "Messi"
-user.email = "messi@test.com"
-user.password = 123456
-user.role = "Coach"
-file = URI.open("https://pbs.twimg.com/media/FkR-oWEX0AI0amu.jpg:large")
-user.photo.attach(io: file, filename: "bar.png", content_type: "image/png")
-user.save!
-puts "#{user.email} TEST USER created!"
-
-user = User.new
-user.first_name = "Pep"
-user.last_name = "Guardiola"
-user.email = "pep@test.com"
-user.password = 123456
-user.role = "Organiser"
-file = URI.open("https://i.guim.co.uk/img/media/df5966e48733aa5f7f898980a1cc97f7c4dbcb16/466_121_4416_2651/master/4416.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=aad513d7f8823cbd8ef85e8c63057948")
-user.photo.attach(io: file, filename: "bar.png", content_type: "image/png")
-user.save!
-puts "#{user.email} TEST USER created!"
 # SEEDING USERS END
 
 # SEEDING LEAGUES
@@ -101,7 +80,6 @@ league_type = [
 name = [
   "Urban Bloom league",
   "Super 5 league",
-  "The GoalPost league",
   "Roots&Boots Women's league",
   "Blossom Ballers Backyard League"
 ]
@@ -122,7 +100,7 @@ description = [
   league.league_type = league_type.sample
   league.number_of_teams = rand(0..10)
   league.days_per_week = rand(0..5)
-  league.description = description[i]
+  league.description = description.sample
   league.save!
   puts "#{league.name} created!"
 end
@@ -149,6 +127,50 @@ League.all.each do |league|
   teams << teams_array
 
 end
+
+# USER FOR FOLLOWING LEAGUE
+user = User.new
+user.first_name = "Leo"
+user.last_name = "Messi"
+user.email = "messi@test.com"
+user.password = 123456
+user.save!
+puts "#{user.email} TEST USER created!"
+
+# FOLLOWING LEAGUE FOR MIDWAY DEMO
+following_league = League.new
+following_league.user = User.last
+following_league.name = "The GoalPost League"
+following_league.format = format.sample
+following_league.start_date = Date.today
+following_league.level = level.sample
+following_league.league_type = league_type.sample
+following_league.number_of_teams = 10
+following_league.days_per_week = rand(0..5)
+following_league.description = description.sample
+following_league.save!
+puts "#{following_league.name} created!"
+
+9.times do
+  team = Team.new
+  team.name = "#{Faker::Travel::TrainStation.name(region: 'united_kingdom', type: 'metro')} #{suffixes.sample}"
+  team.user = User.all.sample
+  team.save!
+  puts "#{team.name} created!"
+
+  LeagueTeamsJoin.create!(team: team, league: following_league, accepted: true)
+  puts "#{team.name} joined #{following_league.name}!"
+end
+
+user = User.new
+user.first_name = "Pep"
+user.last_name = "Guardiola"
+user.email = "pep@test.com"
+user.password = 123456
+user.save!
+puts "#{user.email} TEST USER created!"
+
+
 
 puts "TEAMS CREATED"
 puts "_____________"
