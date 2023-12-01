@@ -7,7 +7,7 @@
       <div>
         <h5 class="hero-title"><strong>Shaping the future of women’s and non-binary football league management</strong></h5>
         <p class="hero-subtitle">Creating an unforgettable football league experience for all</p>
-        <%= link_to "Get started", dashboard_path, class: "btn btn-main btn-primary" %>
+        <%= link_to "Get started", dashboard_path, class: "btn btn-main btn-primary", style: "color: black;" %>
       </div>
       <%= image_tag("boots.jpg", alt: "Your Image", class: "ml-4 rounded", style: "max-width: 400px; height: auto;") %>
     </div>
@@ -18,8 +18,12 @@
       <%= image_tag('arrow.png', class: 'd-inline-flex align-items-center') %>
     </a>
   </div>
-
+<br>
+<br>
+<br>
   <! -- Second highlights with league logos -->
+
+<div id="scroll-target"></div>
   <div class="container-trusted mt-5">
   <h4 class="mx-5"><strong>Trusted by</strong></h4>
   <%# <div class= " container d-flex justify-content-between align-items-center">
@@ -28,7 +32,6 @@
     <p class= "d-inline-flex">100,000+ games played<p>
   </div>
   </div> %>
-
 <div class="d-flex justify-content-center align-items-between mx-5">
   <%= image_tag('super.jpg', class: 'd-inline-flex icon mx-2') %>
   <%= image_tag('images.png', class: 'd-inline-flex icon mx-2') %>
@@ -40,7 +43,6 @@
 
 
   <! -- How it works -->
-<div id="scroll-target"></div>
 
 <div class = "container text-center pt-2">
   <h4 class="mb-3 mt-4"><strong> How it works </strong></h4>
@@ -54,7 +56,7 @@
       </div>
     <% end %>
 
-    <%= link_to leagues_path do %>
+    <%= link_to dashboard_path do %>
       <div class="card text-bg-primary mb-3 mx-3 border-0" class="custom-card" style="width: 10rem; height: 8rem;">
         <div class="card-body" >
           <p class="card-title text-center">Build your leagues & teams</p>
@@ -78,7 +80,7 @@
       <div class="mid col-12 col-lg-7">
           <h3><strong>Sign up & set up league</strong></h3>
           <p>With our user-friendly sign-up platform setting up your league is a breeze—define your format, rules, and schedule effortlessly.</p>
-          <%= link_to "Create Your League", new_user_session_path, class: "btn btn-main btn-primary" %>
+          <%= link_to "Create League", new_user_session_path, class: "btn btn-main btn-primary", style: "color: black;" %>
       </div>
       <div class="col-12 col-lg-3 home-card">
         <%= image_tag('players.jpg', class: "rounded") %>
@@ -90,9 +92,13 @@
         <%= image_tag('players.jpg', class: "rounded") %>
       </div>
       <div class="col-12 col-lg-7">
-          <h3><strong>Build your leagues & team</strong></h3>
+          <h3><strong>Build your team</strong></h3>
           <p>Register teams with ease, manage rosters effortlessly, and elevate your league with a personalized touch.</p>
-          <%= link_to "Create Your League", leagues_path, class: "btn btn-main btn-primary" %>
+          <%# link_to "Register team", leagues_path, class: "btn btn-main btn-primary", style: "color: black;" %>
+          <form action="/dashboard">
+            <input type="text" id="tab" name="tab" value="teams" class="d-none"/>
+            <input type="submit" value="Register team" class="btn btn-main btn-primary" style="color: black;" >
+        </form>
       </div>
     </div>
 
@@ -100,7 +106,7 @@
       <div class="mid col-12 col-lg-7">
         <h3><strong>Streamline meatches & engage fans</strong></h3>
         <p>Schedule, track results, and update standings in real-time.</p>
-        <%= link_to "Create Your League", dashboard_path, class: "btn btn-main btn-primary" %>
+        <%= link_to "Let's go!", dashboard_path, class: "btn btn-main btn-primary", style: "color: black;" %>
       </div>
       <div class="col-12 col-lg-3 home-card">
         <%= image_tag('players.jpg', class: "rounded") %>
@@ -143,7 +149,7 @@
 
 <div id="footer" class="d-flex justify-content-between border-top border-primary mt-3" >
   <div class="footer-column d-inline-flex mt-3">
-    <div class="links col-4 ">
+    <div class="links col-4">
       <ul >
         <li>League-all</li>
         <li><%= link_to "Home"%></li>
@@ -173,6 +179,7 @@
 
 </div>
 
+<%# JS SCROLL %>
 <script>
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -184,3 +191,4 @@
     });
   });
 </script>
+<%# JS SCROLL END %>
