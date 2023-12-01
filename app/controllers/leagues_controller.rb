@@ -32,7 +32,9 @@ class LeaguesController < ApplicationController
 
   def generate_fixtures
     @league = League.find(params[:league_id])
-    if @league.teams.count != 10
+    @accepted_joins = @league.league_teams_joins.select { |join| join.accepted == true}
+    @accepted_teams = @accepted_joins.map { |join| join.team}
+    if @accepted_teams.count != 10
       redirect_to league_path(@league), notice: "Your league does not have enough teams to generate fixtures yet."
     else
       @league.create_fixtures

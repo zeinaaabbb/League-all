@@ -272,6 +272,9 @@
     </div>
   </div>
   <%# END FIXTURES/RESULTS %>
-<% else %>
+<% elsif league.fixtures.count == 0 && accepted_teams.count == 10 %>
   <%= render "fixtures_generate", league: league %>
+<% else %>
+  <h3>You need a minumum of 10 accepted teams in your league before you can generate fixtures.</h3>
+  <p>You currently have <%= accepted_teams.count %> teams in <%= league.name %></p>
 <% end %>
