@@ -55,6 +55,22 @@ puts "Users destroyed"
   user.save!
   puts "#{user.email} created!"
 end
+
+user = User.new
+user.first_name = "Leo"
+user.last_name = "Messi"
+user.email = "messi@test.com"
+user.password = 123456
+user.save!
+puts "#{user.email} TEST USER created!"
+
+user = User.new
+user.first_name = "Pep"
+user.last_name = "Guardiola"
+user.email = "pep@test.com"
+user.password = 123456
+user.save!
+puts "#{user.email} TEST USER created!"
 # SEEDING USERS END
 
 # SEEDING LEAGUES
@@ -105,17 +121,6 @@ description = [
   puts "#{league.name} created!"
 end
 
-league = League.new
-league.user = User.last
-league.name = name[0]
-league.format = format.sample
-league.start_date = Date.today
-league.level = level.sample
-league.league_type = league_type.sample
-league.number_of_teams = rand(0..10)
-league.days_per_week = rand(0..5)
-league.description = description[0]
-league.save!
 # SEEDING LEAGUES END
 
 # SEEDING TEAMS
