@@ -3,48 +3,22 @@
     <%= render "shared/sidebar", league: nil %>
   </div>
   <div class="column" style="padding: 0px; grid-template-columns: 5fr;">
-  <div>
-    <%= render "shared/navbar" %>
-  </div>
-  <div id="dashboard-content" style="padding:20px">
-    <h2>Dashboard</h2>
-    <br>
-    <h3>your leagues</h3>
-    <div class="d-flex flex-row" >
-              <% @user.leagues.each do |league| %>
-                <div class="card text-bg-primary mb-3 border-0 mx-4" class="custom-card" style="width: 18rem; height: 12rem;">
-                  <div class="card-body" >
-                    <h5 class="card-title"><%= league.name %></h5>
-                    <p><%= league.format%></p>
-                    <p><%= league.level%></p>
-                    <p><%= league.league_type%></p>
-                    <a href="#" class="stretched-link"></a>
-                  </div>
-                </div>
-              <% end  %>
-              <%= render "leagues/create_league_modal", league: new_league_path %>
+    <div>
+      <%= render "shared/navbar" %>
     </div>
-
-
-      <h3>your teams</h3>
-        <div class="d-flex flex-row" >
-              <% @user.teams.each do |team| %>
-                <div class="card text-bg-primary mb-3 border-0 mx-4" class="custom-card" style="width: 18rem; height: 12rem;">
-                  <% if team.photo.attached? %>
-                    <img src=<%= cl_image_path team.photo.key %> class="card-img-top" alt="Team Photo">
-                  <% end %>
-                  <div class="card-body" >
-                    <h5 class="card-title"><%= team.name %></h5>
-                    <a href="#" class="stretched-link"></a>
-                  </div>
-                </div>
-              <% end  %>
-            <%= render "teams/team_form" %>
+    <div id="dashboard-content" style="padding:20px">
+      <h2>Dashboard</h2>
+      <br>
+      <div id="dashboard-content2" style="padding:20px">
+        <div class="tab-content" id="v-pills-tabContent">
+          <div class="tab-pane fade show active" id="v-pills-leagues" role="tabpanel" aria-labelledby="v-pills-leagues-tab">
+            <%= render "leagues"%>
+          </div>
+          <div class="tab-pane fade" id="v-pills-teams" role="tabpanel" aria-labelledby="v-pills-teams-tab">
+            <%= render "teams" %>
+          </div>
         </div>
       </div>
-
-    </div>
-  </div>
     </div>
   </div>
 </div>
