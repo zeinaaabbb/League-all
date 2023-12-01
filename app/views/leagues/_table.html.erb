@@ -50,17 +50,19 @@
         </div>
       <% end %>
     <% end %>
-    <div class="team-register-form col-5 d-none mt-3" data-toggle-target="togglableElement">
-      <h4>Which team would you like to register for <%= league.name %>?</h4>
-      <p>Your request will be sent to the league organiser to approve</p>
-      <%= simple_form_for [league, league_teams_join], url: league_league_teams_join_index_path(league) do |f|%>
-        <div class="mb-3 form-control">
-          <%= f.association :team, collection: user.teams %>
-        </div>
-        <div class="mb-3 btn-primary text-center">
-        <%= f.submit 'Submit registration request', class: "btn btn-default btn-primary"%>
-        </div>
-      <% end %>
+    <div class="d-flex justify-content-center">
+      <div class="team-register-form d-none mt-3 col-5" data-toggle-target="togglableElement">
+        <h4>Which team would you like to register for <%= league.name %>?</h4>
+        <p>Your request will be sent to the league organiser to approve</p>
+        <%= simple_form_for [league, league_teams_join], url: league_league_teams_join_index_path(league) do |f|%>
+          <div class="mb-3 form-control">
+            <%= f.association :team, collection: user.teams %>
+          </div>
+          <div class="mb-3 btn-primary text-center">
+          <%= f.submit 'Submit registration request', class: "btn btn-default btn-primary"%>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 

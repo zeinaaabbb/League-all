@@ -137,7 +137,7 @@ League.all.each do |league|
     teams_array << team
     puts "#{team.name} created!"
 
-    LeagueTeamsJoin.create!(team: team, league: league)
+    LeagueTeamsJoin.create!(team: team, league: league, accepted: true)
     puts "#{team.name} joined #{league.name}!"
   end
   teams << teams_array
