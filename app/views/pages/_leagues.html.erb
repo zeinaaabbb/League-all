@@ -1,0 +1,15 @@
+<h3 class="m-3">your leagues</h3>
+    <div class="d-flex flex-row" >
+              <% @user.leagues.each do |league| %>
+                <div class="card text-bg-success mb-3 border-0 mx-4" class="custom-card" style="width: 18rem; height: 12rem;">
+                  <div class="card-body" >
+                    <h5 class="card-title"><%= league.name %></h5>
+                    <p><%= league.format%></p>
+                    <p><%= league.level%></p>
+                    <p><%= league.league_type%></p>
+                    <a href="#" class="stretched-link"></a>
+                  </div>
+                </div>
+              <% end  %>
+              <%= render "leagues/create_league_modal", league: new_league_path %>
+    </div>

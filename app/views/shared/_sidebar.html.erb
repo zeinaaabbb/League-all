@@ -1,4 +1,5 @@
 <div class="nav-side">
+
   <%# LOGO GOES HERE %>
   <div class="logo p-2">
   <h1><%= link_to "League-all", root_path %></h1>
@@ -19,6 +20,9 @@
           <%# RENDERS LEAGUE/USER VIEW %>
           <%= render "shared/sidebar_options/user_league" %>
         <% end %>
+      <% else %>
+        <%# RENDERS LEAGUE/DASHBOARD VIEW %>
+        <%= render "shared/sidebar_options/tabulate_dashboard" %>
         <div style="border-top: 1px solid rgba(0, 0, 0, 0.1);"></div>
       <% end %>
       <%= render "shared/sidebar_options/all_user_options" %>

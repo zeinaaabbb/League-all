@@ -1,0 +1,16 @@
+<h3 class="m-3">your teams</h3>
+        <div class="d-flex flex-row" >
+              <% @user.teams.each do |team| %>
+                <div class="card text-bg-success mb-3 border-0 mx-4" class="custom-card" style="width: 18rem; height: 12rem;">
+                  <% if team.photo.attached? %>
+                    <img src=<%= cl_image_path team.photo.key %> class="card-img-top" alt="Team Photo">
+                  <% end %>
+                  <div class="card-body" >
+                    <h5 class="card-title"><%= team.name %></h5>
+                    <a href="#" class="stretched-link"></a>
+                  </div>
+                </div>
+              <% end  %>
+            <%= render "teams/team_form" %>
+        </div>
+      </div>
