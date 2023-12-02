@@ -25,7 +25,7 @@
 
 <div id="scroll-target"></div>
   <div class="container-trusted mt-5">
-  <h4 class="mx-5"><strong>Trusted by</strong></h4>
+  <h4 class="mx-5" style="width: 100%; height: 100%; color: black; font-size: 20px"><strong>Trusted by</strong></h4>
   <%# <div class= " container d-flex justify-content-between align-items-center">
     <p class= "d-inline-flex">10,000+ league organisers<p>
     <p class= "d-inline-flex">80,000+ players<p>
@@ -45,29 +45,29 @@
   <! -- How it works -->
 
 <div class = "container text-center pt-2">
-  <h4 class="mb-3 mt-4"><strong> How it works </strong></h4>
+  <h4 class="mb-3 mt-4"  style="width: 100%; height: 100%; color: black; font-size: 48px; "><strong> How it works </strong></h4>
 
   <div class="cards">
     <%= link_to new_user_session_path do %>
-      <div class="card text-bg-primary mb-3 mt-4 mx-3 border-0" class="custom-card" style="width: 10rem; height: 8rem;">
+      <div class="card text-bg-primary mb-3 mt-4 mx-3 border-0" class="custom-card" style="width: 250px; height: 200px ">
         <div class="card-body">
-          <p class="card-title text-center">Sign up & set up your league</p>
+          <p class="card-title text-center">Sign up effortlessly and set up your league with ease on our user-friendly platform.</p>
         </div>
       </div>
     <% end %>
 
     <%= link_to dashboard_path do %>
-      <div class="card text-bg-primary mb-3 mx-3 border-0" class="custom-card" style="width: 10rem; height: 8rem;">
+      <div class="card text-bg-primary mb-3 mx-3 border-0" class="custom-card" style="width: 250px; height: 200px">
         <div class="card-body" >
-          <p class="card-title text-center">Build your leagues & teams</p>
+          <p class="card-title text-center">Manage teams and rosters effortlessly for a seamless experience.</p>
         </div>
       </div>
     <% end %>
 
     <%= link_to dashboard_path do %>
-    <div class="card text-bg-primary mb-3 mx-3 border-0" class="custom-card" style="width: 10rem; height: 8rem;">
+    <div class="card text-bg-primary mb-3 mx-3 border-0" class="custom-card" style="width: 250px; height: 200px">
       <div class="card-body" >
-        <p class="card-title text-center">Streamline matches & engage fans</p>
+        <p class="card-title text-center">Streamline matches, update results, and engage fans in real-time using our intuitive platform.</p>
       </div>
     </div>
     <% end %>
