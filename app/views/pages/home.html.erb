@@ -88,8 +88,8 @@
   <! -- Mid sections -->
 
   <div class="row justify-content-center mt-5">
-      <div class="mid col-12 col-lg-7">
-          <h3 style="font-size: 35px"><strong>Sign up & set up league</strong></h3>
+      <div class="mid col-12 col-lg-7 justify-content-center">
+          <h3 style="font-size: 35px"><strong>Set up your league as an organiser</strong></h3>
           <p>Our user-friendly sign-up platform ensures a seamless experience as you effortlessly define your league's format, rules, and schedule.</p>
            <p>No more hassle or confusion – just a straightforward and intuitive process to kickstart your league on the right foot. Sign up now and let the simplicity begin!</p>
           <%= link_to "Create League", new_user_session_path, class: "btn btn-main btn-primary", style: "color: black;" %>
@@ -103,8 +103,8 @@
       <div class="mid col-12 col-lg-3 home-card">
         <%= image_tag('players.jpg', class: "rounded") %>
       </div>
-      <div class="col-12 col-lg-7">
-          <h3 style="font-size: 35px"><strong>Build your team</strong></h3>
+      <div class="col-12 col-lg-7 justify-content-center">
+          <h3 style="font-size: 35px"><strong>Build your team & assemble the perfect line-up</strong></h3>
           <p>Build your winning team effortlessly! Register teams with ease, manage rosters seamlessly, and elevate your league with a personalized touch.</p>
           <p>Start your journey towards success now.</p>
           <%# link_to "Register team", leagues_path, class: "btn btn-main btn-primary", style: "color: black;" %>
@@ -116,11 +116,11 @@
     </div>
 
     <div class="row justify-content-center mt-5">
-      <div class="mid col-12 col-lg-7">
-        <h3 style="font-size: 35px"><strong>Streamline matches & engage teams</strong></h3>
-        <p>For enhanced ecperience be able to effortlessly streamline matches and captivate players!</p>
+      <div class="mid col-12 col-lg-7 justify-content-center">
+        <h3 style="font-size: 35px"><strong>Streamline matches & connect with your teams</strong></h3>
+        <p>For enhanced experience be able to effortlessly streamline matches and captivate players!</p>
         <p>Schedule with precision, track live results, and keep your audience engaged with real-time standings updates.</p>
-        <%= link_to "Let's Go!", dashboard_path, class: "btn btn-main btn-primary", style: "color: black;" %>
+        <%= link_to "Get Started", dashboard_path, class: "btn btn-main btn-primary", style: "color: black;" %>
       </div>
       <div class="col-12 col-lg-3 home-card">
         <%= image_tag('players.jpg', class: "rounded") %>
@@ -136,7 +136,7 @@
         <div class="card text-bg-success mb-3 mx-3 d-inline-flex text-black  border-0" class="custom-card" style="width: 18rem; height: 16rem;">
           <div class="card-body" >
               <p>⭐⭐⭐⭐⭐</p>
-              <p class="card-text">Its features are intuitive, offering a seamless experience for players - keeping us connected and informed.</p>
+              <p class="card-text">"Its features are intuitive, offering a seamless experience for players - keeping us connected and informed."</p>
               <br>
               <br>
               <h5 class="card-title"><strong> - Sarina Wiegman</strong></h5>
@@ -146,7 +146,7 @@
           <div class="card text-bg-success mb-3 mx-3 d-inline-flex text-black  border-0" class="custom-card" style="width: 18rem; height: 16rem;">
             <div class="card-body" >
                 <p>⭐⭐⭐⭐⭐</p>
-                <p class="card-text"> I can't get enough of this league simplifying platform! The strategic insights and real-time updates have elevated our gameplay. </p>
+                <p class="card-text"> "I can't get enough of this league simplifying platform! The strategic insights and real-time updates have elevated our gameplay."" </p>
                 <br>
                 <h5 class="card-title"><strong> - Lucy Bronze</strong> </h5>
             </div>
@@ -155,7 +155,7 @@
           <div class="card text-bg-success mb-3 mx-3 d-inline-flex text-black border-0" class="custom-card" style="width: 18rem; height: 16rem;">
             <div class="card-body" >
                 <p>⭐⭐⭐⭐⭐</p>
-                <p class="card-text">Using this league platform has been a joy! Its simplicity and clear interface make tracking the game's progress a breeze - very user-friendly design</p>
+                <p class="card-text">"Using this league platform has been a joy! Its simplicity and clear interface make tracking the game's progress a breeze - very user-friendly design"</p>
                 <h5 class="card-title"><strong> - Mary Earps</strong></h5>
             </div>
           </div>
@@ -164,37 +164,46 @@
 
   <! -- footer section -->
 
-<div id="footer" class="d-flex justify-content-between border-top border-primary mt-3" >
-  <div class="footer-column d-inline-flex mt-3">
-    <div class="links col-4">
-      <ul >
-        <li>League-all</li>
-        <li><%= link_to "Home"%></li>
-        <li><%= link_to "About"%></li>
-        <li><%= link_to "Organisers" %></li>
-        <li><%= link_to "Teams" %></li>
-        <li><%= link_to "Leagues"%></li>
+
+<div id="footer" class=" container d-flex justify-content-center mx-5 mt-3 border-3 border-top border-success" >
+  <div class="footer-column d-inline-flex mt-3 justify-content-end">
+    <div class="links text-black text-decoration-none" style="width:200px">
+      <ul>
+        <li><p>League-all</p></li>
+        <li><p><%= link_to "Home" %></p></li>
+        <li><p><%= link_to "About"%></p></li>
+        <li><p><%= link_to "FAQs"%></p></li>
+        <li><p><%= link_to "Organisers"%></p></li>
+        <li><p><%= link_to "Teams"%></p></li>
+        <li><p><%= link_to "Leagues" %></p></li>
       </ul>
     </div>
   </div>
 
-  <div class="footer-column d-inline-flex mt-3">
-  <div class="links col-4 ">
+  <div class="container footer-column d-inline-flex mt-3 justify-content-end">
+  <div class="links text-black text-decoration-none" style="width:200px">
     <ul>
-      <li>Contact</li>
-      <li><%= link_to "Email", "https://www.linkedin.com/" %></li>
-      <li><%= link_to "Instagram", "https://www.instagram.com/" %></li>
-      <li><%= link_to "Twitter", "https://twitter.com/" %></li>
+      <li><p>Contact</p></li>
+      <li><p><%= link_to "Email", "https://www.linkedin.com/" %></p></li>
+      <li><p><%= link_to "Instagram", "https://www.instagram.com/" %></p></li>
+      <li><p><%= link_to "Twitter", "https://twitter.com/" %></p></li>
     </ul>
   </div>
 </div>
-  <div class="footer-column d-inline-flex mt-3">
+
+  <div class="container footer-column d-inline-flex mt-3">
   <p>Join Our Newsletter</p>
+  <div>
+      <form class="form-inline d-flex justify-content-center mx-5 mt-5">
+        <input class="form-control mr-sm-2" style="font-size:12px" type="search" placeholder="Enter your email" aria-label="Search">
+        <button class="btn btn-danger my-2 my-sm-0 text-nowrap" style="font-size:12px" type="submit">Sign me up!</button>
+      </form>
   </div>
 
 </div>
 
 </div>
+
 
 <%# JS SCROLL %>
 <script>
