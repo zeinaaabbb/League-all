@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  <div class="container d-flex align-items-center justify-content-center">
+  <div class="container mb-3 d-flex align-items-center justify-content-center">
     <a href="#scroll-target">
       <%= image_tag('arrow.png', class: 'd-inline-flex align-items-center') %>
     </a>
@@ -44,42 +44,54 @@
 
   <! -- How it works -->
 
-<div class = "container text-center pt-2">
+<div class = "container text-center my-5 pt-2">
   <h4 class="mb-3 mt-4"  style="width: 100%; height: 100%; color: black; font-size: 48px; "><strong> How it works </strong></h4>
 
   <div class="cards">
     <%= link_to new_user_session_path do %>
-      <div class="card text-bg-primary mb-3 mt-4 mx-3 border-0" class="custom-card" style="width: 250px; height: 200px ">
+      <div class="how-it-works card text-bg-primary mb-3 mt-4 mx-3 border-0" class="custom-card" style="width: 250px; height: 200px; ">
+      <div class="circle text-center fs-2">1</div>
         <div class="card-body">
+          <br>
+          <br>
           <p class="card-title text-center">Sign up effortlessly and set up your league with ease on our user-friendly platform.</p>
         </div>
       </div>
     <% end %>
 
     <%= link_to dashboard_path do %>
-      <div class="card text-bg-primary mb-3 mx-3 border-0" class="custom-card" style="width: 250px; height: 200px">
+      <div class="how-it-works card text-bg-primary mb-3 mx-3 border-0" class="custom-card" style="width: 250px; height: 200px">
+      <div class="circle text-center fs-2">2</div>
         <div class="card-body" >
+          <br>
+          <br>
           <p class="card-title text-center">Manage teams and rosters effortlessly for a seamless experience.</p>
         </div>
       </div>
     <% end %>
 
     <%= link_to dashboard_path do %>
-    <div class="card text-bg-primary mb-3 mx-3 border-0" class="custom-card" style="width: 250px; height: 200px">
+    <div class="how-it-works card text-bg-primary mb-3 mx-3 border-0" class="custom-card" style="width: 250px; height: 200px">
+    <div class="circle text-center fs-2">3</div>
       <div class="card-body" >
+        <br>
+        <br>
         <p class="card-title text-center">Streamline matches, update results, and engage fans in real-time using our intuitive platform.</p>
       </div>
     </div>
     <% end %>
   </div>
+  <br>
+  <br>
 </div>
 
   <! -- Mid sections -->
 
   <div class="row justify-content-center mt-5">
       <div class="mid col-12 col-lg-7">
-          <h3><strong>Sign up & set up league</strong></h3>
-          <p>With our user-friendly sign-up platform setting up your league is a breeze—define your format, rules, and schedule effortlessly.</p>
+          <h3 style="font-size: 35px"><strong>Sign up & set up league</strong></h3>
+          <p>Our user-friendly sign-up platform ensures a seamless experience as you effortlessly define your league's format, rules, and schedule.</p>
+           <p>No more hassle or confusion – just a straightforward and intuitive process to kickstart your league on the right foot. Sign up now and let the simplicity begin!</p>
           <%= link_to "Create League", new_user_session_path, class: "btn btn-main btn-primary", style: "color: black;" %>
       </div>
       <div class="col-12 col-lg-3 home-card">
@@ -92,21 +104,23 @@
         <%= image_tag('players.jpg', class: "rounded") %>
       </div>
       <div class="col-12 col-lg-7">
-          <h3><strong>Build your team</strong></h3>
-          <p>Register teams with ease, manage rosters effortlessly, and elevate your league with a personalized touch.</p>
+          <h3 style="font-size: 35px"><strong>Build your team</strong></h3>
+          <p>Build your winning team effortlessly! Register teams with ease, manage rosters seamlessly, and elevate your league with a personalized touch.</p>
+          <p>Start your journey towards success now.</p>
           <%# link_to "Register team", leagues_path, class: "btn btn-main btn-primary", style: "color: black;" %>
           <form action="/dashboard">
             <input type="text" id="tab" name="tab" value="teams" class="d-none"/>
-            <input type="submit" value="Register team" class="btn btn-main btn-primary" style="color: black;" >
+            <input type="submit" value="Register Team" class="btn btn-main btn-primary" style="color: black;" >
         </form>
       </div>
     </div>
 
     <div class="row justify-content-center mt-5">
       <div class="mid col-12 col-lg-7">
-        <h3><strong>Streamline meatches & engage fans</strong></h3>
-        <p>Schedule, track results, and update standings in real-time.</p>
-        <%= link_to "Let's go!", dashboard_path, class: "btn btn-main btn-primary", style: "color: black;" %>
+        <h3 style="font-size: 35px"><strong>Streamline matches & engage teams</strong></h3>
+        <p>For enhanced ecperience be able to effortlessly streamline matches and captivate players!</p>
+        <p>Schedule with precision, track live results, and keep your audience engaged with real-time standings updates.</p>
+        <%= link_to "Let's Go!", dashboard_path, class: "btn btn-main btn-primary", style: "color: black;" %>
       </div>
       <div class="col-12 col-lg-3 home-card">
         <%= image_tag('players.jpg', class: "rounded") %>
@@ -116,30 +130,33 @@
 
   <! -- Testimonials section -->
     <div class = "container text-center">
-      <p>Testimonials</p>
+      <p style="font-size: 20px">Testimonials</p>
       <h1><strong>Read what others have to say</strong></h1>
       <div class = "container mt-4">
         <div class="card text-bg-success mb-3 mx-3 d-inline-flex text-black  border-0" class="custom-card" style="width: 18rem; height: 16rem;">
           <div class="card-body" >
-              <h5 class="card-title">Sarina Wiegman </h5>
               <p>⭐⭐⭐⭐⭐</p>
               <p class="card-text">Its features are intuitive, offering a seamless experience for players - keeping us connected and informed.</p>
+              <br>
+              <br>
+              <h5 class="card-title"><strong> - Sarina Wiegman</strong></h5>
           </div>
         </div>
 
           <div class="card text-bg-success mb-3 mx-3 d-inline-flex text-black  border-0" class="custom-card" style="width: 18rem; height: 16rem;">
             <div class="card-body" >
-                <h5 class="card-title"> Lucy Bronze </h5>
                 <p>⭐⭐⭐⭐⭐</p>
                 <p class="card-text"> I can't get enough of this league simplifying platform! The strategic insights and real-time updates have elevated our gameplay. </p>
+                <br>
+                <h5 class="card-title"><strong> - Lucy Bronze</strong> </h5>
             </div>
           </div>
 
           <div class="card text-bg-success mb-3 mx-3 d-inline-flex text-black border-0" class="custom-card" style="width: 18rem; height: 16rem;">
             <div class="card-body" >
-                <h5 class="card-title">Mary Earps </h5>
                 <p>⭐⭐⭐⭐⭐</p>
                 <p class="card-text">Using this league platform has been a joy! Its simplicity and clear interface make tracking the game's progress a breeze - very user-friendly design</p>
+                <h5 class="card-title"><strong> - Mary Earps</strong></h5>
             </div>
           </div>
       </div>
