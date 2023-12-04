@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :favourites
 
+  has_many :favourites_teams
+
   has_one_attached :photo
 
   has_many :leagues, dependent: :destroy
