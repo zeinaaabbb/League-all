@@ -2,11 +2,13 @@
 
   <%# LOGO GOES HERE %>
   <div class="logo p-2">
-  <h1><%= link_to "League-all", root_path %></h1>
+  <h1><%= link_to "League-All", root_path %></h1>
   </div>
   <%# LIST OPTIONS START HERE %>
   <% if league != nil %>
     <div class="nav-link" id="league-name" style= "text-align: center; margin: 10px; padding: 10px; border-radius: 40px"><h5 style="margin: 0"><strong><%= league.name %></strong></h5></div>
+  <% elsif team != nil %>
+    <div class="nav-link" id="league-name" style= "text-align: center; margin: 10px; padding: 10px; border-radius: 40px"><h5 style="margin: 0"><strong><%= team.name %></strong></h5></div>
   <% end %>
   <div class="d-flex align-items-start justify-content-center">
     <div class="nav flex-column nav-pills me-3" style ="border-radius: 40px" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -20,8 +22,17 @@
           <%# RENDERS LEAGUE/USER VIEW %>
           <%= render "shared/sidebar_options/user_league" %>
         <% end %>
+      <%# IF NOT ON TEAM DASHBOARD IT WILL SKIP THIS %>
+      <% elsif team != nil %>
+        <% if team.user == current_user %>
+          <%# RENDERS TEAM/COACH VIEW %>
+          <%= render "shared/sidebar_options/team_coach" %>
+        <% else %>
+          <%# RENDERS TEAM/USER VIEW %>
+          <%= render "shared/sidebar_options/team_user" %>
+        <% end %>
       <% else %>
-        <%# RENDERS LEAGUE/DASHBOARD VIEW %>
+        <%# RENDERS DASHBOARD OPTIONS %>
         <%= render "shared/sidebar_options/tabulate_dashboard" %>
       <% end %>
       <div style="border-top: 1px solid rgba(0, 0, 0, 0.1); "></div>
