@@ -34,6 +34,13 @@ class LeaguesController < ApplicationController
     @league = League.find(params[:id])
   end
 
+  def update
+    @league = League.find(params[:id])
+    @league.update(league_params)
+    # No need for app/views/leagues/update.html.erb
+    redirect_to dashboard_path(@league)
+  end
+
   def destroy
     @league = League.find(params[:id])
     @league.destroy

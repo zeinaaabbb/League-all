@@ -1,0 +1,12 @@
+<%= simple_form_for(league) do |f| %>
+              <%= f.input :name %>
+              <%= f.input :description %>
+              <%= f.input :format, :collection => (%w[ round-robin double-round])%>
+              <%= f.input :start_date, required: true, as: :string,
+            input_html: { data: { controller: "datepicker" } }%>
+              <%= f.input :level, :collection => (%w[ beginner intermediate advanced]) %>
+              <%= f.input :league_type,:collection => (%w[ 5-aside 6-aside 7-aside])%>
+              <%= f.input :number_of_teams %>
+              <%= f.input :days_per_week %>
+              <%= f.button :submit, "Update league details", class:"btn btn-primary" %>
+            <% end %>

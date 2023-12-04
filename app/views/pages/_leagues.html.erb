@@ -10,7 +10,8 @@
                     <%= link_to "", league_path(league), class:"stretched-link" %>
                   </div>
                 </div>
-                <%= render "leagues/delete_leagues", league: league%>
+                <%= render "leagues/delete_league", league: league%>
+                <%= render "leagues/edit_league", league: league%>
               <% end  %>
 
               <%= render "leagues/create_league_modal", league: new_league_path %>
