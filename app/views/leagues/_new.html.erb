@@ -1,6 +1,9 @@
 <%= simple_form_for(league) do |f| %>
               <%= f.input :name %>
               <%= f.input :description %>
+              <%= f.input :location,
+                  input_html: {data: {address_autocomplete_target: "location"}, class: "d-none"},
+                  wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
               <%= f.input :format, :collection => (%w[ round-robin double-round])%>
               <%= f.input :start_date, required: true, as: :string,
             input_html: { data: { controller: "datepicker" } }%>
@@ -8,5 +11,6 @@
               <%= f.input :league_type,:collection => (%w[ 5-aside 6-aside 7-aside])%>
               <%= f.input :number_of_teams %>
               <%= f.input :days_per_week %>
+              <%= f.input :location %>
               <%= f.button :submit, "create league", class:"btn btn-primary" %>
             <% end %>

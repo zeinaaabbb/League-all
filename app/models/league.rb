@@ -6,7 +6,7 @@ class League < ApplicationRecord
   validates :days_per_week, presence: true
   validates :description, length: { minimum: 10 }, presence: true
   has_many :favourites
-  
+
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
   validates :location, presence: true
@@ -23,21 +23,18 @@ class League < ApplicationRecord
   has_one_attached :photo
 
   def create_fixtures
+    teams = RoundRobinTournament.schedule(self.teams.select { |t| true })
 
-      teams = RoundRobinTournament.schedule(self.teams.select { |t| true })
-
-      teams.each_with_index do |day, index|
-        day_teams = day.shuffle.map do |team|
-
-          fixture = Fixture.new(
-            gameweek: index + 1,
-            home_team: team.first,
-            away_team: team.last,
-            league: self,
-          )
-          fixture.save
-        end
-
+    teams.each_with_index do |day, index|
+      day_teams = day.shuffle.map do |team|
+        fixture = Fixture.new(
+          gameweek: index + 1,
+          home_team: team.first,
+          away_team: team.last,
+          league: self,
+        )
+        fixture.save
       end
     end
   end
+end
