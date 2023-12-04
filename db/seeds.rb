@@ -125,6 +125,7 @@ League.all.each do |league|
     team = Team.new
     team.name = "#{Faker::Travel::TrainStation.name(region: 'united_kingdom', type: 'metro')} #{suffixes.sample}"
     team.user = User.all.sample
+    team.location = locations.sample
     team.save!
     teams_array << team
     puts "#{team.name} created!"
@@ -164,6 +165,7 @@ puts "#{following_league.name} created!"
   team = Team.new
   team.name = "#{Faker::Travel::TrainStation.name(region: 'united_kingdom', type: 'metro')} #{suffixes.sample}"
   team.user = User.all.sample
+  team.location = locations.sample
   team.save!
   puts "#{team.name} created!"
 
