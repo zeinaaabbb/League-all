@@ -33,7 +33,7 @@ class LeaguesController < ApplicationController
   def destroy
     @league = League.find(params[:id])
     @league.destroy
-    redirect_to league_path(@league)
+    redirect_to league_path(@league), status: :see_other
   end
 
   def generate_fixtures

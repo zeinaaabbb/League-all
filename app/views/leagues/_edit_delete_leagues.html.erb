@@ -1,0 +1,5 @@
+<li class="list-group-item">
+  <%= link_to "Delete",
+    league_path(league),
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+</li>
