@@ -8,6 +8,8 @@ class PagesController < ApplicationController
     @team = Team.new
     @league = League.new
     @user = current_user
+    @teams = Team.all
+    @leagues = League.all
 
     @selected_tab = params[:tab] unless params.nil?
 
