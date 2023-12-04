@@ -30,6 +30,12 @@ class LeaguesController < ApplicationController
     end
   end
 
+  def destroy
+    @league = League.find(params[:id])
+    @league.destroy
+    redirect_to league_path(@league)
+  end
+
   def generate_fixtures
     @league = League.find(params[:league_id])
     @accepted_joins = @league.league_teams_joins.select { |join| join.accepted == true}
