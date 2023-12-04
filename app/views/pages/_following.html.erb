@@ -1,30 +1,76 @@
-<h3 class="m-3">Following</h3>
+<div data-controller="tabs">
+  <div>
+    <ul class="list-inline tabs-underlined justify-content-center">
+      <li>
+        <a href="#" class="tab-underlined active" data-action="tabs#changeTab" data-target="tabs.tab" data-tab="1">Followed Leagues</a>
+      </li>
+      <li>
+        <a href="#" class="tab-underlined" data-action="tabs#changeTab" data-target="tabs.tab" data-tab="2">Followed Teams</a>
+      </li>
+    </ul>
+  </div>
+
+<div class="container" data-target="tabs.content" data-tab="1">
 <br>
-<div class="d-flex flex-row" >
-  <% @user.favourites.each do |favourite| %>
-    <div class="card text-bg-success mb-3 border-0 mx-4" class="custom-card" style="width: 18rem; height: 12rem;">
-      <div class="card-body" >
-      <div class="d-flex justify-content-between">
-          <h5 class="card-title"><%= favourite.league.name %></h5>
-          <div class="favourites">
-            <p>
-              <% if current_user.favourites.find_by(league: favourite.league).nil? %>
-                <%= link_to league_favourites_path(league), data: { turbo_method: "POST" } do %>
-                  <i class="fa-regular fa-heart fa-xl" style="color: #738CE7"></i>
+  <div class="d-flex flex-row" >
+    <% @user.favourites.each do |favourite| %>
+      <div class="card text-bg-success mb-3 border-0 mx-4" class="custom-card" style="width: 18rem; height: 12rem;">
+        <div class="card-body" >
+        <div class="d-flex justify-content-between">
+            <h5 class="card-title"><%= favourite.league.name %></h5>
+            <div class="favourites">
+              <p>
+                <% if current_user.favourites.find_by(league: favourite.league).nil? %>
+                  <%= link_to league_favourites_path(league), data: { turbo_method: "POST" } do %>
+                    <i class="fa-regular fa-heart fa-xl" style="color: #738CE7"></i>
+                  <% end %>
+                  <% else %>
+                <%= link_to favourite_path(current_user.favourites.find_by(league: favourite.league)), data: { turbo_method: "DELETE", turbo_confirm: "Are you sure you want to unfollow?" } do %>
+                  <i class="fa-solid fa-heart fa-xl" style="color: #738CE7"></i>
                 <% end %>
+                <% end %>
+              </p>
+            </div>
+        </div>
+            <p><%= favourite.league.format%></p>
+            <p><%= favourite.league.level%></p>
+            <p><%= favourite.league.league_type%></p>
+          <%= link_to "", league_path(favourite.league), class:"stretched-link" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="container" data-target="tabs.content" data-tab="2">
+<br>
+  <div class="d-flex flex-row" >
+    <% @user.favourites_teams.each do |favourite| %>
+      <div class="card text-bg-success mb-3 border-0 mx-4" class="custom-card" style="width: 18rem; height: 12rem;">
+        <% if favourite.team.photo.attached? %>
+          <img src=<%= cl_image_path team.photo.key %> class="card-img-top" alt="Team Photo">
+        <% end %>
+        <div class="card-body" >
+        <div class="d-flex justify-content-between">
+            <h5 class="card-title"><%= favourite.team.name %></h5>
+            <div class="favourites">
+              <p>
+                <% if current_user.favourites_teams.find_by(team: favourite.team).nil? %>
+                  <%= link_to team_favourites_team_index_path(team), data: { turbo_method: "POST" } do %>
+                    <i class="fa-regular fa-heart fa-xl" style="color: #738CE7"></i>
+                  <% end %>
                 <% else %>
-              <%= link_to favourite_path(current_user.favourites.find_by(league: favourite.league)), data: { turbo_method: "DELETE", turbo_confirm: "Are you sure you want to unfavourite?" } do %>
-                <i class="fa-solid fa-heart fa-xl" style="color: #738CE7"></i>
-              <% end %>
-              <% end %>
-            </p>
-          </div>
+                  <%= link_to favourites_team_path(current_user.favourites_teams.find_by(team: favourite.team)), data: { turbo_method: "DELETE", turbo_confirm: "Are you sure you want to unfollow?" } do %>
+                    <i class="fa-solid fa-heart fa-xl" style="color: #738CE7"></i>
+                  <% end %>
+                <% end %>
+              </p>
+            </div>
+        </div>
+          <%= link_to "", team_path(favourite.team), class:"stretched-link" %>
+        </div>
       </div>
-          <p><%= favourite.league.format%></p>
-          <p><%= favourite.league.level%></p>
-          <p><%= favourite.league.league_type%></p>
-        <%= link_to "", league_path(favourite.league), class:"stretched-link" %>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
