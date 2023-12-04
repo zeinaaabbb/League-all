@@ -1,12 +1,17 @@
 <h1>following</h1>
-  <div class="d-flex flex-row" >
-          <div class="card text-bg-success mb-3 border-0 mx-4" class="custom-card" style="width: 18rem; height: 12rem;">
-            <div class="card-body" >
-              <h5 class="card-title"><%= league.name %></h5>
-              <p><%= league.format%></p>
-              <p><%= league.level%></p>
-              <p><%= league.league_type%></p>
-              <%= link_to "", league_path(league), class:"stretched-link" %>
-            </div>
-          </div>
+
+<div class="d-flex flex-row">
+  <% if league %>
+    <div class="card text-bg-success mb-3 border-0 mx-4" class="custom-card" style="width: 18rem; height: 12rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= league.name %></h5>
+        <p><%= league.format %></p>
+        <p><%= league.level %></p>
+        <p><%= league.league_type %></p>
+        <%= link_to "", league_path(league), class:"stretched-link" %>
+      </div>
     </div>
+  <% else %>
+    <p>No league data available.</p>
+  <% end %>
+</div>

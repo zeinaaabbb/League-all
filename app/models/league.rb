@@ -6,7 +6,6 @@ class League < ApplicationRecord
   validates :days_per_week, presence: true
   validates :description, length: { minimum: 10 }, presence: true
 
-
   has_many :league_teams_joins
   has_many :teams, through: :league_teams_joins
 
@@ -19,21 +18,18 @@ class League < ApplicationRecord
   has_one_attached :photo
 
   def create_fixtures
+    teams = RoundRobinTournament.schedule(self.teams.select { |t| true })
 
-      teams = RoundRobinTournament.schedule(self.teams.select { |t| true })
-
-      teams.each_with_index do |day, index|
-        day_teams = day.shuffle.map do |team|
-
-          fixture = Fixture.new(
-            gameweek: index + 1,
-            home_team: team.first,
-            away_team: team.last,
-            league: self,
-          )
-          fixture.save
-        end
-
+    teams.each_with_index do |day, index|
+      day_teams = day.shuffle.map do |team|
+        fixture = Fixture.new(
+          gameweek: index + 1,
+          home_team: team.first,
+          away_team: team.last,
+          league: self,
+        )
+        fixture.save
       end
     end
   end
+end
