@@ -32,6 +32,14 @@
           <% end %>
               <%= render "following" %>
             </div>
+
+          <% if @selected_tab == "browse" %>
+            <div class="tab-pane fade show active" id="v-pills-browse" role="tabpanel" aria-labelledby="v-pills-browse-tab">
+          <% else %>
+            <div class="tab-pane fade" id="v-pills-browse" role="tabpanel" aria-labelledby="v-pills-browse-tab">
+          <% end %>
+              <%= render "browse" %>
+            </div>
         </div>
     </div>
   </div>
