@@ -1,10 +1,13 @@
+<%# Edit Modal  %>
+
+
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">
+<button type="button" class="btn btn-succes" data-bs-toggle="modal" data-bs-target="#<%= dom_id(league) %>">
   edit
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id=<%= dom_id(league) %> tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
