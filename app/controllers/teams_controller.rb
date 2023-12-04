@@ -7,6 +7,7 @@ class TeamsController < ApplicationController
   def show
     @team = Team.find(params[:id])
     @player = Player.new
+    @accepted_players = @team.players.select { |player| player.accepted == true}
   end
 
   def new

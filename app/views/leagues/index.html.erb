@@ -22,7 +22,7 @@
                     <i class="fa-regular fa-heart fa-xl" style="color: #738CE7"></i>
                   <% end %>
                 <% else %>
-                  <%= link_to favourite_path(current_user.favourites.find_by(league: league)), data: { turbo_method: "DELETE", turbo_confirm: "Are you sure you want to unfavourite?" } do %>
+                  <%= link_to favourite_path(current_user.favourites.find_by(league: league)), data: { turbo_method: "DELETE", turbo_confirm: "Are you sure you want to unfollow?" } do %>
                     <i class="fa-solid fa-heart fa-xl" style="color: #738CE7"></i>
                   <% end %>
                 <% end %>

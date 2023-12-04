@@ -8,6 +8,8 @@ class Team < ApplicationRecord
   has_many :fixtures
   has_many :messages
 
+  has_many :favourites_teams
+
   has_many :league_teams_joins
   has_many :leagues, through: :league_teams_joins
 

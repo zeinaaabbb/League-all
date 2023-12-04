@@ -1,7 +1,7 @@
 <div class="mt-3">
   <div class="card text-bg-success mb-3 border-0" class="custom-card" style="width: 18rem; height: 12rem;">
     <% if player.user.photo.attached? %>
-      <img src=<%= cl_image_path player.user.photo.key %> class="card-img-top" alt="Player Photo">
+      <img src=<%= cl_image_path player.user.photo.key, crop: :thumb, gravity: :face %> class="card-img-top" alt="Player Photo">
     <% end %>
     <div class="card-body" >
       <div class="d-flex justify-content-between">
