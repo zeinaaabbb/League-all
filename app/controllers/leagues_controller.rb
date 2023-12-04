@@ -30,6 +30,10 @@ class LeaguesController < ApplicationController
     end
   end
 
+  def edit
+    @league = League.find(params[:id])
+  end
+
   def destroy
     @league = League.find(params[:id])
     @league.destroy
