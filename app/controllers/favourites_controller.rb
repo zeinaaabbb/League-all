@@ -8,7 +8,7 @@ class FavouritesController < ApplicationController
 
     if @favourite.save
       # render "leagues/index", leagues: League.all
-      redirect_to leagues_path
+      redirect_back(fallback_location: root_path)
     else
       render "leagues/index", status: :unprocessible_entity
     end
@@ -17,7 +17,7 @@ class FavouritesController < ApplicationController
   def destroy
     @favourite = Favourite.find(params[:id])
     if @favourite.destroy
-      redirect_to leagues_path
+      redirect_back(fallback_location: root_path)
     else
       render "leagues/index", status: :unprocessible_entity
     end
