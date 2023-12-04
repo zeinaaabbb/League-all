@@ -12,3 +12,30 @@
   border-color: #D8D1F2;
   color: white;
 }
+
+
+// ------------------------------
+
+.edit-fixture-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.edit-fixture-input {
+  background-image: none !important;
+  padding: 8px 0px 8px 16px !important;
+  width: 58px;
+  font-size: 18px;
+  height: 54px;
+}
+
+.fixture-score {
+  cursor: pointer;
+}
+
+.fixture-modal {
+  max-width: 780px !important;
+}

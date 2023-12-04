@@ -1,0 +1,5 @@
+<%= simple_form_for([@league, @fixture]) do |f| %>
+  <%= f.input :home_goals %>
+  <%= f.input :away_goals %>
+  <%= f.button :submit, "submit score", class:"btn btn-primary" %>
+<% end %>
