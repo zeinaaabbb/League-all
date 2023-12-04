@@ -17,13 +17,16 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     @team.user = current_user
-    if @team.save
+    if @team.save!
       redirect_to dashboard_path(@team)
       flash[:message] = 'Your Team was Created Successfully!'
     else
       render :new, status: :unprocessible_entity
+      flash[:message] = 'Missing Fields!'
     end
   end
+
+
 
   def destroy
     @team = Team.find(params[:id])
