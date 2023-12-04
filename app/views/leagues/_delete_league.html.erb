@@ -1,0 +1,6 @@
+<i class="fa-solid fa-trash" style="color: #738ce7;">
+<%= link_to "Delete",
+    league_path(league),
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+    %>
+</i>
