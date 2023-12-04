@@ -8,8 +8,7 @@
     <div id="dashboard-content" style="padding:20px">
       <div class="tab-content" id="v-pills-tabContent">
       <div class="tab-pane fade" id="v-pills-team-overview" role="tabpanel" aria-labelledby="v-pills-team-overview-tab"><%= render "team_overview", team: @team %></div>
-      <div class="tab-pane fade show active" id="v-pills-players" role="tabpanel" aria-labelledby="v-pills-players-tab"><%= render "players", team: @team, player: @player, user: current_user %></div>
-
+      <div class="tab-pane fade show active" id="v-pills-players" role="tabpanel" aria-labelledby="v-pills-players-tab"><%= render "players", team: @team, player: @player, user: current_user, accepted_players: @accepted_players %></div>
       <div class="tab-pane fade" id="v-pills-payments" role="tabpanel" aria-labelledby="v-pills-payments-tab">Payments go here</div>
       <div class="tab-pane fade" id="v-pills-fixtures" role="tabpanel" aria-labelledby="v-pills-fixtures-tab">Fixtures go here</div>
       <div class="tab-pane fade" id="v-pills-leagues" role="tabpanel" aria-labelledby="v-pills-leagues-tab">Leagues go here</div>

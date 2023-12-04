@@ -25,12 +25,14 @@ class FixturesController < ApplicationController
 
   def edit
     @fixture = Fixture.find(params[:id])
+    @league = League.find(params[:league_id])
   end
 
   def update
     @fixture = Fixture.find(params[:id])
-    @fixture.update(params[:fixture])
-    redirect_to fixtures_path(params[:league_id]), notice: 'Fixture successfully updated.'
+    params[:fixture][:draw] = true if params[:fixture][:home_goals] == params[:fixture][:away_goals]
+    @fixture.update(fixture_params)
+    redirect_to league_path(params[:league_id]), notice: 'Fixture successfully updated.'
   end
 
   def destroy
@@ -42,6 +44,6 @@ class FixturesController < ApplicationController
   private
 
   def fixture_params
-    params.require(:fixture).permit(:home_team_id, :away_team_id, :gameweek, :time, :home_goals, :away_goals)
+    params.require(:fixture).permit(:home_team_id, :away_team_id, :gameweek, :time, :home_goals, :away_goals, :draw)
   end
 end
