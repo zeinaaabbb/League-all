@@ -1,16 +1,24 @@
-<div class="nav-side">
-  <%# LOGO GOES HERE %>
-    <div style="height:100px" id="sidebar-logo">
-      <img src="https://statsbomb.com/wp-content/uploads/2022/11/2JK76GB-min.png" style="width: 100px; border-radius: 10px; margin-left: 55px; margin-top: 20px" alt="">
-      </div>
-      <%# LIST OPTIONS START HERE %>
-      <% if @team != nil %>
-        <div class="nav-link" id="league-name" style= "text-align: center; margin: 10px; padding: 10px; border-radius: 5px"><h5 style="margin: 0"><strong><%= @team.name %></strong></h5></div>
-      <% end %>
-      <div class="d-flex align-items-start justify-content-center">
-        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-        <%= render "shared/sidebar_options/team_coach"%>
-      <%= render "shared/sidebar_options/all_user_options" %>
-      </div>
+<div class="row" id="show-page">
+  <div>
+    <%= render "shared/sidebar", league: nil, team: @team%>
+  </div>
+  <div class="column" style="padding: 0px; grid-template-columns: 5fr;">
+    <%= render "shared/navbar" %>
+    <%# <h1> League - show page[:id] %>
+    <div id="dashboard-content" style="padding:20px">
+      <div class="tab-content" id="v-pills-tabContent">
+
+      <div class="tab-pane fade show active" id="v-pills-players" role="tabpanel" aria-labelledby="v-pills-players-tab"><%= render "players", team: @team, player: @player, user: current_user %></div>
+
+      <div class="tab-pane fade" id="v-pills-payments" role="tabpanel" aria-labelledby="v-pills-payments-tab">Payments go here</div>
+      <div class="tab-pane fade" id="v-pills-fixtures" role="tabpanel" aria-labelledby="v-pills-fixtures-tab">Fixtures go here</div>
+      <div class="tab-pane fade" id="v-pills-leagues" role="tabpanel" aria-labelledby="v-pills-leagues-tab">Leagues go here</div>
+      <div class="tab-pane fade" id="v-pills-statistics" role="tabpanel" aria-labelledby="v-pills-statistics-tab">Statistics go here</div>
+      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">Messages go here</div>
+
+      <div class="tab-pane fade" id="v-pills-registrations" role="tabpanel" aria-labelledby="v-pills-registrations-tab"><%= render "registrations", players: @team.players %></div>
+
     </div>
+    </div>
+  </div>
 </div>

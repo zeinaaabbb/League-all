@@ -10,7 +10,12 @@
                     <%= link_to "", team_path(team), class:"stretched-link" %>
                   </div>
                 </div>
+                <%# Delete %>
+                <%= render "teams/delete_team", team: team%>
+                <%# Edit %>
+                <%= render "teams/edit_team", team: team%>
               <% end  %>
+
             <%= render "teams/team_form" %>
         </div>
       </div>

@@ -6,6 +6,7 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
+    @player = Player.new
   end
 
   def new
@@ -16,12 +17,24 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     @team.user = current_user
-    if @team.save
+    if @team.save!
       redirect_to dashboard_path(@team)
       flash[:message] = 'Your Team was Created Successfully!'
     else
       render :new, status: :unprocessible_entity
+      flash[:message] = 'Missing Fields!'
     end
+  end
+
+  def edit
+    @team = Team.find(params[:id])
+  end
+
+  def update
+    @team = Team.find(params[:id])
+    @team.update(league_params)
+    # No need for app/views/leagues/update.html.erb
+    redirect_to dashboard_path(@team)
   end
 
   def destroy
