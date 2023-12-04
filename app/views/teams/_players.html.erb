@@ -1,0 +1,26 @@
+<div data-controller="toggle">
+  <div id="player-list">
+    <%# Player list goes here %>
+  </div>
+  <%# Button to register for league %>
+  <div style="text-align: center;">
+    <% if user_signed_in? %>
+      <%# !! This line currently disables team coach from signing up for the team %>
+      <% if current_user != team.user %>
+        <div style="text-align: center col-5">
+          <%# Link to form which selects which  to register %>
+          <div class="d-flex justify-content-center">
+            <div class="team-register-form mt-3 col-5" data-toggle-target="togglableElement">
+              <%= simple_form_for [team, user, player], url: team_players_path(team, user) do |f|%>
+                <div class="mb-3 btn-primary text-center">
+                <%= f.submit 'Register for this team', class: "btn btn-default btn-primary"%>
+                </div>
+              <% end %>
+              <p>Your request will be sent to the team coach to approve</p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

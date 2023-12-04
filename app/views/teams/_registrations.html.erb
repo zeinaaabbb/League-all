@@ -1,0 +1,50 @@
+<div data-controller="tabs">
+  <div>
+    <ul class="list-inline tabs-underlined justify-content-center">
+      <li>
+        <a href="#" class="tab-underlined active" data-action="tabs#changeTab" data-target="tabs.tab" data-tab="1">Pending requests</a>
+      </li>
+      <li>
+        <a href="#" class="tab-underlined" data-action="tabs#changeTab" data-target="tabs.tab" data-tab="2">Approved players</a>
+      </li>
+      <li>
+        <a href="#" class="tab-underlined" data-action="tabs#changeTab" data-target="tabs.tab" data-tab="3">Rejected players</a>
+      </li>
+    </ul>
+  </div>
+
+<div class="container" data-target="tabs.content" data-tab="1">
+  <div class="container row">
+    <% players.each do |player| %>
+      <% if player.accepted == nil %>
+        <div class="col-6 mb-3 p-0">
+          <%= render "player_registration", player: player %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class="container d-none" data-target="tabs.content" data-tab="2">
+  <div class="container row">
+    <% players.each do |player| %>
+      <% if player.accepted == true %>
+        <div class="col-6 mb-3 p-0">
+          <%= render "player_registration", player: player %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class="container d-none" data-target="tabs.content" data-tab="3">
+  <div class="container row">
+    <% players.each do |player| %>
+      <% if player.accepted == false %>
+        <div class="col-6 mb-3 p-0">
+          <%= render "player_registration", player: player %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
