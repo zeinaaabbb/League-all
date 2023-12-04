@@ -6,6 +6,8 @@ class League < ApplicationRecord
   validates :days_per_week, presence: true
   validates :description, length: { minimum: 10 }, presence: true
 
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
 
   has_many :league_teams_joins
   has_many :teams, through: :league_teams_joins
