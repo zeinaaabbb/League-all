@@ -1,6 +1,25 @@
 <div data-controller="toggle">
   <div id="player-list">
     <%# Player list goes here %>
+    <% if team.players.count == 0 %>
+      <h3 style="text-align: center">No players registered yet</h3>
+    <% else %>
+      <h3><%= team.name %> players</h3>
+      <% team.players.each do |player| %>
+        <% if player.accepted == true %>
+          <div class="card text-bg-success mb-3 border-0" class="custom-card" style="width: 18rem; height: 12rem;" >
+            <div class="d-flex justify-content-between">
+              <% if player.user.photo.attached? %>
+                <%= cl_image_tag player.user.photo.key, crop: :thumb, gravity: :face, class: "avatar", alt: "dropdown menu" %>
+              <% else %>
+                <img src="" alt="">
+              <% end %>
+              <h5 class="card-title"><%= player.user.first_name %> <%= player.user.last_name %></h5>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
   </div>
   <%# Button to register for league %>
   <div style="text-align: center;">
