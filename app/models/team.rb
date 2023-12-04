@@ -1,6 +1,7 @@
 
 class Team < ApplicationRecord
   validates :name, length: { minimum: 4 }, presence: true
+  validates :location, presence: true
   has_one_attached :photo
   has_many :players, dependent: :destroy
   has_many :users, through: :players
