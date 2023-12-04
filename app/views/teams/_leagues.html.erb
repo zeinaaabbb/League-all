@@ -1,0 +1,16 @@
+<h3><%= team.name %>'s leagues</h3>
+
+<h3>Nearby leagues looking for teams</h3>
+<% League.near(team, 15).each do |league| %>
+  <div class="card text-bg-success mb-3 mx-3 border-0 p-3" class="custom-card" style="width: 18rem; height: 12rem;" >
+    <div class="d-flex justify-content-between">
+      <% if league.photo.attached? %>
+        <%= cl_image_tag league.photo.key, crop: :thumb, gravity: :face, class: "avatar-large", alt: "dropdown menu" %>
+      <% else %>
+        <img src="" alt="">
+      <% end %>
+      <h5 class="card-title"><%= league.name %></h5>
+      <p><%= league.location %></p>
+    </div>
+  </div>
+<% end %>
