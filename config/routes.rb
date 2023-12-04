@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     resources :messages, only: :create
   end
 
+
   resources :league_teams_join, only: [:destroy]
   resources :favourites, only: [:destroy]
 
