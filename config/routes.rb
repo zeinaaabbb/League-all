@@ -27,6 +27,8 @@ Rails.application.routes.draw do
     resources :players, only: [:create, :destroy]
   end
 
+  resources :chatrooms, only: :show
+
   resources :league_teams_join, only: [:destroy]
   resources :favourites, only: [:destroy]
 
