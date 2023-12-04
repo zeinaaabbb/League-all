@@ -24,6 +24,17 @@ class TeamsController < ApplicationController
     end
   end
 
+  def edit
+    @team = Team.find(params[:id])
+  end
+
+  def update
+    @team = Team.find(params[:id])
+    @team.update(league_params)
+    # No need for app/views/leagues/update.html.erb
+    redirect_to dashboard_path(@team)
+  end
+
   def destroy
     @team = Team.find(params[:id])
     @team.destroy
