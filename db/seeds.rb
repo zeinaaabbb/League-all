@@ -10,7 +10,7 @@
 
 require 'pry'
 
-# require 'open-url'
+require 'open-uri'
 require 'faker'
 require 'date'
 require "round_robin_tournament"
@@ -46,12 +46,16 @@ puts "Users destroyed"
 # END
 
 # SEEDING USERS
+user_photos = ["https://assets.manutd.com/AssetPicker/images/0/0/19/9/1247499/27_Mary_Earps1694729780796.jpg", "https://b.fssta.com/uploads/application/soccer/headshots/33182.vresize.350.350.medium.49.png", "https://static.independent.co.uk/2023/08/18/13/34fb6e615ac670c3782c33c1a86c1387Y29udGVudHNlYXJjaGFwaSwxNjkyNDQ1NjEw-2.73361980.jpg", "https://img.chelseafc.com/image/upload/f_auto,h_390,q_90/editorial/people/ladies/2023-24/Lauren_James_profile_23-24_with_sponsor_headshot.png", "https://ichef.bbci.co.uk/onesport/cps/624/cpsprodpb/06B1/production/_129231710_gettyimages-1475923306.jpg"]
+
 5.times do |i|
   user = User.new
   user.first_name = Faker::Name.first_name
   user.last_name = Faker::Name.last_name
   user.email = Faker::Internet.email
   user.password = 123456
+  file = URI.open(user_photos.sample)
+  user.photo.attach(io: file, filename: "user.png", content_type: "image/png")
   user.save!
   puts "#{user.email} created!"
 end
