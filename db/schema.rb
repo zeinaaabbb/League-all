@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema[7.1].define(version: 2023_12_04_115846) do
+=======
 ActiveRecord::Schema[7.1].define(version: 2023_12_04_114239) do
+>>>>>>> add-location-to-leagues
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -92,6 +96,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_114239) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "location"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_leagues_on_user_id"
   end
 

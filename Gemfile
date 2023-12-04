@@ -88,3 +88,5 @@ group :test do
 end
 
 gem 'psych', '~>3.0'
+
+gem "geocoder"
