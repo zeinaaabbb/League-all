@@ -1,0 +1,20 @@
+<div class="mt-3">
+  <div class="card text-bg-success mb-3 border-0" class="custom-card" style="width: 18rem; height: 12rem;">
+    <% if player.user.photo.attached? %>
+      <img src=<%= cl_image_path player.user.photo.key %> class="card-img-top" alt="Player Photo">
+    <% end %>
+    <div class="card-body" >
+      <div class="d-flex justify-content-between">
+        <h5 class="card-title"><%= player.user.first_name %> <%= player.user.last_name %></h5>
+          <% if player.accepted == nil %>
+          <div class="column reg-buttons">
+            <%= link_to "<i class='fa-solid fa-check m-1' style='color:green'></i>".html_safe,
+              player_approve_path(player), data: {turbo_method: :patch, turbo_confirm: "Add #{player.user.first_name} #{player.user.last_name} to #{player.team.name}?"} %>
+            <%= link_to "<i class='fa-solid fa-xmark m-1' style='color:red'></i>".html_safe,
+              player_reject_path(player), data: {turbo_method: :patch, turbo_confirm: "Reject #{player.user.first_name} #{player.user.last_name}'s request?"} %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

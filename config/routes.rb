@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'players/create'
+  get 'players/destroy'
+  get 'players/approve'
+  get 'players/reject'
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -22,5 +26,7 @@ Rails.application.routes.draw do
   resources :league_teams_join, only: [:destroy]
   patch "/league_teams_join/:id/approve", to: "league_teams_join#approve", as: :approve
   patch "/league_teams_join/:id/reject", to: "league_teams_join#reject", as: :reject
+  patch "/player/:id/approve", to: "players#approve", as: :player_approve
+  patch "/player/:id/reject", to: "players#reject", as: :player_reject
   post "/leagues/:league_id/fixtures/generate", to: "leagues#generate_fixtures", as: :generate_fixtures
 end
