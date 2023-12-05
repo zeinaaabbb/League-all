@@ -7,7 +7,6 @@ class FavouritesController < ApplicationController
     @favourite.user = current_user
 
     if @favourite.save
-      # render "leagues/index", leagues: League.all
       redirect_back(fallback_location: root_path)
     else
       render "leagues/index", status: :unprocessible_entity

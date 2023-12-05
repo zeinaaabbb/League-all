@@ -10,6 +10,9 @@ gem "sprockets-rails"
 
 gem 'pry'
 
+#pg_search
+gem "pg_search"
+
 #cloudinary
 gem "cloudinary"
 
@@ -93,3 +96,5 @@ end
 gem 'psych', '~>3.0'
 
 gem "geocoder"
+
+gem "noticed", "~> 1.6"

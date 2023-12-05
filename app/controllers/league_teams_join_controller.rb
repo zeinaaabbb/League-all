@@ -5,12 +5,15 @@ class LeagueTeamsJoinController < ApplicationController
     @team = Team.find(params[:league_teams_join][:team_id])
     @league_team.team = @team
     @league_team.league = @league
-    if @league_team.save!
-      redirect_to league_path(@league), notice: "Your request has been submitted. The owner of #{@league.name} will respond soon."
+    if LeagueTeamsJoin.where(team_id: @team.id, league_id: @league.id) == nil
+      if @league_team.save!
+        redirect_to league_path(@league), notice: "Your request has been submitted. The owner of #{@league.name} will respond soon."
+      else
+        render :new, status: :unprocessable_entity
+      end
     else
-      render :new, status: :unprocessable_entity
+      redirect_to league_path(@league), notice: "You have already sent a request for #{@league.name}. The league owner will respond soon."
     end
-
   end
 
   def update

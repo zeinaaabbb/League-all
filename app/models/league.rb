@@ -7,6 +7,9 @@ class League < ApplicationRecord
   validates :description, length: { minimum: 10 }, presence: true
   has_many :favourites
 
+  include PgSearch::Model
+  multisearchable against: [:name, :location]
+
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
   validates :location, presence: true
@@ -21,6 +24,8 @@ class League < ApplicationRecord
   belongs_to :user
 
   has_one_attached :photo
+
+  has_many :comments, dependent: :destroy
 
   def create_fixtures
     teams = RoundRobinTournament.schedule(self.teams.select { |t| true })

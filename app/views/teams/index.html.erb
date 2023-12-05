@@ -2,12 +2,24 @@
 <div class="container">
   <div class="row mb-3 p-3">
     <% @teams.each do |team| %>
-    <div class="card text-bg-primary mb-3 col-3" class="custom-card" style="width: 18rem; height: 12rem;">
-      <div class="card-body" >
-        <h5 class="card-title"><%= team.name %></h5>
-        <a href="#" class="stretched-link"></a>
+      <div class="card text-bg-primary mb-3 col-3" class="custom-card" style="width: 18rem; height: 12rem;">
+        <div class="card-body" >
+          <h5 class="card-title"><%= team.name %></h5>
+          <div class="favourites">
+            <p>
+              <% if current_user.favourites_teams.find_by(team: team).nil? %>
+                <%= link_to team_favourites_team_index_path(team), data: { turbo_method: "POST" } do %>
+                  <i class="fa-regular fa-heart fa-xl" style="color: #738CE7"></i>
+                <% end %>
+              <% else %>
+                <%= link_to favourites_team_path(current_user.favourites_teams.find_by(team: team)), data: { turbo_method: "DELETE", turbo_confirm: "Are you sure you want to unfollow?" } do %>
+                  <i class="fa-solid fa-heart fa-xl" style="color: #738CE7"></i>
+                <% end %>
+              <% end %>
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
     <% end %>
   </div>
 </div>

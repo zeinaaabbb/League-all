@@ -9,6 +9,17 @@ class Team < ApplicationRecord
   has_many :messages
   has_many :chatrooms
 
+
+  geocoded_by :location
+
+  after_validation :geocode, if: :will_save_change_to_location?
+
+  include PgSearch::Model
+  multisearchable against: [:name, :location]
+
+
+  has_many :favourites_teams
+
   has_many :league_teams_joins
   has_many :leagues, through: :league_teams_joins
 
