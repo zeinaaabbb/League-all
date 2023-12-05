@@ -39,7 +39,9 @@
 <%# LEAGUE TABLE END %>
 
   <%# Button to register for league %>
+<% if @slots_available %>
   <div style="text-align: center;">
+  <h4 style="text-align: center"><%= @slots %> slots available in this league</h4>
     <% if user_signed_in? %>
       <% if !user.teams.empty? && current_user != league.user %>
         <div style="text-align: center col-5">
@@ -65,5 +67,8 @@
       </div>
     </div>
   </div>
+<% else %>
+  <h6 style="text-align: center">This league is full</h6>
+<% end %>
 
 </div>
