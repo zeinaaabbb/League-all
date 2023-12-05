@@ -48,7 +48,7 @@
     <% @user.favourites_teams.each do |favourite| %>
       <div class="card text-bg-success mb-3 border-0 mx-4" class="custom-card" style="width: 18rem; height: 12rem;">
         <% if favourite.team.photo.attached? %>
-          <img src=<%= cl_image_path team.photo.key %> class="card-img-top" alt="Team Photo">
+          <img src=<%= cl_image_path favourite.team.photo.key %> class="card-img-top" alt="Team Photo">
         <% end %>
         <div class="card-body" >
           <div class="d-flex justify-content-between">
