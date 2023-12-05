@@ -6,15 +6,20 @@
         <img src=<%= cl_image_path team.photo.key %> class="card-img-top" alt="Team Photo">
       <% end %>
       <div class="card-body" >
-        <h5 class="card-title"><%= team.name %></h5>
+        <div class="d-flex justify-content-between">
+          <h5 class="card-title"><%= team.name %></h5>
+          <div class="favourites">
+              <%# Edit %>
+              <%= render "teams/edit_team", team: team %>
+              <%# Delete %>
+              <%= render "teams/delete_team", team: team %>
+          </div>
+        </div>
         <%= link_to "", team_path(team), class:"stretched-link" %>
       </div>
     </div>
-    <%# Delete %>
-    <%= render "teams/delete_team", team: team%>
-    <%# Edit %>
-    <%= render "teams/edit_team", team: team%>
+    <%# Edit Modal%>
+    <%= render "teams/edit_team_modal", team: team %>
   <% end  %>
-
   <%= render "teams/team_form" %>
 </div>
