@@ -12,7 +12,6 @@ class LeagueTeamsJoinController < ApplicationController
         render :new, status: :unprocessable_entity
       end
     else
-      raise
       redirect_to league_path(@league), notice: "You have already sent a request for #{@league.name}. The league owner will respond soon."
     end
   end
