@@ -7,14 +7,20 @@
         <p><%= league.location%></p>
         <p><%= league.format%></p>
         <p><%= league.level%></p>
-        <p><%= league.league_type%></p>
+        <div class="d-flex justify-content-between">
+          <p><%= league.league_type%></p>
+          <div class="favourites">
+            <%# Edit %>
+            <%= render "leagues/edit_league", league: league%>
+            <%# Delete %>
+            <%= render "leagues/delete_league", league: league%>
+          </div>
+        </div>
         <%= link_to "", league_path(league), class:"stretched-link" %>
       </div>
     </div>
-    <%# Delete %>
-    <%= render "leagues/delete_league", league: league%>
-    <%# Edit %>
-    <%= render "leagues/edit_league", league: league%>
+    <%# edit modal %>
+    <%= render "leagues/edit_league_modal", league: league %>
   <% end  %>
   <%# create modal %>
   <%= render "leagues/create_league_modal", league: new_league_path %>
