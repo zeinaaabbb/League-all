@@ -21,7 +21,11 @@ Rails.application.routes.draw do
     resources :fixtures
     resources :league_teams_join, only: [:create]
     resources :favourites, only: [:create]
-    resources :league_notifications, only: [:create]
+    resources :league_notifications, only: [:create] do
+      member do
+        post 'mark_as_read'
+      end
+    end
   end
 
   resources :teams do

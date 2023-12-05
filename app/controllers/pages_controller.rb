@@ -13,6 +13,9 @@ class PagesController < ApplicationController
 
     @selected_tab = params[:tab] unless params.nil?
 
+    # NOTIFICATIONS LINK
+    @notifications = Notification.where(recipient_type: "User", recipient_id: current_user.id)
+
     # raise
   end
 end

@@ -19,3 +19,10 @@
               <%# create modal %>
               <%= render "leagues/create_league_modal", league: new_league_path %>
     </div>
+
+
+
+<%# NOTIFICATIONS %>
+<% @notifications.each do |n| %>
+  <%= n.params[:post] %>
+<% end %>

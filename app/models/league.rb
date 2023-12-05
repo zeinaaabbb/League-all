@@ -15,14 +15,14 @@ class League < ApplicationRecord
   has_many :teams, through: :league_teams_joins
 
   has_many :fixtures
-  has_many :league_notifications
+  has_many :league_notifications, dependent: :destroy
 
   has_many :points
   belongs_to :user
 
   has_one_attached :photo
 
-  has_many :comments, dependent: :destroy
+  # has_many :comments, dependent: :destroy
 
   def create_fixtures
     teams = RoundRobinTournament.schedule(self.teams.select { |t| true })
@@ -39,4 +39,5 @@ class League < ApplicationRecord
       end
     end
   end
+
 end
