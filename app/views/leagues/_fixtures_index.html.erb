@@ -1,521 +1,395 @@
-<p>Total Fixtures: <%= league.fixtures.count %></p>
+
 
 <% if league.fixtures.count != 0 %>
+
 <%# FIXTURES/RESULTS BY WEEK %>
-  <div style="text-align: center;">
-    <div style="width: 60%; margin: 0 auto;">
-      <h2>Match Day 1 Fixtures</h2>
-      <table style="border-collapse: collapse; width: 100%; margin-top: 20px; margin-bottom: 20px; border-bottom: 1px solid #dddddd;">
-        <thead>
-          <tr>
-            <th style="border: 1px solid #dddddd; background-color: #f2f2f2; text-align: left; padding: 8px; border-left: 1px solid #dddddd;">Game Week</th>
-            <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Home Team</th>
-            <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Score</th>
-            <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; border-right: 1px solid #dddddd;">Away Team</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% league.fixtures.each do |fixture| %>
-            <% if fixture.gameweek == 1 %>
-              <tr>
-                <td style="border-right: 1px solid #dddddd; border-left: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.gameweek %></td>
-                <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.home_team.name %></td>
-                <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;">
-                  <span class="fixture-score" data-bs-toggle="modal" data-bs-target="#fixture_<%= fixture.id %>">
-                    <%= fixture.home_goals %> - <%= fixture.away_goals %>
-                  </span>
-                </td>
-                <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.away_team.name %></td>
-              </tr>
-            <% end %>
 
-            <!-- Fixture Edit Modal -->
-            <div class="modal fade" id="fixture_<%= fixture.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog fixture-modal">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Match Day <%= fixture.gameweek %></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <%= simple_form_for([league, fixture]) do |f| %>
-                      <div class="d-flex justify-content-center align-items-center">
-                        <p class="me-3" style="width: 300px; text-align: right"><%= fixture.home_team.name %></p>
-                        <%= f.input :home_goals, label: false, input_html: { class: "edit-fixture-input me-2" } %>
-                        <%= f.input :away_goals, label: false, input_html: { class: "edit-fixture-input ms-2" } %>
-                        <p class="ms-3" style="width: 300px; text-align: left"><%= fixture.away_team.name %></p>
-                      </div>
-                      <%= f.button :submit, "submit score", class:"btn btn-primary" %>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
+<%# MD-1 %>
+<div class="flex row justify-content-center mb-5">
+  <div class="fixtures text-bg-primary py-3 mb-3 border-0 text-center" style="width: 60%; margin: 0 auto; border-radius:20px">
+    <h2>Match Day 1 Fixtures</h2>
+    <% league.fixtures.each do |fixture| %>
+      <% if fixture.gameweek == 1 %>
+        <div style="border-bottom: 1px solid rgba(0, 0, 0, 0.2); margin-bottom: 10px; padding: 10px; text-align: center;">
+          <div style="display: inline-block; text-align: center;">
+            <p style="margin: 0;">
+              <span><%= link_to fixture.home_team.name, team_path(Team.find_by(name: fixture.home_team.name)), class:"text-danger", style:"text-decoration: none" %></span>
+              <span style="margin-left: 10px;"><span class="fixture-score" data-bs-toggle="modal" data-bs-target="#fixture_<%= fixture.id %>"><%= fixture.home_goals %> - <%= fixture.away_goals %></span></span>
+              <span style="margin-left: 10px;"><%= link_to fixture.away_team.name, team_path(Team.find_by(name: fixture.away_team.name)), class:"text-danger", style:"text-decoration: none" %></span>
+            </p>
+          </div>
+        </div>
+      <% end %>
+      <!-- Fixture Edit Modal -->
+      <div class="modal fade" id="fixture_<%= fixture.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog fixture-modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Match Day <%= fixture.gameweek %></h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div style="text-align: center;">
-    <div style="width: 60%; margin: 0 auto;">
-      <h2>Match Day 2 Fixtures</h2>
-      <table style="border-collapse: collapse; width: 100%; margin-top: 20px; margin-bottom: 20px; border-bottom: 1px solid #dddddd;">
-        <thead>
-          <tr>
-            <th style="border: 1px solid #dddddd; background-color: #f2f2f2; text-align: left; padding: 8px; border-left: 1px solid #dddddd;">Game Week</th>
-            <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Home Team</th>
-            <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Score</th>
-            <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; border-right: 1px solid #dddddd;">Away Team</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% league.fixtures.each do |fixture| %>
-            <% if fixture.gameweek == 2 %>
-              <tr>
-                <td style="border-right: 1px solid #dddddd; border-left: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.gameweek %></td>
-                <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.home_team.name %></td>
-                <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;">
-                  <span class="fixture-score" data-bs-toggle="modal" data-bs-target="#fixture_<%= fixture.id %>">
-                    <%= fixture.home_goals %> - <%= fixture.away_goals %>
-                  </span>
-                </td>
-                <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.away_team.name %></td>
-              </tr>
-            <% end %>
-
-            <!-- Fixture Edit Modal -->
-            <div class="modal fade" id="fixture_<%= fixture.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog fixture-modal">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Match Day <%= fixture.gameweek %></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <%= simple_form_for([league, fixture]) do |f| %>
-                      <div class="d-flex justify-content-center align-items-center">
-                        <p class="me-3" style="width: 300px; text-align: right"><%= fixture.home_team.name %></p>
-                        <%= f.input :home_goals, label: false, input_html: { class: "edit-fixture-input me-2" } %>
-                        <%= f.input :away_goals, label: false, input_html: { class: "edit-fixture-input ms-2" } %>
-                        <p class="ms-3" style="width: 300px; text-align: left"><%= fixture.away_team.name %></p>
-                      </div>
-                      <%= f.button :submit, "submit score", class:"btn btn-primary" %>
-                    <% end %>
-                  </div>
+            <div class="modal-body">
+              <%= simple_form_for([league, fixture]) do |f| %>
+                <div class="d-flex justify-content-center align-items-center">
+                  <p class="me-3" style="width: 300px; text-align: right"><%= fixture.home_team.name %></p>
+                  <%= f.input :home_goals, label: false, input_html: { class: "edit-fixture-input me-2" } %>
+                  <%= f.input :away_goals, label: false, input_html: { class: "edit-fixture-input ms-2" } %>
+                  <p class="ms-3" style="width: 300px; text-align: left"><%= fixture.away_team.name %></p>
                 </div>
-              </div>
+                <%= f.button :submit, "submit score", class:"btn btn-primary" %>
+              <% end %>
             </div>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
+</div>
+<%# MD-1 %>
 
-  <div style="text-align: center;">
-    <div style="width: 60%; margin: 0 auto;">
-      <h2>Match Day 3 Fixtures</h2>
-      <table style="border-collapse: collapse; width: 100%; margin-top: 20px; margin-bottom: 20px; border-bottom: 1px solid #dddddd;">
-        <thead>
-          <tr>
-            <th style="border: 1px solid #dddddd; background-color: #f2f2f2; text-align: left; padding: 8px; border-left: 1px solid #dddddd;">Game Week</th>
-            <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Home Team</th>
-            <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Score</th>
-            <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; border-right: 1px solid #dddddd;">Away Team</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% league.fixtures.each do |fixture| %>
-            <% if fixture.gameweek == 3 %>
-              <tr>
-                <td style="border-right: 1px solid #dddddd; border-left: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.gameweek %></td>
-                <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.home_team.name %></td>
-                <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;">
-                  <span class="fixture-score" data-bs-toggle="modal" data-bs-target="#fixture_<%= fixture.id %>">
-                    <%= fixture.home_goals %> - <%= fixture.away_goals %>
-                  </span>
-                </td>
-                <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.away_team.name %></td>
-              </tr>
-            <% end %>
-
-            <!-- Fixture Edit Modal -->
-            <div class="modal fade" id="fixture_<%= fixture.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog fixture-modal">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Match Day <%= fixture.gameweek %></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <%= simple_form_for([league, fixture]) do |f| %>
-                      <div class="d-flex justify-content-center align-items-center">
-                        <p class="me-3" style="width: 300px; text-align: right"><%= fixture.home_team.name %></p>
-                        <%= f.input :home_goals, label: false, input_html: { class: "edit-fixture-input me-2" } %>
-                        <%= f.input :away_goals, label: false, input_html: { class: "edit-fixture-input ms-2" } %>
-                        <p class="ms-3" style="width: 300px; text-align: left"><%= fixture.away_team.name %></p>
-                      </div>
-                      <%= f.button :submit, "submit score", class:"btn btn-primary" %>
-                    <% end %>
-                  </div>
+<%# MD-2 %>
+<div class="flex row justify-content-center mb-5">
+  <div class="fixtures text-bg-primary py-3 mb-3 border-0 text-center" style="width: 60%; margin: 0 auto; border-radius:20px">
+    <h2>Match Day 2 Fixtures</h2>
+    <% league.fixtures.each do |fixture| %>
+      <% if fixture.gameweek == 2 %>
+        <div style="border-bottom: 1px solid rgba(0, 0, 0, 0.2); margin-bottom: 10px; padding: 10px; text-align: center;">
+          <div style="display: inline-block; text-align: center;">
+            <p style="margin: 0;">
+              <span><%= link_to fixture.home_team.name, team_path(Team.find_by(name: fixture.home_team.name)), class:"text-danger", style:"text-decoration: none" %></span>
+              <span style="margin-left: 10px;"><span class="fixture-score" data-bs-toggle="modal" data-bs-target="#fixture_<%= fixture.id %>"><%= fixture.home_goals %> - <%= fixture.away_goals %></span></span>
+              <span style="margin-left: 10px;"><%= link_to fixture.away_team.name, team_path(Team.find_by(name: fixture.away_team.name)), class:"text-danger", style:"text-decoration: none" %></span>
+            </p>
+          </div>
+        </div>
+      <% end %>
+      <!-- Fixture Edit Modal -->
+      <div class="modal fade" id="fixture_<%= fixture.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog fixture-modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Match Day <%= fixture.gameweek %></h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= simple_form_for([league, fixture]) do |f| %>
+                <div class="d-flex justify-content-center align-items-center">
+                  <p class="me-3" style="width: 300px; text-align: right"><%= fixture.home_team.name %></p>
+                  <%= f.input :home_goals, label: false, input_html: { class: "edit-fixture-input me-2" } %>
+                  <%= f.input :away_goals, label: false, input_html: { class: "edit-fixture-input ms-2" } %>
+                  <p class="ms-3" style="width: 300px; text-align: left"><%= fixture.away_team.name %></p>
                 </div>
-              </div>
+                <%= f.button :submit, "submit score", class:"btn btn-primary" %>
+              <% end %>
             </div>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
+</div>
+<%# MD-2 %>
 
-  <div style="text-align: center;">
-    <div style="width: 60%; margin: 0 auto;">
-      <h2>Match Day 4 Fixtures</h2>
-      <table style="border-collapse: collapse; width: 100%; margin-top: 20px; margin-bottom: 20px; border-bottom: 1px solid #dddddd;">
-        <thead>
-          <tr>
-            <th style="border: 1px solid #dddddd; background-color: #f2f2f2; text-align: left; padding: 8px; border-left: 1px solid #dddddd;">Game Week</th>
-            <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Home Team</th>
-            <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Score</th>
-            <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; border-right: 1px solid #dddddd;">Away Team</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% league.fixtures.each do |fixture| %>
-            <% if fixture.gameweek == 4 %>
-              <tr>
-                <td style="border-right: 1px solid #dddddd; border-left: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.gameweek %></td>
-                <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.home_team.name %></td>
-                <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;">
-                  <span class="fixture-score" data-bs-toggle="modal" data-bs-target="#fixture_<%= fixture.id %>">
-                    <%= fixture.home_goals %> - <%= fixture.away_goals %>
-                  </span>
-                </td>
-                <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.away_team.name %></td>
-              </tr>
-            <% end %>
-
-            <!-- Fixture Edit Modal -->
-            <div class="modal fade" id="fixture_<%= fixture.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog fixture-modal">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Match Day <%= fixture.gameweek %></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <%= simple_form_for([league, fixture]) do |f| %>
-                      <div class="d-flex justify-content-center align-items-center">
-                        <p class="me-3" style="width: 300px; text-align: right"><%= fixture.home_team.name %></p>
-                        <%= f.input :home_goals, label: false, input_html: { class: "edit-fixture-input me-2" } %>
-                        <%= f.input :away_goals, label: false, input_html: { class: "edit-fixture-input ms-2" } %>
-                        <p class="ms-3" style="width: 300px; text-align: left"><%= fixture.away_team.name %></p>
-                      </div>
-                      <%= f.button :submit, "submit score", class:"btn btn-primary" %>
-                    <% end %>
-                  </div>
+<%# MD-3 %>
+<div class="flex row justify-content-center mb-5">
+  <div class="fixtures text-bg-primary py-3 mb-3 border-0 text-center" style="width: 60%; margin: 0 auto; border-radius:20px">
+    <h2>Match Day 3 Fixtures</h2>
+    <% league.fixtures.each do |fixture| %>
+      <% if fixture.gameweek == 3 %>
+        <div style="border-bottom: 1px solid rgba(0, 0, 0, 0.2); margin-bottom: 10px; padding: 10px; text-align: center;">
+          <div style="display: inline-block; text-align: center;">
+            <p style="margin: 0;">
+              <span><%= link_to fixture.home_team.name, team_path(Team.find_by(name: fixture.home_team.name)), class:"text-danger", style:"text-decoration: none" %></span>
+              <span style="margin-left: 10px;"><span class="fixture-score" data-bs-toggle="modal" data-bs-target="#fixture_<%= fixture.id %>"><%= fixture.home_goals %> - <%= fixture.away_goals %></span></span>
+              <span style="margin-left: 10px;"><%= link_to fixture.away_team.name, team_path(Team.find_by(name: fixture.away_team.name)), class:"text-danger", style:"text-decoration: none" %></span>
+            </p>
+          </div>
+        </div>
+      <% end %>
+      <!-- Fixture Edit Modal -->
+      <div class="modal fade" id="fixture_<%= fixture.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog fixture-modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Match Day <%= fixture.gameweek %></h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= simple_form_for([league, fixture]) do |f| %>
+                <div class="d-flex justify-content-center align-items-center">
+                  <p class="me-3" style="width: 300px; text-align: right"><%= fixture.home_team.name %></p>
+                  <%= f.input :home_goals, label: false, input_html: { class: "edit-fixture-input me-2" } %>
+                  <%= f.input :away_goals, label: false, input_html: { class: "edit-fixture-input ms-2" } %>
+                  <p class="ms-3" style="width: 300px; text-align: left"><%= fixture.away_team.name %></p>
                 </div>
-              </div>
+                <%= f.button :submit, "submit score", class:"btn btn-primary" %>
+              <% end %>
             </div>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
+</div>
+<%# MD-3 %>
 
-  <div style="text-align: center;">
-    <div style="width: 60%; margin: 0 auto;">
-      <h2>Match Day 5 Fixtures</h2>
-      <table style="border-collapse: collapse; width: 100%; margin-top: 20px; margin-bottom: 20px; border-bottom: 1px solid #dddddd;">
-        <thead>
-          <tr>
-            <th style="border: 1px solid #dddddd; background-color: #f2f2f2; text-align: left; padding: 8px; border-left: 1px solid #dddddd;">Game Week</th>
-            <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Home Team</th>
-            <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Score</th>
-            <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; border-right: 1px solid #dddddd;">Away Team</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% league.fixtures.each do |fixture| %>
-            <% if fixture.gameweek == 5 %>
-              <tr>
-                <td style="border-right: 1px solid #dddddd; border-left: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.gameweek %></td>
-                <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.home_team.name %></td>
-                <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;">
-                  <span class="fixture-score" data-bs-toggle="modal" data-bs-target="#fixture_<%= fixture.id %>">
-                    <%= fixture.home_goals %> - <%= fixture.away_goals %>
-                  </span>
-                </td>
-                <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.away_team.name %></td>
-              </tr>
-            <% end %>
-
-            <!-- Fixture Edit Modal -->
-            <div class="modal fade" id="fixture_<%= fixture.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog fixture-modal">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Match Day <%= fixture.gameweek %></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <%= simple_form_for([league, fixture]) do |f| %>
-                      <div class="d-flex justify-content-center align-items-center">
-                        <p class="me-3" style="width: 300px; text-align: right"><%= fixture.home_team.name %></p>
-                        <%= f.input :home_goals, label: false, input_html: { class: "edit-fixture-input me-2" } %>
-                        <%= f.input :away_goals, label: false, input_html: { class: "edit-fixture-input ms-2" } %>
-                        <p class="ms-3" style="width: 300px; text-align: left"><%= fixture.away_team.name %></p>
-                      </div>
-                      <%= f.button :submit, "submit score", class:"btn btn-primary" %>
-                    <% end %>
-                  </div>
+<%# MD-4 %>
+<div class="flex row justify-content-center mb-5">
+  <div class="fixtures text-bg-primary py-3 mb-3 border-0 text-center" style="width: 60%; margin: 0 auto; border-radius:20px">
+    <h2>Match Day 4 Fixtures</h2>
+    <% league.fixtures.each do |fixture| %>
+      <% if fixture.gameweek == 4 %>
+        <div style="border-bottom: 1px solid rgba(0, 0, 0, 0.2); margin-bottom: 10px; padding: 10px; text-align: center;">
+          <div style="display: inline-block; text-align: center;">
+            <p style="margin: 0;">
+              <span><%= link_to fixture.home_team.name, team_path(Team.find_by(name: fixture.home_team.name)), class:"text-danger", style:"text-decoration: none" %></span>
+              <span style="margin-left: 10px;"><span class="fixture-score" data-bs-toggle="modal" data-bs-target="#fixture_<%= fixture.id %>"><%= fixture.home_goals %> - <%= fixture.away_goals %></span></span>
+              <span style="margin-left: 10px;"><%= link_to fixture.away_team.name, team_path(Team.find_by(name: fixture.away_team.name)), class:"text-danger", style:"text-decoration: none" %></span>
+            </p>
+          </div>
+        </div>
+      <% end %>
+      <!-- Fixture Edit Modal -->
+      <div class="modal fade" id="fixture_<%= fixture.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog fixture-modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Match Day <%= fixture.gameweek %></h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= simple_form_for([league, fixture]) do |f| %>
+                <div class="d-flex justify-content-center align-items-center">
+                  <p class="me-3" style="width: 300px; text-align: right"><%= fixture.home_team.name %></p>
+                  <%= f.input :home_goals, label: false, input_html: { class: "edit-fixture-input me-2" } %>
+                  <%= f.input :away_goals, label: false, input_html: { class: "edit-fixture-input ms-2" } %>
+                  <p class="ms-3" style="width: 300px; text-align: left"><%= fixture.away_team.name %></p>
                 </div>
-              </div>
+                <%= f.button :submit, "submit score", class:"btn btn-primary" %>
+              <% end %>
             </div>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
+</div>
+<%# MD-4 %>
 
-  <div style="text-align: center;">
-    <div style="width: 60%; margin: 0 auto;">
-      <h2>Match Day 6 Fixtures</h2>
-      <table style="border-collapse: collapse; width: 100%; margin-top: 20px; margin-bottom: 20px; border-bottom: 1px solid #dddddd;">
-        <thead>
-          <tr>
-            <th style="border: 1px solid #dddddd; background-color: #f2f2f2; text-align: left; padding: 8px; border-left: 1px solid #dddddd;">Game Week</th>
-            <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Home Team</th>
-            <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Score</th>
-            <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; border-right: 1px solid #dddddd;">Away Team</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% league.fixtures.each do |fixture| %>
-            <% if fixture.gameweek == 6 %>
-              <tr>
-                <td style="border-right: 1px solid #dddddd; border-left: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.gameweek %></td>
-                <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.home_team.name %></td>
-                <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;">
-                  <span class="fixture-score" data-bs-toggle="modal" data-bs-target="#fixture_<%= fixture.id %>">
-                    <%= fixture.home_goals %> - <%= fixture.away_goals %>
-                  </span>
-                </td>
-                <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.away_team.name %></td>
-              </tr>
-            <% end %>
-
-            <!-- Fixture Edit Modal -->
-            <div class="modal fade" id="fixture_<%= fixture.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog fixture-modal">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Match Day <%= fixture.gameweek %></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <%= simple_form_for([league, fixture]) do |f| %>
-                      <div class="d-flex justify-content-center align-items-center">
-                        <p class="me-3" style="width: 300px; text-align: right"><%= fixture.home_team.name %></p>
-                        <%= f.input :home_goals, label: false, input_html: { class: "edit-fixture-input me-2" } %>
-                        <%= f.input :away_goals, label: false, input_html: { class: "edit-fixture-input ms-2" } %>
-                        <p class="ms-3" style="width: 300px; text-align: left"><%= fixture.away_team.name %></p>
-                      </div>
-                      <%= f.button :submit, "submit score", class:"btn btn-primary" %>
-                    <% end %>
-                  </div>
+<%# MD-5 %>
+<div class="flex row justify-content-center mb-5">
+  <div class="fixtures text-bg-primary py-3 mb-3 border-0 text-center" style="width: 60%; margin: 0 auto; border-radius:20px">
+    <h2>Match Day 5 Fixtures</h2>
+    <% league.fixtures.each do |fixture| %>
+      <% if fixture.gameweek == 5 %>
+        <div style="border-bottom: 1px solid rgba(0, 0, 0, 0.2); margin-bottom: 10px; padding: 10px; text-align: center;">
+          <div style="display: inline-block; text-align: center;">
+            <p style="margin: 0;">
+              <span><%= link_to fixture.home_team.name, team_path(Team.find_by(name: fixture.home_team.name)), class:"text-danger", style:"text-decoration: none" %></span>
+              <span style="margin-left: 10px;"><span class="fixture-score" data-bs-toggle="modal" data-bs-target="#fixture_<%= fixture.id %>"><%= fixture.home_goals %> - <%= fixture.away_goals %></span></span>
+              <span style="margin-left: 10px;"><%= link_to fixture.away_team.name, team_path(Team.find_by(name: fixture.away_team.name)), class:"text-danger", style:"text-decoration: none" %></span>
+            </p>
+          </div>
+        </div>
+      <% end %>
+      <!-- Fixture Edit Modal -->
+      <div class="modal fade" id="fixture_<%= fixture.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog fixture-modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Match Day <%= fixture.gameweek %></h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= simple_form_for([league, fixture]) do |f| %>
+                <div class="d-flex justify-content-center align-items-center">
+                  <p class="me-3" style="width: 300px; text-align: right"><%= fixture.home_team.name %></p>
+                  <%= f.input :home_goals, label: false, input_html: { class: "edit-fixture-input me-2" } %>
+                  <%= f.input :away_goals, label: false, input_html: { class: "edit-fixture-input ms-2" } %>
+                  <p class="ms-3" style="width: 300px; text-align: left"><%= fixture.away_team.name %></p>
                 </div>
-              </div>
+                <%= f.button :submit, "submit score", class:"btn btn-primary" %>
+              <% end %>
             </div>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
+</div>
+<%# MD-5 %>
 
-  <div style="text-align: center;">
-    <div style="width: 60%; margin: 0 auto;">
-      <h2>Match Day 7 Fixtures</h2>
-      <table style="border-collapse: collapse; width: 100%; margin-top: 20px; margin-bottom: 20px; border-bottom: 1px solid #dddddd;">
-        <thead>
-          <tr>
-            <th style="border: 1px solid #dddddd; background-color: #f2f2f2; text-align: left; padding: 8px; border-left: 1px solid #dddddd;">Game Week</th>
-            <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Home Team</th>
-            <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Score</th>
-            <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; border-right: 1px solid #dddddd;">Away Team</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% league.fixtures.each do |fixture| %>
-            <% if fixture.gameweek == 7 %>
-              <tr>
-                <td style="border-right: 1px solid #dddddd; border-left: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.gameweek %></td>
-                <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.home_team.name %></td>
-                <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;">
-                  <span class="fixture-score" data-bs-toggle="modal" data-bs-target="#fixture_<%= fixture.id %>">
-                    <%= fixture.home_goals %> - <%= fixture.away_goals %>
-                  </span>
-                </td>
-                <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.away_team.name %></td>
-              </tr>
-            <% end %>
-
-            <!-- Fixture Edit Modal -->
-            <div class="modal fade" id="fixture_<%= fixture.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog fixture-modal">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Match Day <%= fixture.gameweek %></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <%= simple_form_for([league, fixture]) do |f| %>
-                      <div class="d-flex justify-content-center align-items-center">
-                        <p class="me-3" style="width: 300px; text-align: right"><%= fixture.home_team.name %></p>
-                        <%= f.input :home_goals, label: false, input_html: { class: "edit-fixture-input me-2" } %>
-                        <%= f.input :away_goals, label: false, input_html: { class: "edit-fixture-input ms-2" } %>
-                        <p class="ms-3" style="width: 300px; text-align: left"><%= fixture.away_team.name %></p>
-                      </div>
-                      <%= f.button :submit, "submit score", class:"btn btn-primary" %>
-                    <% end %>
-                  </div>
+<%# MD-6 %>
+<div class="flex row justify-content-center mb-5">
+  <div class="fixtures text-bg-primary py-3 mb-3 border-0 text-center" style="width: 60%; margin: 0 auto; border-radius:20px">
+    <h2>Match Day 6 Fixtures</h2>
+    <% league.fixtures.each do |fixture| %>
+      <% if fixture.gameweek == 6 %>
+        <div style="border-bottom: 1px solid rgba(0, 0, 0, 0.2); margin-bottom: 10px; padding: 10px; text-align: center;">
+          <div style="display: inline-block; text-align: center;">
+            <p style="margin: 0;">
+              <span><%= link_to fixture.home_team.name, team_path(Team.find_by(name: fixture.home_team.name)), class:"text-danger", style:"text-decoration: none" %></span>
+              <span style="margin-left: 10px;"><span class="fixture-score" data-bs-toggle="modal" data-bs-target="#fixture_<%= fixture.id %>"><%= fixture.home_goals %> - <%= fixture.away_goals %></span></span>
+              <span style="margin-left: 10px;"><%= link_to fixture.away_team.name, team_path(Team.find_by(name: fixture.away_team.name)), class:"text-danger", style:"text-decoration: none" %></span>
+            </p>
+          </div>
+        </div>
+      <% end %>
+      <!-- Fixture Edit Modal -->
+      <div class="modal fade" id="fixture_<%= fixture.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog fixture-modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Match Day <%= fixture.gameweek %></h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= simple_form_for([league, fixture]) do |f| %>
+                <div class="d-flex justify-content-center align-items-center">
+                  <p class="me-3" style="width: 300px; text-align: right"><%= fixture.home_team.name %></p>
+                  <%= f.input :home_goals, label: false, input_html: { class: "edit-fixture-input me-2" } %>
+                  <%= f.input :away_goals, label: false, input_html: { class: "edit-fixture-input ms-2" } %>
+                  <p class="ms-3" style="width: 300px; text-align: left"><%= fixture.away_team.name %></p>
                 </div>
-              </div>
+                <%= f.button :submit, "submit score", class:"btn btn-primary" %>
+              <% end %>
             </div>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
+</div>
+<%# MD-6 %>
 
-  <div style="text-align: center;">
-    <div style="width: 60%; margin: 0 auto;">
-      <h2>Match Day 8 Fixtures</h2>
-      <table style="border-collapse: collapse; width: 100%; margin-top: 20px; margin-bottom: 20px; border-bottom: 1px solid #dddddd;">
-        <thead>
-          <tr>
-            <th style="border: 1px solid #dddddd; background-color: #f2f2f2; text-align: left; padding: 8px; border-left: 1px solid #dddddd;">Game Week</th>
-            <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Home Team</th>
-            <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Score</th>
-            <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; border-right: 1px solid #dddddd;">Away Team</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% league.fixtures.each do |fixture| %>
-            <% if fixture.gameweek == 8 %>
-              <tr>
-                <td style="border-right: 1px solid #dddddd; border-left: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.gameweek %></td>
-                <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.home_team.name %></td>
-                <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;">
-                  <span class="fixture-score" data-bs-toggle="modal" data-bs-target="#fixture_<%= fixture.id %>">
-                    <%= fixture.home_goals %> - <%= fixture.away_goals %>
-                  </span>
-                </td>
-                <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.away_team.name %></td>
-              </tr>
-            <% end %>
-
-            <!-- Fixture Edit Modal -->
-            <div class="modal fade" id="fixture_<%= fixture.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog fixture-modal">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Match Day <%= fixture.gameweek %></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <%= simple_form_for([league, fixture]) do |f| %>
-                      <div class="d-flex justify-content-center align-items-center">
-                        <p class="me-3" style="width: 300px; text-align: right"><%= fixture.home_team.name %></p>
-                        <%= f.input :home_goals, label: false, input_html: { class: "edit-fixture-input me-2" } %>
-                        <%= f.input :away_goals, label: false, input_html: { class: "edit-fixture-input ms-2" } %>
-                        <p class="ms-3" style="width: 300px; text-align: left"><%= fixture.away_team.name %></p>
-                      </div>
-                      <%= f.button :submit, "submit score", class:"btn btn-primary" %>
-                    <% end %>
-                  </div>
+<%# MD-7 %>
+<div class="flex row justify-content-center mb-5">
+  <div class="fixtures text-bg-primary py-3 mb-3 border-0 text-center" style="width: 60%; margin: 0 auto; border-radius:20px">
+    <h2>Match Day 7 Fixtures</h2>
+    <% league.fixtures.each do |fixture| %>
+      <% if fixture.gameweek == 7 %>
+        <div style="border-bottom: 1px solid rgba(0, 0, 0, 0.2); margin-bottom: 10px; padding: 10px; text-align: center;">
+          <div style="display: inline-block; text-align: center;">
+            <p style="margin: 0;">
+              <span><%= link_to fixture.home_team.name, team_path(Team.find_by(name: fixture.home_team.name)), class:"text-danger", style:"text-decoration: none" %></span>
+              <span style="margin-left: 10px;"><span class="fixture-score" data-bs-toggle="modal" data-bs-target="#fixture_<%= fixture.id %>"><%= fixture.home_goals %> - <%= fixture.away_goals %></span></span>
+              <span style="margin-left: 10px;"><%= link_to fixture.away_team.name, team_path(Team.find_by(name: fixture.away_team.name)), class:"text-danger", style:"text-decoration: none" %></span>
+            </p>
+          </div>
+        </div>
+      <% end %>
+      <!-- Fixture Edit Modal -->
+      <div class="modal fade" id="fixture_<%= fixture.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog fixture-modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Match Day <%= fixture.gameweek %></h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= simple_form_for([league, fixture]) do |f| %>
+                <div class="d-flex justify-content-center align-items-center">
+                  <p class="me-3" style="width: 300px; text-align: right"><%= fixture.home_team.name %></p>
+                  <%= f.input :home_goals, label: false, input_html: { class: "edit-fixture-input me-2" } %>
+                  <%= f.input :away_goals, label: false, input_html: { class: "edit-fixture-input ms-2" } %>
+                  <p class="ms-3" style="width: 300px; text-align: left"><%= fixture.away_team.name %></p>
                 </div>
-              </div>
+                <%= f.button :submit, "submit score", class:"btn btn-primary" %>
+              <% end %>
             </div>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
+</div>
+<%# MD-7 %>
 
-  <div style="text-align: center;">
-    <div style="width: 60%; margin: 0 auto;">
-      <h2>Match Day 9 Fixtures</h2>
-      <table style="border-collapse: collapse; width: 100%; margin-top: 20px; margin-bottom: 20px; border-bottom: 1px solid #dddddd;">
-        <thead>
-          <tr>
-            <th style="border: 1px solid #dddddd; background-color: #f2f2f2; text-align: left; padding: 8px; border-left: 1px solid #dddddd;">Game Week</th>
-            <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Home Team</th>
-            <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Score</th>
-            <th style="border: 1px solid #dddddd; text-align: left; padding: 8px; border-right: 1px solid #dddddd;">Away Team</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% league.fixtures.each do |fixture| %>
-            <% if fixture.gameweek == 9 %>
-              <tr>
-                <td style="border-right: 1px solid #dddddd; border-left: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.gameweek %></td>
-                <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.home_team.name %></td>
-                <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;">
-                  <span class="fixture-score" data-bs-toggle="modal" data-bs-target="#fixture_<%= fixture.id %>">
-                    <%= fixture.home_goals %> - <%= fixture.away_goals %>
-                  </span>
-                </td>
-                <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= fixture.away_team.name %></td>
-              </tr>
-            <% end %>
-
-            <!-- Fixture Edit Modal -->
-            <div class="modal fade" id="fixture_<%= fixture.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog fixture-modal">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Match Day <%= fixture.gameweek %></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <%= simple_form_for([league, fixture]) do |f| %>
-                      <div class="d-flex justify-content-center align-items-center">
-                        <p class="me-3" style="width: 300px; text-align: right"><%= fixture.home_team.name %></p>
-                        <%= f.input :home_goals, label: false, input_html: { class: "edit-fixture-input me-2" } %>
-                        <%= f.input :away_goals, label: false, input_html: { class: "edit-fixture-input ms-2" } %>
-                        <p class="ms-3" style="width: 300px; text-align: left"><%= fixture.away_team.name %></p>
-                      </div>
-                      <%= f.button :submit, "submit score", class:"btn btn-primary" %>
-                    <% end %>
-                  </div>
+<%# MD-8 %>
+<div class="flex row justify-content-center mb-5">
+  <div class="fixtures text-bg-primary py-3 mb-3 border-0 text-center" style="width: 60%; margin: 0 auto; border-radius:20px">
+    <h2>Match Day 8 Fixtures</h2>
+    <% league.fixtures.each do |fixture| %>
+      <% if fixture.gameweek == 8 %>
+        <div style="border-bottom: 1px solid rgba(0, 0, 0, 0.2); margin-bottom: 10px; padding: 10px; text-align: center;">
+          <div style="display: inline-block; text-align: center;">
+            <p style="margin: 0;">
+              <span><%= link_to fixture.home_team.name, team_path(Team.find_by(name: fixture.home_team.name)), class:"text-danger", style:"text-decoration: none" %></span>
+              <span style="margin-left: 10px;"><span class="fixture-score" data-bs-toggle="modal" data-bs-target="#fixture_<%= fixture.id %>"><%= fixture.home_goals %> - <%= fixture.away_goals %></span></span>
+              <span style="margin-left: 10px;"><%= link_to fixture.away_team.name, team_path(Team.find_by(name: fixture.away_team.name)), class:"text-danger", style:"text-decoration: none" %></span>
+            </p>
+          </div>
+        </div>
+      <% end %>
+      <!-- Fixture Edit Modal -->
+      <div class="modal fade" id="fixture_<%= fixture.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog fixture-modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Match Day <%= fixture.gameweek %></h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= simple_form_for([league, fixture]) do |f| %>
+                <div class="d-flex justify-content-center align-items-center">
+                  <p class="me-3" style="width: 300px; text-align: right"><%= fixture.home_team.name %></p>
+                  <%= f.input :home_goals, label: false, input_html: { class: "edit-fixture-input me-2" } %>
+                  <%= f.input :away_goals, label: false, input_html: { class: "edit-fixture-input ms-2" } %>
+                  <p class="ms-3" style="width: 300px; text-align: left"><%= fixture.away_team.name %></p>
                 </div>
-              </div>
+                <%= f.button :submit, "submit score", class:"btn btn-primary" %>
+              <% end %>
             </div>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
+</div>
+<%# MD-8 %>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<%# MD-9 %>
+<div class="flex row justify-content-center mb-5">
+  <div class="fixtures text-bg-primary py-3 mb-3 border-0 text-center" style="width: 60%; margin: 0 auto; border-radius:20px">
+    <h2>Match Day 9 Fixtures</h2>
+    <% league.fixtures.each do |fixture| %>
+      <% if fixture.gameweek == 9 %>
+        <div style="border-bottom: 1px solid rgba(0, 0, 0, 0.2); margin-bottom: 10px; padding: 10px; text-align: center;">
+          <div style="display: inline-block; text-align: center;">
+            <p style="margin: 0;">
+              <span><%= link_to fixture.home_team.name, team_path(Team.find_by(name: fixture.home_team.name)), class:"text-danger", style:"text-decoration: none" %></span>
+              <span style="margin-left: 10px;"><span class="fixture-score" data-bs-toggle="modal" data-bs-target="#fixture_<%= fixture.id %>"><%= fixture.home_goals %> - <%= fixture.away_goals %></span></span>
+              <span style="margin-left: 10px;"><%= link_to fixture.away_team.name, team_path(Team.find_by(name: fixture.away_team.name)), class:"text-danger", style:"text-decoration: none" %></span>
+            </p>
+          </div>
+        </div>
+      <% end %>
+      <!-- Fixture Edit Modal -->
+      <div class="modal fade" id="fixture_<%= fixture.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog fixture-modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Match Day <%= fixture.gameweek %></h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= simple_form_for([league, fixture]) do |f| %>
+                <div class="d-flex justify-content-center align-items-center">
+                  <p class="me-3" style="width: 300px; text-align: right"><%= fixture.home_team.name %></p>
+                  <%= f.input :home_goals, label: false, input_html: { class: "edit-fixture-input me-2" } %>
+                  <%= f.input :away_goals, label: false, input_html: { class: "edit-fixture-input ms-2" } %>
+                  <p class="ms-3" style="width: 300px; text-align: left"><%= fixture.away_team.name %></p>
+                </div>
+                <%= f.button :submit, "submit score", class:"btn btn-primary" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<%# MD-9 %>
 
   <%# END FIXTURES/RESULTS %>
 <% elsif league.fixtures.count == 0 && accepted_teams.count == 10 %>
