@@ -6,7 +6,7 @@ class Team < ApplicationRecord
   has_many :players, dependent: :destroy
   has_many :users, through: :players
   has_many :fixtures
-  has_many :messages
+  has_many :messages, dependent: :destroy
   has_many :chatrooms, dependent: :destroy
 
 
