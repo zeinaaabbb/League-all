@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_04_214043) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_05_141818) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,6 +46,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_214043) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "team_id", null: false
+    t.index ["team_id"], name: "index_chatrooms_on_team_id"
   end
 
   create_table "favourites", force: :cascade do |t|
@@ -55,15 +57,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_214043) do
     t.datetime "updated_at", null: false
     t.index ["league_id"], name: "index_favourites_on_league_id"
     t.index ["user_id"], name: "index_favourites_on_user_id"
-  end
-
-  create_table "favourites_teams", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "team_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["team_id"], name: "index_favourites_teams_on_team_id"
-    t.index ["user_id"], name: "index_favourites_teams_on_user_id"
   end
 
   create_table "fixtures", force: :cascade do |t|
@@ -180,10 +173,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_214043) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "chatrooms", "teams"
   add_foreign_key "favourites", "leagues"
   add_foreign_key "favourites", "users"
-  add_foreign_key "favourites_teams", "teams"
-  add_foreign_key "favourites_teams", "users"
   add_foreign_key "fixtures", "leagues"
   add_foreign_key "fixtures", "teams", column: "away_team_id"
   add_foreign_key "fixtures", "teams", column: "home_team_id"

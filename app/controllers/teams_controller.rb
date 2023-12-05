@@ -8,6 +8,8 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @player = Player.new
     @accepted_players = @team.players.select { |player| player.accepted == true}
+
+    @message = Message.new
   end
 
   def new
@@ -19,6 +21,10 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
     @team.user = current_user
     if @team.save!
+      @chatroom = Chatroom.new
+      @chatroom.team = @team
+      @chatroom.name = @team.name
+      @chatroom.save
       redirect_to dashboard_path(@team)
       flash[:message] = 'Your Team was Created Successfully!'
     else
