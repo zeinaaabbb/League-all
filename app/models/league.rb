@@ -5,7 +5,7 @@ class League < ApplicationRecord
   validates :number_of_teams, presence: true
   validates :days_per_week, presence: true
   validates :description, length: { minimum: 10 }, presence: true
-  has_many :favourites
+  has_many :favourites, dependent: :destroy
 
   include PgSearch::Model
   multisearchable against: [:name, :location]
