@@ -9,7 +9,9 @@ class Team < ApplicationRecord
   has_many :messages
 
   geocoded_by :location
+
   after_validation :geocode, if: :will_save_change_to_location?
+  has_many :favourites_teams
 
   has_many :league_teams_joins
   has_many :leagues, through: :league_teams_joins

@@ -1,0 +1,43 @@
+<div data-controller="tabs">
+  <div>
+    <ul class="list-inline tabs-underlined justify-content-center">
+      <li>
+        <a href="#" class="tab-underlined active" data-action="tabs#changeTab" data-target="tabs.tab" data-tab="1">Leagues</a>
+      </li>
+      <li>
+        <a href="#" class="tab-underlined" data-action="tabs#changeTab" data-target="tabs.tab" data-tab="2">Teams</a>
+      </li>
+    </ul>
+  </div>
+<div class="container" data-target="tabs.content" data-tab="1">
+<div class="d-flex flex-row" >
+    <% @leagues.each do |league| %>
+      <div class="card text-bg-success mb-3 border-0 mx-4" class="custom-card" style="width: 18rem; height: 12rem;">
+        <div class="card-body" >
+      <h5 class="card-title"><%= league.name %></h5>
+      <p><%= league.location%></p>
+      <p><%= league.format%></p>
+      <p><%= league.level%></p>
+      <p><%= league.league_type%></p>
+      <%= link_to "", league_path(league), class:"stretched-link" %>
+      </div>
+  </div>
+  <% end %>
+</div>
+<div class="container" data-target="tabs.content" data-tab="2">
+<div class="row">
+<div class="col-6">
+<% @teams.each do |team| %>
+  <div class="card text-bg-success mb-3 border-0 mx-4" class="custom-card" style="width: 18rem; height: 12rem;">
+    <% if team.photo.attached? %>
+      <img src=<%= cl_image_path team.photo.key %> class="card-img-top" alt="Team Photo">
+    <% end %>
+    <div class="card-body" >
+    <h5 class="card-title"><%= team.name %></h5>
+      <%= link_to "", team_path(team), class:"stretched-link" %>
+    </div>
+  </div>
+  <% end %>
+  </div>
+</div>
+</div>
