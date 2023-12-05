@@ -24,6 +24,23 @@ class PagesController < ApplicationController
       @teams = Team.where(id: team_ids)
     end
 
+    league_markers = @leagues.geocoded.map do |league|
+      {
+        lat: league.latitude,
+        lng: league.longitude
+      }
+    end
+    @markers = @teams.geocoded.map do |team|
+      {
+        lat: team.latitude,
+        lng: team.longitude
+      }
+    end
+
+    league_markers.each do |marker|
+      @markers << marker
+    end
+
     @selected_tab = params[:tab] unless params[:tab].nil?
   end
 end
