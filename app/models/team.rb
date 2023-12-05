@@ -8,6 +8,9 @@ class Team < ApplicationRecord
   has_many :fixtures
   has_many :messages
 
+  include PgSearch::Model
+  multisearchable against: [:name, :location]
+
   has_many :favourites_teams
 
   has_many :league_teams_joins
