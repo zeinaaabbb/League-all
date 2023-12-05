@@ -6,7 +6,8 @@ class Team < ApplicationRecord
   has_many :players, dependent: :destroy
   has_many :users, through: :players
   has_many :fixtures
-  has_many :messages
+  has_many :messages, dependent: :destroy
+  has_many :chatrooms, dependent: :destroy
 
 
   geocoded_by :location
@@ -17,7 +18,7 @@ class Team < ApplicationRecord
   multisearchable against: [:name, :location]
 
 
-  has_many :favourites_teams
+  has_many :favourites_teams, dependent: :destroy
 
   has_many :league_teams_joins
   has_many :leagues, through: :league_teams_joins

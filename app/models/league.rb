@@ -25,8 +25,6 @@ class League < ApplicationRecord
 
   has_one_attached :photo
 
-  has_many :comments, dependent: :destroy
-
   def create_fixtures
     teams = RoundRobinTournament.schedule(self.teams.select { |t| true })
 

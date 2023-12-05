@@ -136,6 +136,7 @@ League.all.each do |league|
     team.save!
     teams_array << team
     puts "#{team.name} created!"
+    Chatroom.create(name: team.name, team_id: team.id)
 
     LeagueTeamsJoin.create!(team: team, league: league, accepted: true)
     puts "#{team.name} joined #{league.name}!"
@@ -173,9 +174,11 @@ puts "#{following_league.name} created!"
   team.name = "#{Faker::Travel::TrainStation.name(region: 'united_kingdom', type: 'metro')} #{suffixes.sample}"
   team.user = User.all.sample
   team.location = locations.sample
+  file = URI.open(team_photos.sample)
+  team.photo.attach(io: file, filename: "team.png", content_type: "image/png")
   team.save!
   puts "#{team.name} created!"
-
+  Chatroom.create(name: team.name, team_id: team.id)
   LeagueTeamsJoin.create!(team: team, league: following_league, accepted: true)
   puts "#{team.name} joined #{following_league.name}!"
 end

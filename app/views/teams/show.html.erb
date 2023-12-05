@@ -13,7 +13,7 @@
         <div class="tab-pane fade" id="v-pills-fixtures" role="tabpanel" aria-labelledby="v-pills-fixtures-tab">Fixtures go here</div>
         <div class="tab-pane fade" id="v-pills-leagues" role="tabpanel" aria-labelledby="v-pills-leagues-tab"><%= render partial: "leagues", locals: {team: @team, nearby_leagues: @nearby_leagues }%></div>
         <div class="tab-pane fade" id="v-pills-statistics" role="tabpanel" aria-labelledby="v-pills-statistics-tab">Statistics go here</div>
-        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">Messages go here</div>
+      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab"><%= render "chatrooms/show", chatroom: @team.chatrooms[0] %></div>
         <div class="tab-pane fade" id="v-pills-registrations" role="tabpanel" aria-labelledby="v-pills-registrations-tab"><%= render partial: "registrations", locals: { players: @team.players }%></div>
       </div>
     </div>
