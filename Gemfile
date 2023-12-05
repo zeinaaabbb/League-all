@@ -96,3 +96,5 @@ end
 gem 'psych', '~>3.0'
 
 gem "geocoder"
+
+gem "noticed", "~> 1.6"
