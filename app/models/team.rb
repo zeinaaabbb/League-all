@@ -6,9 +6,19 @@ class Team < ApplicationRecord
   has_many :players, dependent: :destroy
   has_many :users, through: :players
   has_many :fixtures
-  has_many :messages
+  has_many :messages, dependent: :destroy
+  has_many :chatrooms, dependent: :destroy
 
-  has_many :favourites_teams
+
+  geocoded_by :location
+
+  after_validation :geocode, if: :will_save_change_to_location?
+
+  include PgSearch::Model
+  multisearchable against: [:name, :location]
+
+
+  has_many :favourites_teams, dependent: :destroy
 
   has_many :league_teams_joins
   has_many :leagues, through: :league_teams_joins

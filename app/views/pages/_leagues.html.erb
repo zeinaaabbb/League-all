@@ -1,28 +1,34 @@
 <h3 class="m-3">your leagues</h3>
-    <div class="d-flex flex-row" >
-              <% @user.leagues.each do |league| %>
-                <div class="card text-bg-success mb-3 border-0 mx-4" class="custom-card" style="width: 18rem; height: 12rem;">
-                  <div class="card-body" >
-                    <h5 class="card-title"><%= league.name %></h5>
-                    <p><%= league.location%></p>
-                    <p><%= league.format%></p>
-                    <p><%= league.level%></p>
-                    <p><%= league.league_type%></p>
-                    <%= link_to "", league_path(league), class:"stretched-link" %>
-                  </div>
-                </div>
-                <%# Delete %>
-                <%= render "leagues/delete_league", league: league%>
-                <%# Edit %>
-                <%= render "leagues/edit_league", league: league%>
-              <% end  %>
-              <%# create modal %>
-              <%= render "leagues/create_league_modal", league: new_league_path %>
+<div class="d-flex flex-row" >
+  <% @user.leagues.each do |league| %>
+    <div class="card text-bg-success mb-3 border-0 mx-4" class="custom-card" style="width: 18rem; height: 12rem;">
+      <div class="card-body" >
+        <h5 class="card-title"><%= league.name %></h5>
+        <p><%= league.location%></p>
+        <p><%= league.format%></p>
+        <p><%= league.level%></p>
+        <div class="d-flex justify-content-between">
+          <p><%= league.league_type%></p>
+          <div class="favourites">
+            <%# Edit %>
+            <%= render "leagues/edit_league", league: league%>
+            <%# Delete %>
+            <%= render "leagues/delete_league", league: league%>
+          </div>
+        </div>
+        <%= link_to "", league_path(league), class:"stretched-link" %>
+      </div>
     </div>
 
+    <%# NOTIFICATIONS %>
+    <% @notifications.each do |n| %>
+      <%= n.params[:post] %>
+    <% end %>
 
+    <%# edit modal %>
+    <%= render "leagues/edit_league_modal", league: league %>
+  <% end  %>
+  <%# create modal %>
+  <%= render "leagues/create_league_modal", league: new_league_path %>
+</div>
 
-<%# NOTIFICATIONS %>
-<% @notifications.each do |n| %>
-  <%= n.params[:post] %>
-<% end %>

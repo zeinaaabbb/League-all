@@ -21,7 +21,7 @@
       <tbody>
         <% results.each do |team_data| %>
           <tr>
-            <td style="border-right: 1px solid #dddddd; border-left: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:name] %></td>
+            <td style="border-right: 1px solid #dddddd; border-left: 1px solid #dddddd; text-align: left; padding: 8px;"><%= link_to team_data[:name], team_path(Team.find_by(name: team_data[:name])), class:"text-danger" %></td>
             <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:games_played] %></td>
             <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:wins] %></td>
             <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:draws] %></td>
@@ -39,7 +39,9 @@
 <%# LEAGUE TABLE END %>
 
   <%# Button to register for league %>
+<% if @slots_available %>
   <div style="text-align: center;">
+  <h4 style="text-align: center"><%= @slots %> slots available in this league</h4>
     <% if user_signed_in? %>
       <% if !user.teams.empty? && current_user != league.user %>
         <div style="text-align: center col-5">
@@ -65,5 +67,8 @@
       </div>
     </div>
   </div>
+<% else %>
+  <h6 style="text-align: center">This league is full</h6>
+<% end %>
 
 </div>

@@ -5,7 +5,10 @@ class League < ApplicationRecord
   validates :number_of_teams, presence: true
   validates :days_per_week, presence: true
   validates :description, length: { minimum: 10 }, presence: true
-  has_many :favourites
+  has_many :favourites, dependent: :destroy
+
+  include PgSearch::Model
+  multisearchable against: [:name, :location]
 
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
@@ -21,8 +24,6 @@ class League < ApplicationRecord
   belongs_to :user
 
   has_one_attached :photo
-
-  # has_many :comments, dependent: :destroy
 
   def create_fixtures
     teams = RoundRobinTournament.schedule(self.teams.select { |t| true })

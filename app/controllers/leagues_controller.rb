@@ -10,7 +10,17 @@ class LeaguesController < ApplicationController
     @accepted_teams = @accepted_joins.map { |join| join.team}
     tally(@accepted_teams)
     @results.sort_by! { |team_data| [team_data[:points], team_data[:goal_dif], team_data[:goals_for]] }.reverse!
+
     @league_notifications = @league.league_notifications.order(created_at: :desc)
+
+    @slots = @league.number_of_teams - @accepted_joins.count
+    @slots_available = @slots >= 0
+    @league_notifications = @league.league_notifications
+    @markers = [{
+      lat: @league.latitude,
+      lng: @league.longitude
+    }]
+
   end
 
   def new

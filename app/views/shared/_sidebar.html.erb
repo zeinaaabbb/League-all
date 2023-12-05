@@ -11,7 +11,7 @@
     <div class="nav-link" id="league-name" style= "text-align: center; margin: 10px; padding: 10px; border-radius: 40px"><h5 style="margin: 0"><strong><%= team.name %></strong></h5></div>
   <% end %>
   <div class="d-flex align-items-start justify-content-center">
-    <div class="nav flex-column nav-pills me-3" style ="border-radius: 40px" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    <div class="nav flex-column nav-pills" style ="border-radius: 40px" id="v-pills-tab" role="tablist" aria-orientation="vertical">
       <%# IF NOT ON LEAGUE DASHBOARD IT WILL SKIP THIS %>
       <% if league != nil %>
         <%# THE BELOW DETERMINES IF THE CURRENT USER IS LEAGUE OWNER %>
