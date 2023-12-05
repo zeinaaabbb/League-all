@@ -1,4 +1,4 @@
-<div data-controller="toggle">
+<div>
     <%# Player list goes here %>
     <% if accepted_players.count == 0 %>
       <h3 style="text-align: center">No players registered yet</h3>
@@ -22,7 +22,7 @@
     <% end %>
   </div>
   <%# Button to register for league %>
-  <div style="text-align: center;">
+  <div id="register-team" style="text-align: center;" data-controller="toggle">
     <% if user_signed_in? %>
       <%# !! This line currently disables team coach from signing up for the team %>
       <% if current_user != team.user %>
@@ -42,4 +42,3 @@
       <% end %>
     <% end %>
   </div>
-</div>
