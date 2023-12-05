@@ -1,10 +1,11 @@
 class MessagesController < ApplicationController
   def create
+
     @chatroom = Chatroom.find(params[:chatroom_id])
     @message = Message.new(message_params)
     @message.chatroom = @chatroom
     @message.user = current_user
-    @message.team = @team
+    @message.team = current_user.teams.first
     if @message.save
       redirect_to chatroom_path(@chatroom)
     else
