@@ -1,10 +1,17 @@
 <h1>TESTING NOTICES</h1>
-
+<%# if @league.user == current_user %>
 <%= simple_form_for([@league, LeagueNotification.new]) do |f| %>
               <%= f.input :content %>
               <%= f.button :submit, "Send notification", class:"btn btn-primary" %>
             <% end %>
-<% @league_notifications.each do |l| %>
+<%# end %>
 
-<%= l.content %>
-<% end %>
+<div class="notifications-container">
+  <% @league_notifications.each do |notification| %>
+    <% if notification.unread %>
+      <div class="unread-notification">
+        <%= notification.content %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

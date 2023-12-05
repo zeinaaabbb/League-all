@@ -29,7 +29,7 @@
           </li>
         <% if user_signed_in? %>
           <li class="nav-item p-3">
-            <%= link_to "#" do %>
+            <%= link_to dashboard_path(tab: "leagues") do %>
               <i class="fa-solid fa-bell fa-lg" style="color: #000000;" class="stretched-link"></i>
             <% end %>
           </li>

@@ -18,7 +18,7 @@ class League < ApplicationRecord
   has_many :teams, through: :league_teams_joins
 
   has_many :fixtures
-  has_many :league_notifications
+  has_many :league_notifications, dependent: :destroy
 
   has_many :points
   belongs_to :user
@@ -40,4 +40,5 @@ class League < ApplicationRecord
       end
     end
   end
+
 end
