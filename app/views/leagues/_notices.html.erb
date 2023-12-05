@@ -1,0 +1,10 @@
+<h1>TESTING NOTICES</h1>
+
+<%= simple_form_for([@league, LeagueNotification.new]) do |f| %>
+              <%= f.input :content %>
+              <%= f.button :submit, "Send notification", class:"btn btn-primary" %>
+            <% end %>
+<% @league_notifications.each do |l| %>
+
+<%= l.content %>
+<% end %>

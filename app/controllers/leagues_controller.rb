@@ -10,6 +10,7 @@ class LeaguesController < ApplicationController
     @accepted_teams = @accepted_joins.map { |join| join.team}
     tally(@accepted_teams)
     @results.sort_by! { |team_data| [team_data[:points], team_data[:goal_dif], team_data[:goals_for]] }.reverse!
+    @league_notifications = @league.league_notifications
   end
 
   def new
