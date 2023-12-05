@@ -9,6 +9,10 @@ class TeamsController < ApplicationController
     @player = Player.new
     @accepted_players = @team.players.select { |player| player.accepted == true}
     @nearby_leagues = nearby_leagues_with_slots(@team)
+    @markers = [{
+      lat: @team.latitude,
+      lng: @team.longitude
+    }]
   end
 
   def new

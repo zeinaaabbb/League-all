@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :fixtures
     resources :league_teams_join, only: [:create]
     resources :favourites, only: [:create]
+    resources :league_notifications, only: [:create]
   end
 
   resources :teams do
@@ -31,6 +32,8 @@ Rails.application.routes.draw do
   resources :league_teams_join, only: [:destroy]
   resources :favourites, only: [:destroy]
   resources :favourites_team, only: [:destroy]
+
+
 
   patch "/league_teams_join/:id/approve", to: "league_teams_join#approve", as: :approve
   patch "/league_teams_join/:id/reject", to: "league_teams_join#reject", as: :reject
