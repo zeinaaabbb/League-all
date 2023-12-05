@@ -88,8 +88,9 @@ name = [
   "Blossom Ballers Backyard League"
 ]
 
-locations = ["Kensington", "Chelsea", "Camden", "Islington", "Greenwich", "Hackney", "Westminster", "Hammersmith", "Fulham", "Tower Hamlets", "Southwark", "Lambeth", "Wandsworth", "Haringey", "Ealing", "Brent", "Richmond", "Croydon", "Barking", "Dagenham"]
+league_images = ["https://www.uknewsgroup.co.uk/wp-content/uploads/2023/08/Kirby-Muxloe-Ladies-FC.jpg", "https://c8.alamy.com/comp/2CF2XK3/dulwich-hamlet-women-vs-saltdean-united-women-8th-march-2020-2CF2XK3.jpg", "https://images.squarespace-cdn.com/content/v1/615ef1f9564d0c36fc18fb2c/bf99876e-5d61-4462-bcbc-0029f5ce5c68/Remove+background.png", "https://toyworldmag.co.uk/wp-content/uploads/2022/07/My-Top-Trumps.jpg"]
 
+locations = ["Kensington", "Chelsea", "Camden", "Islington", "Greenwich", "Hackney", "Westminster", "Hammersmith", "Fulham", "Tower Hamlets", "Southwark", "Lambeth", "Wandsworth", "Haringey", "Ealing", "Brent", "Richmond", "Croydon", "Barking", "Dagenham"]
 
 description = [
   "Founded in 2008, KickHer London is a grassroots women's football collective that has been breaking barriers and promoting inclusivity, creating a welcoming space for women of all skill levels to enjoy the beautiful game in the heart of the city",
@@ -108,6 +109,8 @@ description = [
   league.league_type = league_type.sample
   league.number_of_teams = rand(0..10)
   league.days_per_week = rand(0..5)
+  file = URI.open(league_images.sample)
+  league.photo.attach(io: file, filename: "league.png", content_type: "image/png")
   league.description = description.sample
   league.save!
   puts "#{league.name} created!"
@@ -116,6 +119,8 @@ end
 # SEEDING LEAGUES END
 
 # SEEDING TEAMS
+
+team_photos = ["https://cached.imagescaler.hbpl.co.uk/resize/scaleHeight/815/cached.offlinehbpl.hbpl.co.uk/news/OMC/Nike11-20190719115407953.jpg", "https://ichef.bbci.co.uk/onesport/cps/624/cpsprodpb/042D/production/_128496010_manchesterlacesplay.jpg", "https://d2x51gyc4ptf2q.cloudfront.net/content/uploads/2021/03/29214616/Romance-FC-huddle.jpg", "https://images-stylist.s3-eu-west-1.amazonaws.com/app/uploads/2022/07/25154855/euros-grassroots.jpg", "https://sponsorgrassroots.co.uk/uploads/teams/broomhill-sports-club-recreational-women-s-football/522/BtjrS17jdWW1EvDzT1DcSENSALnCYBid5Gc6NtjW.jpg", "https://gtfc.co.uk/wp-content/uploads/2022/04/Women_Arnold_Game-scaled.jpg"]
 
 suffixes = ['United', 'Rovers', 'Albion', 'City', 'Town', 'FC', 'Athletic', 'Wanderers', 'Olympic', 'Orient', '']
 teams = []
@@ -126,6 +131,8 @@ League.all.each do |league|
     team.name = "#{Faker::Travel::TrainStation.name(region: 'united_kingdom', type: 'metro')} #{suffixes.sample}"
     team.user = User.all.sample
     team.location = locations.sample
+    file = URI.open(team_photos.sample)
+    team.photo.attach(io: file, filename: "team.png", content_type: "image/png")
     team.save!
     teams_array << team
     puts "#{team.name} created!"

@@ -10,6 +10,9 @@ gem "sprockets-rails"
 
 gem 'pry'
 
+#pg_search
+gem "pg_search"
+
 #cloudinary
 gem "cloudinary"
 

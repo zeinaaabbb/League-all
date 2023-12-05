@@ -7,6 +7,9 @@ class League < ApplicationRecord
   validates :description, length: { minimum: 10 }, presence: true
   has_many :favourites
 
+  include PgSearch::Model
+  multisearchable against: [:name, :location]
+
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
   validates :location, presence: true
