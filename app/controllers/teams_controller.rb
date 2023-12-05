@@ -8,6 +8,10 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @player = Player.new
     @accepted_players = @team.players.select { |player| player.accepted == true}
+    @markers = [{
+      lat: @team.latitude,
+      lng: @team.longitude
+    }]
   end
 
   def new
