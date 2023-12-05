@@ -10,7 +10,9 @@
       <h6> <strong> Number of Teams: </strong> <%= league.number_of_teams %></h6>
     </div>
   </div>
-  <div style="width: 20rem; height: 30rem;"><%= cl_image_tag league.photo.key, style:"width: 100%; height: 100%; object-fit: cover; border-radius: 15px" %></div>
+  <% if league.photo.attached? %>
+    <div style="width: 20rem; height: 30rem;"><%= cl_image_tag league.photo.key, style:"width: 100%; height: 100%; object-fit: cover; border-radius: 15px" %></div>
+  <% end %>
   <div style="width: 20rem; height: 30rem;" id="league-map" class="p-0">
     <div style="width: 100%; height: 100%; border-radius: 15px;"
       data-controller="map"
