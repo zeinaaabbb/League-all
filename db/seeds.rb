@@ -136,6 +136,7 @@ League.all.each do |league|
     team.save!
     teams_array << team
     puts "#{team.name} created!"
+    Chatroom.create(name: team.name, team_id: team.id)
 
     LeagueTeamsJoin.create!(team: team, league: league, accepted: true)
     puts "#{team.name} joined #{league.name}!"
