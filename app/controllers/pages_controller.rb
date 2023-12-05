@@ -13,6 +13,5 @@ class PagesController < ApplicationController
 
     @selected_tab = params[:tab] unless params.nil?
 
-    # raise
   end
 end
