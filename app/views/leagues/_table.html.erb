@@ -21,7 +21,9 @@
       <tbody>
         <% results.each do |team_data| %>
           <tr>
+
             <td style="border-right: 1px solid rgba(0, 0, 0, 0.2); border-left: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;"><%= link_to team_data[:name], team_path(Team.find_by(name: team_data[:name])), class:"fixture-text fixture-text:hover", style:"text-decoration: none" %></td>
+
             <td style="border-right: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;"><%= team_data[:games_played] %></td>
             <td style="border-right: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;"><%= team_data[:wins] %></td>
             <td style="border-right: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;"><%= team_data[:draws] %></td>
@@ -30,6 +32,9 @@
             <td style="border-right: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;"><%= team_data[:goals_against] %></td>
             <td style="border-right: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;"><%= team_data[:goal_dif] %></td>
             <td style="border-right: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;"><%= team_data[:points] %></td>
+
+          
+
           </tr>
         <% end %>
       </tbody>
