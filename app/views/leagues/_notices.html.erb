@@ -1,20 +1,31 @@
 
 <% if @league.user == current_user %>
 <div class="my-5" style="width: 60%; margin: 0 auto; border-radius: 20px;">
-<h4>Post notice</h4>
+<h4>Post a notice to the league</h4>
 <%= simple_form_for([@league, LeagueNotification.new]) do |f| %>
               <%= f.input :content, label: false %>
-              <%= f.button :submit, "Send notice", class:"btn btn-primary" %>
+              <%= f.button :submit, "post", class:"btn btn-primary" %>
             <% end %>
 <% end %>
 </div>
 
-<div class="notifications-container" style="width: 60%; margin: 0 auto; border-radius: 20px;">
+<div class="notifications-container mt-3" style="width: 60%; margin: 0 auto; border-radius: 20px;">
+<h4>League Notices</h4>
+<% if @league_notifications.count == 0 %>
+<p>There are no league notices</p>
+<% else %>
   <% @league_notifications.each do |notification| %>
-    <% if notification.unread %>
-      <div class="unread-notification">
+  <% if notification.unread %>
+    <div class="unread-notification">
+      <div class="notification-content">
         <%= notification.content %>
       </div>
-    <% end %>
+      <div class="notification-timestamp">
+        <%= notification.created_at.strftime("%d/%m/%y %H:%M") %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
   <% end %>
 </div>
