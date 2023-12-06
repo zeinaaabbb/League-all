@@ -1,12 +1,12 @@
 
-<%# if @league.user == current_user %>
+<% if @league.user == current_user %>
 <div class="my-5" style="width: 60%; margin: 0 auto; border-radius: 20px;">
 <h4>Post notice</h4>
 <%= simple_form_for([@league, LeagueNotification.new]) do |f| %>
               <%= f.input :content, label: false %>
               <%= f.button :submit, "Send notice", class:"btn btn-primary" %>
             <% end %>
-<%# end %>
+<% end %>
 </div>
 
 <div class="notifications-container" style="width: 60%; margin: 0 auto; border-radius: 20px;">
