@@ -9,12 +9,15 @@
       </li>
     </ul>
   </div>
-
+  <br>
   <div class="container" data-target="tabs.content" data-tab="1">
     <br>
-    <div class="d-flex flex-row" >
+    <div class="row content" >
     <% @user.favourites.each do |favourite| %>
-      <div class="card text-bg-success mb-3 border-0 mx-4" class="custom-card" style="width: 18rem; height: 12rem;">
+      <div class="card text-bg-success mb-3 border-0 mx-4 " class="custom-card" style="width: 20rem; height: 18rem; padding:0">
+        <% if favourite.league.photo.attached? %>
+          <img src=<%= cl_image_path favourite.league.photo.key %> class="card-img-top" alt="League Photo">
+        <% end %>
         <div class="card-body" >
           <div class="d-flex justify-content-between">
             <h5 class="card-title"><%= favourite.league.name %></h5>
@@ -32,9 +35,6 @@
               </p>
             </div>
           </div>
-          <p><%= favourite.league.format%></p>
-          <p><%= favourite.league.level%></p>
-          <p><%= favourite.league.league_type%></p>
           <%= link_to "", league_path(favourite.league), class:"stretched-link" %>
         </div>
       </div>
@@ -44,9 +44,9 @@
 
   <div class="container d-none" data-target="tabs.content" data-tab="2">
     <br>
-    <div class="d-flex flex-row" >
+    <div class="row content" >
     <% @user.favourites_teams.each do |favourite| %>
-      <div class="card text-bg-success mb-3 border-0 mx-4" class="custom-card" style="width: 18rem; height: 12rem;">
+      <div class="card text-bg-success mb-3 border-0 mx-4" class="custom-card" style="width: 20rem; height: 18rem; padding:0">
         <% if favourite.team.photo.attached? %>
           <img src=<%= cl_image_path favourite.team.photo.key %> class="card-img-top" alt="Team Photo">
         <% end %>
