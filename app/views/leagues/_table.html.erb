@@ -21,7 +21,7 @@
       <tbody>
         <% results.each do |team_data| %>
           <tr>
-            <td style="border-right: 1px solid #dddddd; border-left: 1px solid #dddddd; text-align: left; padding: 8px;"><%= link_to team_data[:name], team_path(Team.find_by(name: team_data[:name])), class:"text-danger" %></td>
+            <td style="border-right: 1px solid #dddddd; border-left: 1px solid #dddddd; text-align: left; padding: 8px;"><%= link_to team_data[:name], team_path(Team.find_by(name: team_data[:name])), class:"link-danger", style:"text-decoration: none" %></td>
             <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:games_played] %></td>
             <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:wins] %></td>
             <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:draws] %></td>
