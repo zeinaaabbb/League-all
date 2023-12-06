@@ -14,7 +14,7 @@
           <div class="favourites">
               <p>
                 <% if current_user.favourites.find_by(league: league).nil? %>
-                  <%= link_to league_favourites_path(league), data: { turbo_method: "POST" } do %>
+                  <%= link_to league_favourites_path(league),data: { turbo_method: "POST" } do %>
                     <i class="fa-regular fa-heart fa-xl" style="color: #738CE7"></i>
                   <% end %>
                 <% else %>
