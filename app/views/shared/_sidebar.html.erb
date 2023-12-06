@@ -8,10 +8,10 @@
   </div>
   <%# LIST OPTIONS START HERE %>
   <% if league != nil %>
-    <h6 style="text-align: center"><%= link_to "<i class='fa-solid fa-arrow-left'></i> Back to dashboard".html_safe, dashboard_path(tab: "leagues"), class:"link-danger" %></h6>
+
     <div class="nav-link" id="league-name" style= "text-align: center; margin: 10px; padding: 10px; border-radius: 40px"><h5 style="margin: 0"><strong><%= league.name %></strong></h5></div>
   <% elsif team != nil %>
-    <h6 style="text-align: center"><%= link_to "<i class='fa-solid fa-arrow-left'></i> Back to dashboard".html_safe, dashboard_path(tab: "teams"), class:"link-danger" %></h6>
+
     <div class="nav-link" id="league-name" style= "text-align: center; margin: 10px; padding: 10px; border-radius: 40px"><h5 style="margin: 0"><strong><%= team.name %></strong></h5></div>
   <% end %>
   <div class="d-flex align-items-start justify-content-center" style="margin-top: 22px">
@@ -26,6 +26,7 @@
           <%# RENDERS LEAGUE/USER VIEW %>
           <%= render "shared/sidebar_options/user_league" %>
         <% end %>
+        <h6 style="text-align: center; margin-top: 22px"><%= link_to "<i class='fa-solid fa-arrow-left'></i> Back to dashboard".html_safe, dashboard_path(tab: "leagues"), class:"link-danger" %></h6>
       <%# IF NOT ON TEAM DASHBOARD IT WILL SKIP THIS %>
       <% elsif team != nil %>
         <% if team.user == current_user %>
@@ -35,6 +36,7 @@
           <%# RENDERS TEAM/USER VIEW %>
           <%= render "shared/sidebar_options/team_user" %>
         <% end %>
+        <h6 style="text-align: center; margin-top: 22px"><%= link_to "<i class='fa-solid fa-arrow-left'></i> Back to dashboard".html_safe, dashboard_path(tab: "leagues"), class:"link-danger" %></h6>
       <% else %>
         <%# RENDERS DASHBOARD OPTIONS %>
         <%= render "shared/sidebar_options/tabulate_dashboard" %>
