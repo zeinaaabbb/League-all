@@ -14,13 +14,12 @@ class LeaguesController < ApplicationController
     @league_notifications = @league.league_notifications.order(created_at: :desc)
 
     @slots = @league.number_of_teams - @accepted_joins.count
-    @slots_available = @slots >= 0
+    @slots_available = @slots > 0
     @league_notifications = @league.league_notifications
     @markers = [{
       lat: @league.latitude,
       lng: @league.longitude
     }]
-
   end
 
   def new
