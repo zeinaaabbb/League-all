@@ -1,0 +1,37 @@
+.mapboxgl-ctrl-geocoder {
+  max-width: none !important;
+  width: 100% !important;
+  border: 1px solid lightgrey;
+  box-shadow: none;
+  background-color: transparent;
+  border-radius: 10px;
+
+  input {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    height: 40px;
+    background-color: #f4f4f4;
+  }
+
+  input::placeholder {
+    display: none;
+    color: #f4f4f4;
+  }
+
+  .suggestions :hover{
+    background-color: #738CE7;
+    border-radius: 10px;
+  }
+
+  .mapboxgl-ctrl-geocoder--powered-by{
+    display: none;
+  }
+
+  svg {
+    display: none;
+  }
+  button {
+    display: none;
+  }
+}
