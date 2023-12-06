@@ -6,6 +6,6 @@ class LeagueNotification < ApplicationRecord
   after_create_commit :notify_user
 
   def notify_user
-    league.teams.map(&:users).flatten.each { |user| CommentNotification.with(post: content).deliver_later(user) }
+    league.teams.map(&:users).flatten.each { |user| CommentNotification.with(post: {content: content, league: league}).deliver_later(user) }
   end
 end
