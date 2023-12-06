@@ -98,3 +98,18 @@ ul {
     width: 50px;
     height: 50px;
 }
+
+.bg-circle{
+  position: absolute;
+  width: 1000px;
+  height: 1000px
+}
+.circle-left{
+  left: -500px;
+  top: -300px
+}
+
+.circle-right{
+  right: -500px;
+  bottom: -300px
+}
