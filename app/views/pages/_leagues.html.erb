@@ -1,19 +1,23 @@
-<h3 class="m-3">your leagues</h3>
-<div class="d-flex flex-row" >
+<h3 class="m-3">Your Leagues</h3>
+<br>
+<div class="row content" >
   <% @user.leagues.each do |league| %>
-    <div class="card text-bg-success mb-3 border-0 mx-4" class="custom-card" style="width: 18rem; height: 12rem;">
+    <div class="card text-bg-success mb-3 border-0 mx-4" class="custom-card" style="width: 20rem; height: 18rem; padding:0">
+    <% if league.photo.attached? %>
+        <img src=<%= cl_image_path league.photo.key %> class="card-img-top" alt="League Photo">
+      <% end %>
       <div class="card-body" >
-        <h5 class="card-title"><%= league.name %></h5>
-        <p><%= league.location%></p>
-        <p><%= league.format%></p>
-        <p><%= league.level%></p>
         <div class="d-flex justify-content-between">
-          <p><%= league.league_type%></p>
-          <div class="favourites">
+        <h5 class="card-title"><%= league.name %></h5>
+          <div class="favourites d-flex inline-flex mt-4">
             <%# Edit %>
-            <%= render "leagues/edit_league", league: league%>
+            <div>
+              <%= render "leagues/edit_league", league: league%>
+            </div>
             <%# Delete %>
-            <%= render "leagues/delete_league", league: league%>
+            <div>
+              <%= render "leagues/delete_league", league: league%>
+            </div>
           </div>
         </div>
         <%= link_to "", league_path(league), class:"stretched-link" %>
@@ -31,4 +35,3 @@
   <%# create modal %>
   <%= render "leagues/create_league_modal", league: new_league_path %>
 </div>
-
