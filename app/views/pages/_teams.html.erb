@@ -1,30 +1,40 @@
 <h3 class="m-3">Your Teams</h3>
 <br>
-<div class="row content" >
-  <% @user.teams.each do |team| %>
-    <div class="card text-bg-success mb-3 border-0 mx-4" class="custom-card" style="width: 20rem; height: 18rem; padding:0">
-      <% if team.photo.attached? %>
-        <img src=<%= cl_image_path team.photo.key %> class="card-img-top" alt="Team Photo">
-      <% end %>
-      <div class="card-body" >
-        <div class="d-flex justify-content-between">
-          <h5 class="card-title text-wrap"><%= team.name %></h5>
-          <div class="favourites d-flex inline-flex mt-4">
-              <%# Edit %>
-              <div>
-              <%= render "teams/edit_team", team: team %>
+<div class="content" >
+  <div class="row m-0 w-100">
+      <div class="col-8 pe-0">
+        <div class="row m-0">
+          <% @user.teams.each do |team| %>
+            <div class="col-6">
+            <div class="card text-bg-success mb-3 border-0" class="custom-card" style="height: 18rem; padding:0">
+              <% if team.photo.attached? %>
+                <img src=<%= cl_image_path team.photo.key %> class="card-img-top" alt="Team Photo">
+              <% end %>
+              <div class="card-body" >
+                <div class="d-flex justify-content-between">
+                  <h5 class="card-title text-wrap"><%= team.name %></h5>
+                  <div class="favourites d-flex inline-flex mt-4">
+                      <%# Edit %>
+                      <div>
+                        <%= render "teams/edit_team", team: team %>
+                      </div>
+                      <%# Delete %>
+                      <div>
+                        <%= render "teams/delete_team", team: team %>
+                      </div>
+                  </div>
+                </div>
+                <%= link_to "", team_path(team), class:"stretched-link" %>
               </div>
-              <%# Delete %>
-              <div>
-              <%= render "teams/delete_team", team: team %>
-              </div>
-          </div>
+            </div>
+            <%# Edit Modal%>
+            <%= render "teams/edit_team_modal", team: team %>
+            </div>
+          <% end  %>
         </div>
-        <%= link_to "", team_path(team), class:"stretched-link" %>
       </div>
-    </div>
-    <%# Edit Modal%>
-    <%= render "teams/edit_team_modal", team: team %>
-  <% end  %>
-  <%= render "teams/team_form" %>
+      <div class="col-4">
+        <%= render "teams/team_form" %>
+      </div>
+  </div>
 </div>

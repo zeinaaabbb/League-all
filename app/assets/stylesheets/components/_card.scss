@@ -15,7 +15,9 @@
 .card:hover {
   opacity: 1;
   transform: scale(1.03);
+  cursor: pointer;
 }
+
 
 .content:hover .card:not(:hover) {
   opacity: 0.5;
