@@ -12,7 +12,7 @@
               <% if player.user.photo.attached? %>
                 <%= cl_image_tag player.user.photo.key, crop: :thumb, gravity: :face, class: "avatar-large", alt: "dropdown menu" %>
               <% else %>
-                <img src="" alt="">
+                <img src="https://images.inc.com/uploaded_files/image/1920x1080/goal-soccer_36915.jpg" alt="">
               <% end %>
               <h5 class="card-title"><%= player.user.first_name %> <%= player.user.last_name %></h5>
             </div>

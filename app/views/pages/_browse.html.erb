@@ -7,6 +7,8 @@
       <div class="card text-bg-success mb-3 border-0" class="custom-card" style="width: 18rem; height: 18rem;">
           <% if league.photo.attached? %>
             <img src=<%= cl_image_path league.photo.key %> class="card-img-top" alt="Team Photo">
+          <% else %>
+            <img src="https://images.inc.com/uploaded_files/image/1920x1080/goal-soccer_36915.jpg" class="card-img-top" alt="Team Photo">
           <% end %>
         <div class="card-body" >
         <div class="d-flex justify-content-between">
@@ -36,6 +38,8 @@
         <div class="card text-bg-warning mb-3 border-0 mx-4" class="custom-card" style="width: 18rem; height: 18rem;">
           <% if team.photo.attached? %>
             <img src=<%= cl_image_path team.photo.key %> class="card-img-top" alt="Team Photo">
+          <% else %>
+            <img src="https://images.inc.com/uploaded_files/image/1920x1080/goal-soccer_36915.jpg" class="card-img-top" alt="Team Photo">
           <% end %>
           <div class="card-body" >
           <div class="d-flex justify-content-between">
@@ -60,7 +64,7 @@
       <% end %>
     </div>
   </div>
-  <div style="width: 30rem; height: 45rem;" id="league-map" class="m-3 pt-3 sticky-top">
+  <div style="width: 30rem; height: 45rem;" id="league-map" class="m-3 sticky-top">
     <div style="width: 100%; height: 100%; border-radius: 15px;"
       data-controller="map"
       data-map-markers-value="<%= @markers.to_json %>"

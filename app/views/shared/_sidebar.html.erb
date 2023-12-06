@@ -2,15 +2,17 @@
 
   <%# LOGO GOES HERE %>
   <div class="logo p-2">
-  <h1><%= link_to "League-All", root_path %></h1>
+    <div style="margin-top: 0.8rem !important;">
+      <h1><%= link_to "League-All", root_path %></h1>
+    </div>
   </div>
   <%# LIST OPTIONS START HERE %>
   <% if league != nil %>
-    <div class="nav-link" id="league-name" style= "text-align: center; margin: 10px; padding: 10px; border-radius: 40px"><h5 style="margin: 0"><strong><%= league.name %></strong></h5></div>
+    <div class="nav-link" id="league-name" style= "text-align: center; margin: 10px; padding: 10px; border-radius: 40px; margin-top: 20px"><h5 style="margin: 0"><strong><%= league.name %></strong></h5></div>
   <% elsif team != nil %>
-    <div class="nav-link" id="league-name" style= "text-align: center; margin: 10px; padding: 10px; border-radius: 40px"><h5 style="margin: 0"><strong><%= team.name %></strong></h5></div>
+    <div class="nav-link" id="league-name" style= "text-align: center; margin: 10px; padding: 10px; border-radius: 40px; margin-top: 20px"><h5 style="margin: 0"><strong><%= team.name %></strong></h5></div>
   <% end %>
-  <div class="d-flex align-items-start justify-content-center">
+  <div class="d-flex align-items-start justify-content-center" style="margin-top: 22px">
     <div class="nav flex-column nav-pills" style ="border-radius: 40px" id="v-pills-tab" role="tablist" aria-orientation="vertical">
       <%# IF NOT ON LEAGUE DASHBOARD IT WILL SKIP THIS %>
       <% if league != nil %>
@@ -22,6 +24,7 @@
           <%# RENDERS LEAGUE/USER VIEW %>
           <%= render "shared/sidebar_options/user_league" %>
         <% end %>
+        <h6 style="text-align: center; margin-top: 22px"><%= link_to "<i class='fa-solid fa-arrow-left'></i> Back to dashboard".html_safe, dashboard_path(tab: "leagues"), class:"link-danger" %></h6>
       <%# IF NOT ON TEAM DASHBOARD IT WILL SKIP THIS %>
       <% elsif team != nil %>
         <% if team.user == current_user %>
@@ -31,12 +34,11 @@
           <%# RENDERS TEAM/USER VIEW %>
           <%= render "shared/sidebar_options/team_user" %>
         <% end %>
+        <h6 style="text-align: center; margin-top: 22px"><%= link_to "<i class='fa-solid fa-arrow-left'></i> Back to dashboard".html_safe, dashboard_path(tab: "leagues"), class:"link-danger" %></h6>
       <% else %>
         <%# RENDERS DASHBOARD OPTIONS %>
         <%= render "shared/sidebar_options/tabulate_dashboard" %>
       <% end %>
-      <div style="border-top: 1px solid rgba(0, 0, 0, 0.1); "></div>
-      <%= render "shared/sidebar_options/all_user_options" %>
     </div>
   </div>
 </div>

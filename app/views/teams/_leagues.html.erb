@@ -1,4 +1,4 @@
-<div class="mb-3 border-bottom">
+<div class="mb-3 border-bottom border-primary">
   <h3><%= team.name %>'s leagues</h3>
   <% if team.leagues.count == 0 %>
     <h5><%= team.name %> is not currently a part of any leagues...</h5>
@@ -9,7 +9,7 @@
           <% if league.photo.attached? %>
             <%= cl_image_tag league.photo.key, crop: :thumb, gravity: :face, class: "avatar-large", alt: "dropdown menu" %>
           <% else %>
-            <img src="" alt="">
+            <img src="https://images.inc.com/uploaded_files/image/1920x1080/goal-soccer_36915.jpg" alt="" class="avatar-large">
           <% end %>
           <div class="column m-2">
             <h5 class="card-title"><%= league.name %></h5>
@@ -23,14 +23,14 @@
 </div>
 <div>
   <h3 class="mb-2">Nearby leagues looking for teams</h3>
-  <div id="nearby-leagues" class="row">
+  <div id="nearby-leagues" class="row" style="margin-left: 0px;">
     <% nearby_leagues.each do |league| %>
       <div class="card text-bg-success mb-3 mx-3 border-0 p-3" class="custom-card" style="width: 18rem; height: 12rem;" >
         <div class="d-flex justify-content-between">
           <% if league.photo.attached? %>
             <%= cl_image_tag league.photo.key, crop: :thumb, gravity: :face, class: "avatar-large", alt: "dropdown menu" %>
           <% else %>
-            <img src="" alt="">
+            <img src="https://images.inc.com/uploaded_files/image/1920x1080/goal-soccer_36915.jpg" alt="default image" class="avatar-large">
           <% end %>
           <div class="column m-2">
             <h5 class="card-title"><%= league.name %></h5>

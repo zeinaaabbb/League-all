@@ -5,9 +5,12 @@
       <h6> <strong><%= team.location %> </strong> </h6>
     </div>
   </div>
-  <% if team.photo.attached? %>
-    <div style="width: 20rem; height: 30rem;"><%= cl_image_tag team.photo.key, style:"width: 100%; height: 100%; object-fit: cover; border-radius: 15px" %></div>
-  <% end %>
+    <div style="width: 20rem; height: 30rem;">
+      <% if team.photo.attached? %>
+        <%= cl_image_tag team.photo.key, style:"width: 100%; height: 100%; object-fit: cover; border-radius: 15px" %></div>
+      <% else %>
+        <img src="https://images.inc.com/uploaded_files/image/1920x1080/goal-soccer_36915.jpg" class="card-img-top rounded" alt="Team Photo" style="width: 100%; height: 100%;">
+      <% end %>
   <div style="width: 20rem; height: 30rem;" id="team-map" class="p-0">
     <div style="width: 100%; height: 100%; border-radius: 15px;"
       data-controller="map"

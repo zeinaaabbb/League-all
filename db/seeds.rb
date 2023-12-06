@@ -223,11 +223,13 @@ following_league.user = User.last
 following_league.name = "The GoalPost League"
 following_league.format = format.sample
 following_league.start_date = Date.today
-following_league.location = locations.sample
+following_league.location = "Wapping, London, UK"
 following_league.level = level.sample
 following_league.league_type = league_type.sample
 following_league.number_of_teams = 10
 following_league.days_per_week = rand(0..5)
+file = URI.open("https://www.yellowad.co.uk/wp-content/uploads/2022/10/City-v-Southend-ECWFL.jpeg")
+following_league.photo.attach(io: file, filename: "league.png", content_type: "image/png")
 following_league.description = description.sample
 following_league.save!
 puts "#{following_league.name} created!"
