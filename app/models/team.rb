@@ -5,7 +5,8 @@ class Team < ApplicationRecord
   has_one_attached :photo
   has_many :players, dependent: :destroy
   has_many :users, through: :players
-  has_many :fixtures, dependent: :destroy
+  has_many :home_fixtures, foreign_key: 'home_team_id', class_name: 'Fixture'
+  has_many :away_fixtures, foreign_key: 'away_team_id', class_name: 'Fixture'
   has_many :messages, dependent: :destroy
   has_many :chatrooms, dependent: :destroy
 
