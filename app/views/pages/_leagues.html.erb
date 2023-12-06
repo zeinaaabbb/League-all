@@ -3,8 +3,10 @@
 <div class="row content" >
   <% @user.leagues.each do |league| %>
     <div class="card text-bg-success mb-3 border-0 mx-4" class="custom-card" style="width: 20rem; height: 18rem; padding:0">
-    <% if league.photo.attached? %>
+      <% if league.photo.attached? %>
         <img src=<%= cl_image_path league.photo.key %> class="card-img-top" alt="League Photo">
+      <% else %>
+        <img src="https://images.inc.com/uploaded_files/image/1920x1080/goal-soccer_36915.jpg" class="card-img-top" alt="Team Photo">
       <% end %>
       <div class="card-body" >
         <div class="d-flex justify-content-between">
