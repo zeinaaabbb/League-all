@@ -1,35 +1,39 @@
 <div data-controller="toggle">
   <%# Table body goes here %>
   <%# LEAGUE TABLE %>
-<div style="text-align: center;">
-  <div style="width: 60%; margin: 0 auto;">
-    <h2>League Table</h2>
-    <table style="border-collapse: collapse; width: 100%; margin-top: 20px; margin-bottom: 20px; border-bottom: 1px solid #dddddd;">
+<div class="flex row justify-content-center mb-5" style="text-align: center;">
+  <div class="bg-primary py-3 px-5" style="width: 60%; margin: 0 auto; border-radius: 20px;">
+    <h2><%= @league.name %></h2>
+    <table style="border-collapse: collapse; width: 100%; margin-top: 20px; margin-bottom: 20px; border-bottom: 1px solid rgba(0, 0, 0, 0.2);">
       <thead>
         <tr>
-          <th style="border: 1px solid #dddddd; background-color: #f2f2f2; text-align: left; padding: 8px; border-left: 1px solid #dddddd;">Team</th>
-          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Pld</th>
-          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">W</th>
-          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">D</th>
-          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">L</th>
-          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">GF</th>
-          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">GA</th>
-          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">GD</th>
-          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Pts</th>
+          <th style="border: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px; border-left: 1px solid rgba(0, 0, 0, 0.2);">Team</th>
+          <th style="border: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;">Pld</th>
+          <th style="border: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;">W</th>
+          <th style="border: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;">D</th>
+          <th style="border: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;">L</th>
+          <th style="border: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;">GF</th>
+          <th style="border: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;">GA</th>
+          <th style="border: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;">GD</th>
+          <th style="border: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;">Pts</th>
         </tr>
       </thead>
       <tbody>
         <% results.each do |team_data| %>
           <tr>
-            <td style="border-right: 1px solid #dddddd; border-left: 1px solid #dddddd; text-align: left; padding: 8px;"><%= link_to team_data[:name], team_path(Team.find_by(name: team_data[:name])), class:"link-danger", style:"text-decoration: none" %></td>
-            <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:games_played] %></td>
-            <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:wins] %></td>
-            <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:draws] %></td>
-            <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:losses] %></td>
-            <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:goals_for] %></td>
-            <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:goals_against] %></td>
-            <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:goal_dif] %></td>
-            <td style="border-right: 1px solid #dddddd; text-align: left; padding: 8px;"><%= team_data[:points] %></td>
+
+            <td style="border-right: 1px solid rgba(0, 0, 0, 0.2); border-left: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;"><%= link_to team_data[:name], team_path(Team.find_by(name: team_data[:name])), class:"text-danger", style:"text-decoration: none" %></td>
+            <td style="border-right: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;"><%= team_data[:games_played] %></td>
+            <td style="border-right: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;"><%= team_data[:wins] %></td>
+            <td style="border-right: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;"><%= team_data[:draws] %></td>
+            <td style="border-right: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;"><%= team_data[:losses] %></td>
+            <td style="border-right: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;"><%= team_data[:goals_for] %></td>
+            <td style="border-right: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;"><%= team_data[:goals_against] %></td>
+            <td style="border-right: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;"><%= team_data[:goal_dif] %></td>
+            <td style="border-right: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;"><%= team_data[:points] %></td>
+
+          
+
           </tr>
         <% end %>
       </tbody>
