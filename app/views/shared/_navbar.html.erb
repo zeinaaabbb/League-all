@@ -25,25 +25,44 @@
       </div>
     </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-          </li>
+      <ul class="navbar-nav me-auto align-items-center">
         <% if user_signed_in? %>
-          <li class="nav-item p-3">
-            <%= link_to dashboard_path(tab: "leagues") do %>
-              <i class="fa-solid fa-bell fa-lg" style="color: #000000;" class="stretched-link"></i>
-            <% end %>
+          <%# <%= NOTIFICATIONS %>
+          <li class="nav-item p-3 dropdown">
+            <a href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <% if @notifications.count > 0 %>
+                <i class="fa-solid fa-bell fa-lg" style="color: #D8E37D;"></i>
+              <% else %>
+                <i class="fa-solid fa-bell fa-lg" style="color: #000000;"></i>
+              <% end %>
+  </a>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <p class="dropdown-item pb-3"><%= 'No new notifications' unless @notifications.any? %></p>
+              <% if @notifications.any? %>
+                <p class="dropdown-item border-bottom pb-3">Notifications (<%= @notifications.count %>)</p>
+              <% end %>
+              <% @notifications.each do |n| %>
+                <%= link_to league_path(n.params[:post][:league], { tab: "notices", read: "yes", n_id: n.id }), class: "dropdown-item" do %>
+                  <%= n.params[:post][:content] %>
+                <% end %>
+              <% end %>
+
+            </div>
           </li>
+          <!-- Add more dropdown items if needed -->
           <li class="nav-item p-3">
             <%= link_to "#" do %>
               <i class="fa-solid fa-envelope fa-lg" style="color: #000000;" class="stretched-link"></i>
             <% end %>
           </li>
           <li class="nav-item dropdown">
-          <a href="#" class="avatar p-3" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <% if current_user.photo.attached? %>
-              <%= cl_image_tag current_user.photo.key, crop: :thumb, gravity: :face, class: "avatar", alt: "dropdown menu" %>
-            <% end %>
-          </a>
+            <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <% if current_user.photo.attached? %>
+                <%= cl_image_tag current_user.photo.key, crop: :thumb, gravity: :face, class: "avatar", alt: "dropdown menu" %>
+              <% else %>
+                <%= image_tag("default_avatar.png", class: "avatar", alt: "droptdown menu") %>
+              <% end %>
+            </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Dashboard", dashboard_path(tab: "leagues"), class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>

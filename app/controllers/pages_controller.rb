@@ -10,13 +10,12 @@ class PagesController < ApplicationController
     @user = current_user
     @teams = Team.all
     @leagues = League.all
-    @notifications = Notification.where(recipient_type: "User", recipient_id: current_user.id)
     PgSearch::Multisearch.rebuild(Team)
     PgSearch::Multisearch.rebuild(League)
     unless params[:query].nil?
       @results = PgSearch.multisearch(params[:query])
       @selected_tab = 'browse'
- 
+
       league_ids = @results.map { |result| result.searchable_id if result.searchable_type == "League" }
       @leagues = League.where(id: league_ids)
 

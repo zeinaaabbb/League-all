@@ -21,7 +21,7 @@
       <tbody>
         <% results.each do |team_data| %>
           <tr>
-            <td style="border-right: 1px solid rgba(0, 0, 0, 0.2); border-left: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;"><%= link_to team_data[:name], team_path(Team.find_by(name: team_data[:name])), class:"text-danger", style:"text-decoration: none" %></td>
+            <td style="border-right: 1px solid rgba(0, 0, 0, 0.2); border-left: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;"><%= link_to team_data[:name], team_path(Team.find_by(name: team_data[:name])), class:"fixture-text fixture-text:hover", style:"text-decoration: none" %></td>
             <td style="border-right: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;"><%= team_data[:games_played] %></td>
             <td style="border-right: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;"><%= team_data[:wins] %></td>
             <td style="border-right: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;"><%= team_data[:draws] %></td>
@@ -41,7 +41,14 @@
   <%# Button to register for league %>
 <% if @slots_available %>
   <div style="text-align: center;">
-  <h4 style="text-align: center"><%= @slots %> slots available in this league</h4>
+ <h4 style="text-align: center">
+  <% if @slots == 1 %>
+    <%= "#{@slots} slot available in this league" %>
+  <% else %>
+    <%= "#{@slots} slots available in this league" %>
+  <% end %>
+</h4>
+
     <% if user_signed_in? %>
       <% if !user.teams.empty? && current_user != league.user %>
         <div style="text-align: center col-5">

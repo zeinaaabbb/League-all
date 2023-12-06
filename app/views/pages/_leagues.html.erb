@@ -20,15 +20,9 @@
       </div>
     </div>
 
-    <%# NOTIFICATIONS %>
-    <% @notifications.each do |n| %>
-      <%= n.params[:post] %>
-    <% end %>
-
     <%# edit modal %>
     <%= render "leagues/edit_league_modal", league: league %>
   <% end  %>
   <%# create modal %>
   <%= render "leagues/create_league_modal", league: new_league_path %>
 </div>
-
