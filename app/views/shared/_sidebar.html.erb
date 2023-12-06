@@ -8,11 +8,9 @@
   </div>
   <%# LIST OPTIONS START HERE %>
   <% if league != nil %>
-
-    <div class="nav-link" id="league-name" style= "text-align: center; margin: 10px; padding: 10px; border-radius: 40px"><h5 style="margin: 0"><strong><%= league.name %></strong></h5></div>
+    <div class="nav-link" id="league-name" style= "text-align: center; margin: 10px; padding: 10px; border-radius: 40px; margin-top: 20px"><h5 style="margin: 0"><strong><%= league.name %></strong></h5></div>
   <% elsif team != nil %>
-
-    <div class="nav-link" id="league-name" style= "text-align: center; margin: 10px; padding: 10px; border-radius: 40px"><h5 style="margin: 0"><strong><%= team.name %></strong></h5></div>
+    <div class="nav-link" id="league-name" style= "text-align: center; margin: 10px; padding: 10px; border-radius: 40px; margin-top: 20px"><h5 style="margin: 0"><strong><%= team.name %></strong></h5></div>
   <% end %>
   <div class="d-flex align-items-start justify-content-center" style="margin-top: 22px">
     <div class="nav flex-column nav-pills" style ="border-radius: 40px" id="v-pills-tab" role="tablist" aria-orientation="vertical">
