@@ -4,7 +4,10 @@
 
     <div class="col-5 m-3">
       <% @leagues.each do |league| %>
-      <div class="card text-bg-success mb-3 border-0" class="custom-card" style="width: 18rem; height: 12rem;">
+      <div class="card text-bg-success mb-3 border-0" class="custom-card" style="width: 18rem; height: 18rem;">
+          <% if league.photo.attached? %>
+            <img src=<%= cl_image_path league.photo.key %> class="card-img-top" alt="Team Photo">
+          <% end %>
         <div class="card-body" >
         <div class="d-flex justify-content-between">
           <h5 class="card-title"><%= league.name %></h5>
@@ -22,10 +25,6 @@
               </p>
             </div>
           </div>
-          <p><%= league.location%></p>
-          <p><%= league.format%></p>
-          <p><%= league.level%></p>
-          <p><%= league.league_type%></p>
           <%= link_to "", league_path(league), class:"stretched-link" %>
         </div>
       </div>
@@ -34,7 +33,7 @@
 
     <div class="col-5 m-3">
       <% @teams.each do |team| %>
-        <div class="card text-bg-warning mb-3 border-0 mx-4" class="custom-card" style="width: 18rem; height: 12rem;">
+        <div class="card text-bg-warning mb-3 border-0 mx-4" class="custom-card" style="width: 18rem; height: 18rem;">
           <% if team.photo.attached? %>
             <img src=<%= cl_image_path team.photo.key %> class="card-img-top" alt="Team Photo">
           <% end %>

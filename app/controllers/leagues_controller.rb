@@ -15,12 +15,14 @@ class LeaguesController < ApplicationController
     Notification.find(params[:n_id]).update(read_at: Time.now) if current_user && params[:read] == "yes"
 
     @slots = @league.number_of_teams - @accepted_joins.count
-    @slots_available = @slots >= 0
+
+    @slots_available = @slots > 0
+    @league_notifications = @league.league_notifications
+
     @markers = [{
       lat: @league.latitude,
       lng: @league.longitude
     }]
-
   end
 
   def new
