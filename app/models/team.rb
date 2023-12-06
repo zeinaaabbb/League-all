@@ -5,7 +5,7 @@ class Team < ApplicationRecord
   has_one_attached :photo
   has_many :players, dependent: :destroy
   has_many :users, through: :players
-  has_many :fixtures
+  has_many :fixtures, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :chatrooms, dependent: :destroy
 
