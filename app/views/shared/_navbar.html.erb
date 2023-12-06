@@ -11,19 +11,21 @@
         <p><%= current_user.role %></p>
       </div>
       <% end %>
-
+<%# SEARCH BAR %>
     <div>
       <div class="form-inline d-flex justify-content-center text-center">
         <%= form_with url: dashboard_path, method: :get, class: "d-flex" do %>
         <%= text_field_tag :query,
             params[:query],
             class: "form-control",
-            placeholder: "Find a League or Team"
-        %>
-        <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+            placeholder: "Find a League or Team",
+            style: "border-radius: 30px 0 0 30px;"
+          %>
+        <%= submit_tag "Search", name: "", class: "btn btn-primary", style: "border-radius: 0 30px 30px 0;" %>
         <% end %>
       </div>
     </div>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto align-items-center">
         <% if user_signed_in? %>
@@ -35,7 +37,7 @@
               <% else %>
                 <i class="fa-solid fa-bell fa-lg" style="color: #000000;"></i>
               <% end %>
-  </a>
+            </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <p class="dropdown-item pb-3"><%= 'No new notifications' unless @notifications.any? %></p>
               <% if @notifications.any? %>
