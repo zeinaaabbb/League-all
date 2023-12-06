@@ -2,7 +2,7 @@
   <%# Table body goes here %>
   <%# LEAGUE TABLE %>
 <div class="flex row justify-content-center mb-5" style="text-align: center;">
-  <div class="bg-primary py-3 px-5" style="width: 60%; margin: 0 auto; border-radius: 20px;">
+  <div class="bg-primary py-3 px-5 col-md-7" style="border-radius: 20px;">
     <h2><%= @league.name %></h2>
     <table style="border-collapse: collapse; width: 100%; margin-top: 20px; margin-bottom: 20px; border-bottom: 1px solid rgba(0, 0, 0, 0.2);">
       <thead>
@@ -32,47 +32,50 @@
             <td style="border-right: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;"><%= team_data[:goal_dif] %></td>
             <td style="border-right: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;"><%= team_data[:points] %></td>
 
-          
+
 
           </tr>
         <% end %>
       </tbody>
     </table>
   </div>
+  <% if @slots_available %>
+    <div style="text-align: center" class="col-md-4">
+      <h4 style="text-align: center"><%= @slots %> slots available in this league</h4>
+        <% if user_signed_in? %>
+          <% if !user.teams.empty? && current_user != league.user %>
+            <div style="text-align: center col-5">
+              <%# Link to form which selects which team to register %>
+              <button type="button" class="btn btn-primary" data-action="click->toggle#fire" data-toggle-target="toggleButton">
+                Register for this league
+              </button>
+            </div>
+          <% end %>
+        <% end %>
+        <div class="d-flex justify-content-center">
+          <div class="team-register-form d-none mt-3 col-5" data-toggle-target="togglableElement" style="width: 100%">
+            <h4>Which team would you like to register for <%= league.name %>?</h4>
+            <p>Your request will be sent to the league organiser to approve</p>
+            <%= simple_form_for [league, league_teams_join], url: league_league_teams_join_index_path(league) do |f|%>
+              <div class="mb-3 form-control">
+                <%= f.association :team, collection: user.teams %>
+              </div>
+              <div class="mb-3 btn-primary text-center">
+              <%= f.submit 'Submit registration request', class: "btn btn-default btn-primary"%>
+              </div>
+            <% end %>
+          </div>
+        </div>
+    </div>
+  <% else %>
+    <div class="col-md-3 mt-2">
+      <h6 style="text-align: center">This league is full</h6>
+    </div>
+  <% end %>
 </div>
 <%# LEAGUE TABLE END %>
 
   <%# Button to register for league %>
-<% if @slots_available %>
-  <div style="text-align: center;">
-  <h4 style="text-align: center"><%= @slots %> slots available in this league</h4>
-    <% if user_signed_in? %>
-      <% if !user.teams.empty? && current_user != league.user %>
-        <div style="text-align: center col-5">
-          <%# Link to form which selects which team to register %>
-          <button type="button" class="btn btn-primary" data-action="click->toggle#fire" data-toggle-target="toggleButton">
-            Register for this league
-          </button>
-        </div>
-      <% end %>
-    <% end %>
-    <div class="d-flex justify-content-center">
-      <div class="team-register-form d-none mt-3 col-5" data-toggle-target="togglableElement">
-        <h4>Which team would you like to register for <%= league.name %>?</h4>
-        <p>Your request will be sent to the league organiser to approve</p>
-        <%= simple_form_for [league, league_teams_join], url: league_league_teams_join_index_path(league) do |f|%>
-          <div class="mb-3 form-control">
-            <%= f.association :team, collection: user.teams %>
-          </div>
-          <div class="mb-3 btn-primary text-center">
-          <%= f.submit 'Submit registration request', class: "btn btn-default btn-primary"%>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-<% else %>
-  <h6 style="text-align: center">This league is full</h6>
-<% end %>
+
 
 </div>
