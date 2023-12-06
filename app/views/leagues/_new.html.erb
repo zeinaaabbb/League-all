@@ -12,5 +12,6 @@
               <%= f.input :number_of_teams %>
               <%= f.input :days_per_week %>
               <%= f.input :location %>
+              <%= f.input :photo, as: :file, input_html: { class:"form-control"} %>
               <%= f.button :submit, "create league", class:"btn btn-primary" %>
             <% end %>
