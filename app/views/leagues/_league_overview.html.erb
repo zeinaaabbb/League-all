@@ -1,27 +1,58 @@
-<div class="flex row justify-content-center">
-  <div class="card text-bg-success mb-3 border-0 text-center" class="custom-card" style="width: 20rem; height: 30rem;">
-    <div class="card-body" >
-      <h2 class="mb-5"> <strong><%= league.name %></strong></h2>
-      <h6> <strong> Description: </strong> <%= league.description %></h6>
-      <h6> <strong> Format: </strong> <%= league.format %></h6>
-      <h6> <strong> Start Date: </strong> <%= league.start_date %></h6>
-      <h6> <strong> League Level: </strong> <%= league.level %></h6>
-      <h6> <strong> League Type: </strong> <%= league.league_type %></h6>
-      <h6> <strong> Number of Teams: </strong> <%= league.number_of_teams %></h6>
+<div class="row">
+  <div class="col-6">
+    <div class="card text-bg-success mb-3 border-0 text-center" class="custom-card" style=" height: 30rem;">
+      <div class="card-body" >
+        <h2 class="mb-5"> <strong><%= league.name %></strong></h2>
+        <h5 class="mb-3"> <strong> Description: </strong> <%= league.description %></h5>
+        <h5 class="mb-3"> <strong> Format: </strong> <%= league.format %></h5>
+        <h5 class="mb-3"> <strong> Start Date: </strong> <%= league.start_date %></h5>
+        <h5 class="mb-3"> <strong> League Level: </strong> <%= league.level %></h5>
+        <h5 class="mb-3"> <strong> League Type: </strong> <%= league.league_type %></h5>
+        <h5 class="mb-3"> <strong> Number of Teams: </strong> <%= league.number_of_teams %></h5>
+      </div>
     </div>
   </div>
-    <div style="width: 20rem; height: 30rem;">
+  <div class="col-3">
+    <div style="height: 30rem;">
       <% if league.photo.attached? %>
         <%= cl_image_tag league.photo.key, style:"width: 100%; height: 100%; object-fit: cover; border-radius: 15px" %>
       <% else %>
         <img src="https://images.inc.com/uploaded_files/image/1920x1080/goal-soccer_36915.jpg" class="card-img-top rounded" alt="Team Photo" style="width: 100%; height: 100%;">
       <% end %>
     </div>
-  <div style="width: 20rem; height: 30rem;" id="league-map" class="p-0">
-    <div style="width: 100%; height: 100%; border-radius: 15px;"
-      data-controller="map"
-      data-map-markers-value="<%= @markers.to_json %>"
-      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+  <div class="col-3">
+    <div class="card text-bg-success mb-3 border-0 text-center" class="custom-card" style=" height: 30rem;">
+      <div class="card-body" >
+        <h2 class="mb-5"> <strong>League Notices</strong></h2>
+            <% if @league_notifications.count == 0 %>
+              <p>There are no league notices</p>
+            <% else %>
+              <% @league_notifications.each do |notification| %>
+                <% if notification.unread %>
+                  <div class="unread-notification">
+                  <div class="notification-content">
+                    <%= notification.content %>
+                  </div>
+                  <div class="notification-timestamp">
+                    <%= notification.created_at.strftime("%d/%m/%y %H:%M") %>
+                  </div>
+                  </div>
+                <% end %>
+              <% end %>
+            <% end %>
+      </div>
     </div>
   </div>
+</div>
+<div class="row">
+  <col-12>
+    <div style="height: 15rem;" id="league-map" class="p-0">
+      <div style="width: 100%; height: 100%; border-radius: 15px;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
+  </col-3>
 </div>
