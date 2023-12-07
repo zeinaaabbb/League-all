@@ -1,10 +1,11 @@
 <div>
+  <div class="content">
     <%# Player list goes here %>
     <% if accepted_players.count == 0 %>
       <h3 style="text-align: center">No players registered yet</h3>
     <% else %>
-  <div id="player-list" class="container row">
-      <h3 style="text-align: center"><%= team.name %> players</h3>
+  <div id="player-list" class="row">
+      <h3 class="mb-5" style="text-align: center"><%= team.name %> players</h3>
       <% team.players.each do |player| %>
         <% if player.accepted == true %>
           <div class="card text-bg-success mb-3 mx-3 border-0 p-3" class="custom-card" style="width: 18rem; height: 6rem;" >
@@ -20,6 +21,7 @@
         <% end %>
       <% end %>
     <% end %>
+  </div>
   </div>
   <%# Button to register for league %>
   <div id="register-team" style="text-align: center;" data-controller="toggle">
