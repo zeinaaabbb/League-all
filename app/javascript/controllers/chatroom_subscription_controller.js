@@ -22,9 +22,9 @@ export default class extends Controller {
       { channel: "ChatroomChannel", id: this.chatroomIdValue },
       { received: data => {
           // console.log(data);
-          this.messagesTarget.insertAdjacentHTML("beforeend", data);
+          // this.messagesTarget.insertAdjacentHTML("beforeend", data);
           this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight);
-
+          this.#insertMessageAndScrollDown(data);
         }
       }
     )
@@ -54,18 +54,18 @@ export default class extends Controller {
     // Creating the whole message from the `data.message` String
     const messageElement = this.#buildMessageElement(currentUserIsSender, data.message)
 
-    this.messagesTarget.insertAdjacentHTML("beforeend", data)
-    this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
-    // Inserting the `message` in the DOM
-    // this.messagesTarget.insertAdjacentHTML("beforeend", messageElement)
+    // this.messagesTarget.insertAdjacentHTML("beforeend", data)
     // this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
-  }
-
-
-  #insertMessageAndScrollDown(data) {
-    this.messagesTarget.insertAdjacentHTML("beforeend", data)
+    // Inserting the `message` in the DOM
+    this.messagesTarget.insertAdjacentHTML("beforeend", messageElement)
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
   }
+
+
+  // #insertMessageAndScrollDown(data) {
+  //   this.messagesTarget.insertAdjacentHTML("beforeend", data)
+  //   this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
+  // }
 
   resetForm(event) {
     event.target.reset()
