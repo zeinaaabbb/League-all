@@ -6,7 +6,7 @@ class PlayersController < ApplicationController
     @player.team = @team
     @player.user = @user
     if @player.save!
-      redirect_to team_path(@team), notice: "Your request has been submitted. The owner of #{@team.name} will respond soon."
+      redirect_to team_path(@team, tab: "players"), notice: "Your request has been submitted. The owner of #{@team.name} will respond soon."
     else
       render :new, status: :unprocessable_entity
     end
@@ -20,7 +20,7 @@ class PlayersController < ApplicationController
     @player.accepted = true
     @player.save
     @team = @player.team
-    redirect_to team_path(@team), notice: "#{@player.user.first_name} #{@player.user.last_name} has been added to #{@team.name}."
+    redirect_to team_path(@team, tab: "players"), notice: "#{@player.user.first_name} #{@player.user.last_name} has been added to #{@team.name}."
   end
 
   def reject
@@ -28,7 +28,7 @@ class PlayersController < ApplicationController
     @player.accepted = false
     @player.save
     @team = @player.team
-    redirect_to team_path(@team), notice: "#{@player.user.first_name} #{@player.user.last_name}'s request was rejected. They have not been added to #{@team.name}."
+    redirect_to team_path(@team, tab: "players"), notice: "#{@player.user.first_name} #{@player.user.last_name}'s request was rejected. They have not been added to #{@team.name}."
   end
 
 end

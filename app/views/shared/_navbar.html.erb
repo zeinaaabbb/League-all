@@ -38,14 +38,16 @@
                 <i class="fa-solid fa-bell fa-lg" style="color: #000000;"></i>
               <% end %>
             </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <p class="dropdown-item pb-3"><%= 'No new notifications' unless @notifications.any? %></p>
+            <div class="dropdown-menu dropdown-menu-end" style="width: 280px;" aria-labelledby="navbarDropdown">
+            <%unless @notifications.any? %>
+              <p class="dropdown-item pb-3"><%= 'No new notifications' %></p>
+              <% end %>
               <% if @notifications.any? %>
                 <p class="dropdown-item border-bottom pb-3">Notifications (<%= @notifications.count %>)</p>
               <% end %>
               <% @notifications.each do |n| %>
-                <%= link_to league_path(n.params[:post][:league], { tab: "notices", read: "yes", n_id: n.id }), class: "dropdown-item" do %>
-                  <%= n.params[:post][:content] %>
+                <%= link_to league_path(n.params[:post][:league], { tab: "registrations", read: "yes", n_id: n.id }), class: "dropdown-item", style: "white-space: unset;" do %>
+                  <p class="my-2"><%= n.params[:post][:content] %></p>
                 <% end %>
               <% end %>
 

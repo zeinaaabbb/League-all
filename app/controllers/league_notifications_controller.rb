@@ -24,7 +24,7 @@ class LeagueNotificationsController < ApplicationController
     @league_notification.league = league
     @league_notification.unread = true
     if @league_notification.save
-      redirect_to league_path(league), notice: 'League notification was successfully created.'
+      redirect_to league_path(league, tab: "notices"), notice: 'League notification was successfully created.'
     else
       render :new
     end

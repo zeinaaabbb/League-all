@@ -7,7 +7,7 @@ class FavouritesController < ApplicationController
     @favourite.user = current_user
 
     if @favourite.save
-      redirect_back(fallback_location: root_path)
+      redirect_to dashboard_path(tab: "browse")
     else
       render "leagues/index", status: :unprocessible_entity
     end

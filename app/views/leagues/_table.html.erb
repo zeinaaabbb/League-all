@@ -7,6 +7,7 @@
     <table style="border-collapse: collapse; width: 100%; margin-top: 20px; margin-bottom: 20px; border-bottom: 1px solid rgba(0, 0, 0, 0.2);">
       <thead>
         <tr>
+          <th style="border: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;">Pos</th>
           <th style="border: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px; border-left: 1px solid rgba(0, 0, 0, 0.2);">Team</th>
           <th style="border: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;">Pld</th>
           <th style="border: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;">W</th>
@@ -19,10 +20,10 @@
         </tr>
       </thead>
       <tbody>
-        <% results.each do |team_data| %>
+        <% results.each_with_index do |team_data, i| %>
           <tr>
-
-            <td style="border-right: 1px solid rgba(0, 0, 0, 0.2); border-left: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;"><%= link_to team_data[:name], team_path(Team.find_by(name: team_data[:name])), class:"fixture-text fixture-text:hover", style:"text-decoration: none" %></td>
+            <td style="border-right: 1px solid rgba(0, 0, 0, 0.2); border-left: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;"><%= i + 1 %></td>
+            <td style="border-right: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;"><%= link_to team_data[:name], team_path(Team.find_by(name: team_data[:name])), class:"fixture-text fixture-text:hover", style:"text-decoration: none" %></td>
 
             <td style="border-right: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;"><%= team_data[:games_played] %></td>
             <td style="border-right: 1px solid rgba(0, 0, 0, 0.2); text-align: center; padding: 8px;"><%= team_data[:wins] %></td>
@@ -74,10 +75,7 @@
           </div>
         </div>
     </div>
-  <% else %>
-    <div class="col-md-3 mt-2">
-      <h6 style="text-align: center">This league is full</h6>
-    </div>
+
   <% end %>
 </div>
 <%# LEAGUE TABLE END %>

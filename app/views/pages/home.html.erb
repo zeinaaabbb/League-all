@@ -1,8 +1,9 @@
 <%=  render "shared/navbar" %>
   <! -- hero section -->
   <br>
-  <%= image_tag('Ellipse-1.png', class: "bg-circle circle-left") %>
-  <%= image_tag('Ellipse-2.png', class: "bg-circle circle-right") %>
+
+<%= image_tag('Ellipse-1.png', class: "bg-circle circle-left") %>
+<%= image_tag('Ellipse-2.png', class: "bg-circle circle-right") %>
 <div class="container" style="width: 1500px;">
 
   <div class="flex-column align-items-center mb-5">
@@ -11,7 +12,7 @@
       <div>
         <h5 class="hero-title"><strong>Shaping the future of women’s and non-binary football league management</strong></h5>
         <p class="hero-subtitle">Creating an unforgettable football league experience for all</p>
-        <%= link_to "Get started", dashboard_path, class: "btn btn-main btn-primary", style: "color: black;" %>
+        <%= link_to "Get started", dashboard_path(tab: "leagues"), class: "btn btn-main btn-primary", style: "color: black;" %>
       </div>
       <%= image_tag("boots.jpg", alt: "Your Image", class: "ml-4 rounded", style: "max-width: 400px; height: auto;") %>
     </div>
@@ -45,7 +46,7 @@
       </div>
     <% end %>
 
-    <%= link_to dashboard_path do %>
+    <%= link_to dashboard_path(tab: "browse") do %>
       <div class="how-it-works card text-bg-primary mb-3 mx-3 border-0" class="custom-card" style="width: 250px; height: 250px;">
       <div class="circle text-center fs-2">2</div>
         <div class="card-body" >
@@ -56,7 +57,7 @@
       </div>
     <% end %>
 
-    <%= link_to dashboard_path do %>
+    <%= link_to dashboard_path(tab: "browse") do %>
     <div class="how-it-works card text-bg-primary mb-3 mx-3 border-0" class="custom-card" style="width: 250px; height: 250px;">
     <div class="circle text-center fs-2">3</div>
       <div class="card-body" >

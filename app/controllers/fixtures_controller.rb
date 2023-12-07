@@ -17,7 +17,7 @@ class FixturesController < ApplicationController
     @fixture = Fixture.new(fixture_params)
     @fixture.league = @league
     if @fixture.save!
-      redirect_to league_path(@league)
+      redirect_to league_path(@league, tab: "fixtures")
     else
       render :new, status: :unprocessable_entity
     end
@@ -32,7 +32,7 @@ class FixturesController < ApplicationController
     @fixture = Fixture.find(params[:id])
     params[:fixture][:draw] = true if params[:fixture][:home_goals] == params[:fixture][:away_goals]
     @fixture.update(fixture_params)
-    redirect_to league_path(params[:league_id]), notice: 'Fixture successfully updated.'
+    redirect_to league_path(params[:league_id], tab: "fixtures"), notice: 'Fixture successfully updated.'
   end
 
   def destroy
