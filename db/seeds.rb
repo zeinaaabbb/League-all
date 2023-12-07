@@ -244,7 +244,7 @@ following_league.description = description.sample
 following_league.save!
 puts "#{following_league.name} created!"
 
-(0...10).each do |i|
+(0...9).each do |i|
   team = Team.new
   team.user = User.all.sample
   location = Faker::Travel::TrainStation.name(region: 'united_kingdom', type: 'metro')
