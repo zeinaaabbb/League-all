@@ -13,7 +13,7 @@ class LeaguesController < ApplicationController
 
     @league_notifications = @league.league_notifications.order(created_at: :desc)
     Notification.find(params[:n_id]).update(read_at: Time.now) if current_user && params[:read] == "yes"
-
+    @selected_tab = params[:tab]
     @slots = @league.number_of_teams - @accepted_joins.count
 
     @slots_available = @slots > 0
@@ -35,7 +35,7 @@ class LeaguesController < ApplicationController
     @league = League.new(league_params)
     @league.user = current_user
     if @league.save!
-      redirect_to dashboard_path(@league)
+      redirect_to dashboard_path(@league, tab: "leagues")
       flash[:message] = 'Your League was Created Successfully!'
     else
       render :new, status: :unprocessable_entity
@@ -51,7 +51,7 @@ class LeaguesController < ApplicationController
     @league = League.find(params[:id])
     @league.update(league_params)
     # No need for app/views/leagues/update.html.erb
-    redirect_to dashboard_path(@league)
+    redirect_to dashboard_path(@league, tab: "leagues")
   end
 
   def destroy
@@ -65,10 +65,10 @@ class LeaguesController < ApplicationController
     @accepted_joins = @league.league_teams_joins.select { |join| join.accepted == true}
     @accepted_teams = @accepted_joins.map { |join| join.team}
     if @accepted_teams.count != 10
-      redirect_to league_path(@league), notice: "Your league does not have enough teams to generate fixtures yet."
+      redirect_to league_path(@league, tab: "fixtures"), notice: "Your league does not have enough teams to generate fixtures yet."
     else
       @league.create_fixtures
-      redirect_to league_path(@league), notice: "Your fixtures have been generated."
+      redirect_to league_path(@league, tab: "fixtures"), notice: "Your fixtures have been generated."
     end
   end
 

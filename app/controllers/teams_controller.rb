@@ -11,7 +11,7 @@ class TeamsController < ApplicationController
 
 
     @message = Message.new
-
+    @selected_tab = params[:tab]
     @nearby_leagues = nearby_leagues_with_slots(@team)
     @markers = [{
       lat: @team.latitude,
