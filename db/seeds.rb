@@ -50,7 +50,17 @@ user_photos = ["https://assets.manutd.com/AssetPicker/images/0/0/19/9/1247499/27
   "https://b.fssta.com/uploads/application/soccer/headshots/33182.vresize.350.350.medium.49.png",
   "https://static.independent.co.uk/2023/08/18/13/34fb6e615ac670c3782c33c1a86c1387Y29udGVudHNlYXJjaGFwaSwxNjkyNDQ1NjEw-2.73361980.jpg",
   "https://img.chelseafc.com/image/upload/f_auto,h_390,q_90/editorial/people/ladies/2023-24/Lauren_James_profile_23-24_with_sponsor_headshot.png",
-  "https://ichef.bbci.co.uk/onesport/cps/624/cpsprodpb/06B1/production/_129231710_gettyimages-1475923306.jpg"]
+  "https://ichef.bbci.co.uk/onesport/cps/624/cpsprodpb/06B1/production/_129231710_gettyimages-1475923306.jpg",
+  "https://media.newyorker.com/photos/64b58f2c1f95b9ee5ffdb410/master/pass/Zhou-Sam-Kerr.jpg",
+  "https://media.newyorker.com/photos/5d111443ad33b0208e862486/master/pass/Thomas-Marta.jpg",
+  "https://static.independent.co.uk/2023/02/24/19/b863ab6e26e43119a8b693a96e316b01Y29udGVudHNlYXJjaGFwaSwxNjc3MzUwMjY0-2.68014900.jpg",
+  "https://www.getfootballnewsfrance.com/assets/fbl-eur-c1-women-bayern-munich-psg.jpg",
+  "https://cloudfront-us-east-1.images.arcpublishing.com/pmn/CMUH5VOIFZD5JCHCUHRJZTNKWQ.jpg",
+  "https://www.sarkariexam.com/wp-content/uploads/2023/08/Kadidiatou-Diani-Parents-French-footballer-Family-Ethnicity-and-Origin.jpg",
+  "https://cdn.vox-cdn.com/thumbor/p3d2snDzAOAclZllBmxCxF4zM38=/0x0:3839x2879/1200x0/filters:focal(0x0:3839x2879):no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/23203590/1359420368.jpg",
+  "https://ichef.bbci.co.uk/onesport/cps/624/cpsprodpb/D19E/production/_123626635_asisatoshoala.jpg",
+  "https://i.dailymail.co.uk/1s/2023/08/03/14/73925149-12369393-image-a-1_1691069869735.jpg",
+  "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2023-07/Sophia-smith-me-230722-43b2b7.jpg"]
 
 15.times do |i|
   user = User.new
@@ -58,7 +68,7 @@ user_photos = ["https://assets.manutd.com/AssetPicker/images/0/0/19/9/1247499/27
   user.last_name = Faker::Name.last_name
   user.email = "#{user.first_name}.#{user.last_name}@fakeemail.com"
   user.password = 123456
-  file = URI.open(user_photos.sample)
+  file = URI.open(user_photos[i])
   user.photo.attach(io: file, filename: "user.png", content_type: "image/png")
   user.save!
   puts "#{user.email} created!"
@@ -113,7 +123,7 @@ description = [
   league.league_type = league_type.sample
   league.number_of_teams = rand(0..10)
   league.days_per_week = rand(0..5)
-  file = URI.open(league_images.sample)
+  file = URI.open(league_images[i])
   league.photo.attach(io: file, filename: "league.png", content_type: "image/png")
   league.description = description.sample
   league.save!
@@ -124,19 +134,19 @@ end
 
 # SEEDING TEAMS
 
-team_photos = ["https://cached.imagescaler.hbpl.co.uk/resize/scaleHeight/815/cached.offlinehbpl.hbpl.co.uk/news/OMC/Nike11-20190719115407953.jpg", "https://ichef.bbci.co.uk/onesport/cps/624/cpsprodpb/042D/production/_128496010_manchesterlacesplay.jpg", "https://d2x51gyc4ptf2q.cloudfront.net/content/uploads/2021/03/29214616/Romance-FC-huddle.jpg", "https://images-stylist.s3-eu-west-1.amazonaws.com/app/uploads/2022/07/25154855/euros-grassroots.jpg", "https://sponsorgrassroots.co.uk/uploads/teams/broomhill-sports-club-recreational-women-s-football/522/BtjrS17jdWW1EvDzT1DcSENSALnCYBid5Gc6NtjW.jpg", "https://gtfc.co.uk/wp-content/uploads/2022/04/Women_Arnold_Game-scaled.jpg"]
+team_photos = ["https://cached.imagescaler.hbpl.co.uk/resize/scaleHeight/815/cached.offlinehbpl.hbpl.co.uk/news/OMC/Nike11-20190719115407953.jpg", "https://ichef.bbci.co.uk/onesport/cps/624/cpsprodpb/042D/production/_128496010_manchesterlacesplay.jpg", "https://d2x51gyc4ptf2q.cloudfront.net/content/uploads/2021/03/29214616/Romance-FC-huddle.jpg", "https://images-stylist.s3-eu-west-1.amazonaws.com/app/uploads/2022/07/25154855/euros-grassroots.jpg", "https://sponsorgrassroots.co.uk/uploads/teams/broomhill-sports-club-recreational-women-s-football/522/BtjrS17jdWW1EvDzT1DcSENSALnCYBid5Gc6NtjW.jpg", "https://gtfc.co.uk/wp-content/uploads/2022/04/Women_Arnold_Game-scaled.jpg", "https://ffprod.blob.core.windows.net/media/1V2A3433resized-optimised.jpg", "https://www.ntfc.co.uk/siteassets/image/202324-season/women_team_2324.jpg", "https://myclubpro.blob.core.windows.net/images/News/1036/431432/DSC03354.jpg", "https://since-71.com/wp-content/uploads/2023/09/Bath_Weymouth_3Sep23_0445-2-800x500.jpg"]
 
 suffixes = ['United', 'Rovers', 'Albion', 'City', 'Town', 'FC', 'Athletic', 'Wanderers', 'Olympic', 'Orient', '']
 teams = []
 League.all.each do |league|
   teams_array = []
-  10.times do
+  (0...10).each do |i|
     team = Team.new
     location = Faker::Travel::TrainStation.name(region: 'united_kingdom', type: 'metro')
     team.location = "#{location}, London, UK"
     team.name = "#{location} #{suffixes.sample}"
     team.user = User.all.sample
-    file = URI.open(team_photos.sample)
+    file = URI.open(team_photos[i])
     team.photo.attach(io: file, filename: "team.png", content_type: "image/png")
     team.save!
     teams_array << team
@@ -234,13 +244,13 @@ following_league.description = description.sample
 following_league.save!
 puts "#{following_league.name} created!"
 
-9.times do
+(0...10).each do |i|
   team = Team.new
   team.user = User.all.sample
   location = Faker::Travel::TrainStation.name(region: 'united_kingdom', type: 'metro')
   team.location = "#{location}, London, UK"
   team.name = "#{location} #{suffixes.sample}"
-  file = URI.open(team_photos.sample)
+  file = URI.open(team_photos[i])
   team.photo.attach(io: file, filename: "team.png", content_type: "image/png")
   team.save!
   puts "#{team.name} created!"
@@ -250,12 +260,12 @@ puts "#{following_league.name} created!"
 end
 
 user = User.new
-user.first_name = "Sarina"
-user.last_name = "Wiegman"
-user.email = "Sarina@test.com"
+user.first_name = "Zeinab"
+user.last_name = "Warsama"
+user.email = "zeinab@test.com"
 user.password = 123456
-file = URI.open("https://champions-speakers.co.uk/sites/default/files/2022-09/sarina_wiegman_1.jpg")
-user.photo.attach(io: file, filename: "sarina.png", content_type: "image/png")
+file = URI.open("https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1698358674/shylm0dpj9wcfx37jho9.jpg")
+user.photo.attach(io: file, filename: "zeinab.png", content_type: "image/png")
 user.save!
 puts "#{user.email} TEST USER created!"
 
@@ -271,7 +281,7 @@ Chatroom.create(name: ladies.name, team_id: ladies.id)
 
 (10).times do |i|
   Player.create!(
-    user: User.all.sample,
+    user: User.all[i],
     team: Team.last,
     accepted: true
   )
@@ -279,18 +289,20 @@ end
 
 (2).times do |i|
   Player.create!(
-    user: User.all.sample,
+    user: User.last(5)[i],
     team: Team.last,
     accepted: nil
   )
 end
 
-(10).times do |i|
+messages = ["Excited to be a member of this team!", "Me too, can't wait for our first match", "do we know when that is yet?", "Not yet, coach is finding a league to join", "does anyone have some shinpads I could buy/borrow?", "Yeah I do", "This app is so good for this", "Yeah!", "Agreed! So glad i don't have to wrestle with a million whatsapp groups any more", "We still need a couple more players here, so please share the link to our page with your friends :)"]
+
+(0...10).each do |i|
   Message.create!(
-    user: User.all.sample,
+    user: User.all[i],
     team: Team.last,
     chatroom: Chatroom.last,
-    content: "Hello"
+    content: messages[i]
   )
 end
 
