@@ -37,18 +37,19 @@
 </ul>
 
 <h3> 3. Features </h3>
-
-<p> - Ability to search for leagues and teams </p>
-<p> - Ability to add new leagues and teams and to bookmark them </p>
-<p> - A dashboard that displays all the information users need at a glance </p>
-<p> - Ability to find leagues and teams within a given location </p>
-<p> - Ability to create game fixtures with ease </p>
-<p> - Ability to manage new team registration </p>
-<p> - Ability for teams to join leagues </p>
-<p> - Ability for team coach to manage new player registration </p>
-<p> - Ability to view the current league standings </p>
-<p> - Ability for an organiser to send notifications to league teams </p>
-<p> - Ability for players/ to communicate using a group messaging channel </p>
+<ul>
+<li> Ability to search for leagues and teams </li>
+<li> Ability to add new leagues and teams and to bookmark them </li>
+<li> A dashboard that displays all the information users need at a glance </li>
+<li> Ability to find leagues and teams within a given location </li>
+<li> Ability to create game fixtures with ease </li>
+<li> Ability to manage new team registration </li>
+<li> Ability for teams to join leagues </li>
+<li> Ability for team coach to manage new player registration </li>
+<li> Ability to view the current league standings </li>
+<li> Ability for an organiser to send notifications to league teams </li>
+<li> Ability for players/ to communicate using a group messaging channel </li>
+</ul>
 
 
 <h3> 4. Schema </h3>
