@@ -25,23 +25,25 @@
 
 <p> We used the MoSCoW prioritisation approach to build this project and be able to produce an MVP within the space of 2 weeks. </p>
 
-Built With  
-Ruby on Rails
-Font Awesome
-Google Fonts 
-Sweet Alert 
-Mapbox
-Cloudinary
-Action Cable
+<h2> Built With </h2>
+<ul>
+<li>Ruby on Rails</li>
+<li>Font Awesome</li>
+<li>Google Fonts</li> 
+<li>Sweet Alert </li>
+<li>Mapbox</li>
+<li>Cloudinary</li>
+<li>Action Cable</li>
+</ul>
 
-Features 
+<h3> Features </h3>
 
 
-Schema
+<h3>Schema </h3>
 
 <img width="869" alt="Screenshot 2023-12-15 at 12 01 08" src="https://github.com/zeinaaabbb/League-all/assets/129793281/05831bba-67cc-46ae-8879-fb25831de8d3">
 
-Figma
+<h3> Figma </h3>h3> 
 
 
 
