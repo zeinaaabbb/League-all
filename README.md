@@ -51,7 +51,7 @@
 
 <h3> 6. Future Work </h3>
 
-<h3> 6. Contributors </h3>
+<h3> 7. Contributors </h3>
 
 <p> Alex Cruden <a href = "https://github.com/crudengold" > github </a> </p>
 <p> Michael Bailey <a href = "https://github.com/mbailey92" > github </a> </p>
