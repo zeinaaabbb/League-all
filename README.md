@@ -11,7 +11,7 @@ Table of Contents
 2. Built With 
 3. Features
 4. Schema
-5. Database
+5. Figma
 6. Future Work 
 7. Contributors
 8. Acknowledgements 
@@ -40,4 +40,8 @@ Features
 Schema
 
 <img width="1150" alt="Screenshot 2023-12-15 at 12 01 08" src="https://github.com/zeinaaabbb/League-all/assets/129793281/05831bba-67cc-46ae-8879-fb25831de8d3">
+
+Figma
+
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2Fjg8XVQUU0E6bkxrCDHWDh8%2FFigma---League-all%3Ftype%3Ddesign%26node-id%3D0%253A1%26mode%3Ddesign%26t%3D6PnsNtMDmqmo8iJF-1" allowfullscreen></iframe>
 
