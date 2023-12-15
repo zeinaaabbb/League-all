@@ -1,4 +1,6 @@
-<h1> League-all League-All : A grassroots league organisation tool for women's and non-binary football. </h1>
+<h1> League-all  </h1>
+
+<p> A grassroots league organisation tool for women's and non-binary football. </p>
 
 <img width="869" alt="Screenshot 2023-12-15 at 11 45 33" src="https://github.com/zeinaaabbb/League-all/assets/129793281/3ed067d4-56d1-42c1-9888-0c06df905e0f">
 
