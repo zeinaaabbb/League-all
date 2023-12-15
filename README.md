@@ -43,7 +43,12 @@
 
 <img width="869" alt="Screenshot 2023-12-15 at 12 01 08" src="https://github.com/zeinaaabbb/League-all/assets/129793281/05831bba-67cc-46ae-8879-fb25831de8d3">
 
-<h3> Figma </h3>h3> 
+<h3> Figma </h3>
+
+<a href ="https://www.figma.com/file/jg8XVQUU0E6bkxrCDHWDh8/Figma---League-all?type=design&node-id=0%3A1&mode=design&t=6PnsNtMDmqmo8iJF-1">Click Here to View</a>
+
+<img width="869" alt="Screenshot 2023-12-15 at 12 25 29" src="https://github.com/zeinaaabbb/League-all/assets/129793281/a883658e-37ac-4505-8352-16f200330f41">
+
 
 
 
