@@ -1,6 +1,4 @@
-<h1> League-all </h1>
-
-<p> A simplified events management tool, to address inefficiency in women and non-binary football league management for both organisers and teams. <p> 
+<h1> League-all League-All : A grassroots league organisation tool for women's and non-binary football. </h1>
 
 <img width="869" alt="Screenshot 2023-12-15 at 11 45 33" src="https://github.com/zeinaaabbb/League-all/assets/129793281/3ed067d4-56d1-42c1-9888-0c06df905e0f">
 
@@ -37,6 +35,18 @@
 </ul>
 
 <h3> 3. Features </h3>
+
+<p> - Ability to search for leagues and teams </p>
+<p> - Ability to add new leagues and teams and to bookmark them </p>
+<p> - A dashboard that displays all the information users need at a glance </p>
+<p> - Ability to find leagues and teams within a given location </p>
+<p> - Ability to create game fixtures with ease </p>
+<p> - Ability to manage new team registration </p>
+<p> - Ability for teams to join leagues </p>
+<p> - Ability for team coach to manage new player registration </p>
+<p> - Ability to view the current league standings </p>
+<p> - Ability for an organiser to send notifications to league teams </p>
+<p> - Ability for players/ to communicate using a group messaging channel </p>
 
 
 <h3> 4. Schema </h3>
