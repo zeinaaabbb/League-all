@@ -64,9 +64,11 @@
 
 <h3> 6. Future Work </h3>
 <ul>
-  <li> Allow usr </li>
-  <li> Allow usr </li>
-  <li> Allow usr </li>
+  <li> Allow team player to be able to share league details with family & friends </li>
+  <li> Allow organisers to take/request payments from teams and if a team has paid</li>
+  <li> Allow organisers to assign a refer for a game </li>
+  <li> Enable the ability for organisers to search for venues (pitches) </li>
+  <li> The ability for organiser to edit the generated fixtures</li>
 </ul>
 
 <h3> 7. Contributors </h3>
