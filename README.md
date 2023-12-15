@@ -1,11 +1,11 @@
-                                                                      League-all 
+<h1> League-all </h1>
 
-A simplified events management tool, to address inefficiency in women and non-binary football league management for both organisers and teams. 
+<p> A simplified events management tool, to address inefficiency in women and non-binary football league management for both organisers and teams. <p> 
 
-<img width="1440" alt="Screenshot 2023-12-15 at 11 45 33" src="https://github.com/zeinaaabbb/League-all/assets/129793281/3ed067d4-56d1-42c1-9888-0c06df905e0f">
+<img width="869" alt="Screenshot 2023-12-15 at 11 45 33" src="https://github.com/zeinaaabbb/League-all/assets/129793281/3ed067d4-56d1-42c1-9888-0c06df905e0f">
 
 
-Table of Contents 
+<h2> Table of Contents </h2>
 
 1. About the Project
 2. Built With 
@@ -17,13 +17,13 @@ Table of Contents
 8. Acknowledgements 
 
 
-About The Project 
+<h2> About The Project </h2>
 
-League-all is a platform which streamlines women’s & non-binary football grassroots league management for both organisers and teams. 
+<p> League-all is a platform which streamlines women’s & non-binary football grassroots league management for both organisers and teams. </p>
 
-It aims to solve inefficiency in the organisation of football leagues, 
+<p> It aims to solve inefficiency in the organisation of football leagues. </p>
 
-We used the MoSCoW prioritisation approach to build this project and be able to produce an MVP within the space of 2 weeks. 
+<p> We used the MoSCoW prioritisation approach to build this project and be able to produce an MVP within the space of 2 weeks. </p>
 
 Built With  
 Ruby on Rails
@@ -39,9 +39,11 @@ Features
 
 Schema
 
-<img width="1150" alt="Screenshot 2023-12-15 at 12 01 08" src="https://github.com/zeinaaabbb/League-all/assets/129793281/05831bba-67cc-46ae-8879-fb25831de8d3">
+<img width="869" alt="Screenshot 2023-12-15 at 12 01 08" src="https://github.com/zeinaaabbb/League-all/assets/129793281/05831bba-67cc-46ae-8879-fb25831de8d3">
 
 Figma
+
+
 
 
 
